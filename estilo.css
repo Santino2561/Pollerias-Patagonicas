@@ -20,6 +20,23 @@ body {
     line-height: 1.5;
 }
 
+.wsp-flotante {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  background: #25d366;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+  z-index: 100;
+}
+
 main {
       flex: 1;
     max-width: 60rem;
@@ -100,7 +117,7 @@ h2 {
 
 .header {
     background: var(--marron);
-    padding: 1rem 2rem;
+    padding: 0.6rem 2rem;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -296,4 +313,158 @@ h2 {
     .footer {
         padding: 1.5rem 1rem;
     }
+}
+
+/* Va DESPUÉS de estilo.css. Usa tus variables: --amarillo, --naranja, --marron */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap');
+
+.seccion {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem;
+}
+.seccion h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 0.6rem;
+}
+.seccion .bajada {
+  max-width: 36rem;
+  margin: 0 0 2rem;
+}
+
+/* Productos: franja a todo el ancho con las tarjetas adentro */
+.franja-productos {
+  background: rgba(43, 26, 14, 0.07);
+}
+.grilla-productos {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: var(--marron) transparent;
+}
+.producto {
+  flex: 0 0 14rem;
+  scroll-snap-align: start;
+  background: var(--marron);
+  color: var(--amarillo);
+  border-radius: 0.8rem;
+  border-bottom: 6px solid var(--naranja);
+  padding: 1.5rem 1.25rem;
+}
+.producto .icono {
+  display: block;
+  font-size: 2.6rem;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+.producto h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.3rem;
+}
+.producto p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.producto.destacado {
+  border-bottom-color: var(--amarillo);
+}
+
+/* Quiénes somos */
+.ventajas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 2rem;
+}
+.ventajas div {
+  border-left: 5px solid var(--marron);
+  padding-left: 1rem;
+}
+.ventajas h3 {
+  font-size: 1.15rem;
+  margin: 0 0 0.3rem;
+}
+.ventajas p {
+  margin: 0;
+}
+
+/* Banner de pedidos */
+.banner-pedidos {
+  background: var(--naranja);
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+}
+.banner-pedidos h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+.banner-pedidos p {
+  margin: 0 0 1.5rem;
+}
+
+/* ===== Versión PC (pantallas de 900px o más) ===== */
+@media (min-width: 900px) {
+  .seccion {
+    max-width: 75rem;
+  }
+
+  /* Los 6 productos juntos en una sola fila, sin scroll */
+  .grilla-productos {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+  .producto {
+    flex: auto;
+    padding: 1.25rem 1rem;
+  }
+  .producto h3 {
+    font-size: 1.1rem;
+  }
+  .producto p {
+    font-size: 0.9rem;
+  }
+
+  /* Quiénes somos: texto a la izquierda, ventajas en fila a la derecha */
+  #nosotros {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  #nosotros .bajada {
+    margin: 0;
+  }
+  #nosotros h2 {
+    grid-column: 1;
+  }
+  #nosotros .ventajas {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Banner: texto a la izquierda, botón a la derecha */
+  .banner-pedidos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    text-align: left;
+    padding: 3rem max(1.5rem, calc((100% - 75rem) / 2 + 1.5rem));
+  }
+  .banner-pedidos p {
+    margin: 0;
+  }
+  .banner-pedidos .btn {
+    flex-shrink: 0;
+  }
 }
