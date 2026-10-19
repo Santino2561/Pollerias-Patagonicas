@@ -1,0 +1,156 @@
+:root {
+  --amarillo: #FFD23F;
+  --naranja: #FF8A1F;
+  --marron: #2B1A0E;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--amarillo);
+  color: var(--marron);
+  font-family: "DM Sans", system-ui, sans-serif;
+  line-height: 1.5;
+  font-size: 1.05rem;
+}
+
+.wrap {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.contacto-hero {
+  padding: 5rem 0 3.5rem;
+}
+
+.contacto-hero h1 {
+  font-size: clamp(3rem, 13vw, 9rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin: 0;
+}
+
+.contacto-hero .tag {
+  font-size: 1.3rem;
+  max-width: 36rem;
+  margin: 1.5rem 0 0;
+}
+
+.contacto-franja {
+  background: var(--naranja);
+}
+
+.contacto-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 2rem;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+.contacto-info h2 {
+  font-size: 1.15rem;
+  margin: 0 0 0.5rem;
+}
+
+.contacto-info p {
+  margin: 0.15rem 0;
+}
+
+.contacto-info a {
+  color: var(--marron);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.contacto-info a:hover {
+  text-decoration-thickness: 3px;
+}
+
+.contacto-form {
+  padding: 3.5rem 0 5rem;
+  border-top: 3px solid var(--marron);
+}
+
+.contacto-form h2 {
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 0 0 0.75rem;
+}
+
+.contacto-form .nota {
+  margin: 0 0 1.5rem;
+}
+
+#form-contacto {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 36rem;
+}
+
+#form-contacto label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 700;
+}
+
+#form-contacto input,
+#form-contacto textarea {
+  font: inherit;
+  font-weight: 400;
+  padding: 0.75rem 0.9rem;
+  background: #fff;
+  color: var(--marron);
+  border: 3px solid var(--marron);
+  border-radius: 0.4rem;
+}
+
+#form-contacto textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+#form-contacto input:focus-visible,
+#form-contacto textarea:focus-visible {
+  outline: 3px solid var(--marron);
+  outline-offset: 2px;
+}
+
+#form-contacto .btn {
+  justify-self: start;
+  padding: 0.9rem 1.6rem;
+  background: var(--marron);
+  color: var(--amarillo);
+  font: inherit;
+  font-weight: 700;
+  border: 0;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+#form-contacto .btn:hover {
+  background: #000;
+}
+
+#form-contacto .btn:focus-visible {
+  outline: 3px solid var(--marron);
+  outline-offset: 3px;
+}
+
+#estado {
+  min-height: 1.5em;
+  margin: 0;
+  font-weight: 700;
+}
+
+#estado.ok::before { content: "✓ "; }
+#estado.error::before { content: "! "; }

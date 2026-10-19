@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Pollerías Patagónicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="../contacto.css">
+</head>
+<body>
+
+  <header class="header">
+        <a href="../index.html" class="marca">
+            <img src="../img/logo.jpg" alt="Logo de Pollerías Patagónicas">
+            <span>Pollerías Patagónicas</span>
+        </a>
+
+        <nav class="menu">
+            <a href="../index.html#inicio">Inicio</a>
+            <a href="./productos.html">Productos</a>
+            <a href="../index.html#nosotros">Nosotros</a>
+            <a href="./contacto.html">Contacto</a>
+        </nav>
+  </header>
+
+  <main>
+
+    <section class="contacto-hero wrap">
+        <h1>Contacto</h1>
+        <p class="tag">Escribinos, llamanos o pasá por alguna de nuestras sucursales.</p>
+    </section>
+
+    <section class="contacto-franja">
+        <div class="contacto-info wrap">
+
+            <div id="sucursales">
+                <h3>Sucursales</h3>
+                <p> Villegas 2671, General Roca</p>
+                <p> Alsina 986, General Roca</p>
+                <p> Tucuman y Brown, General Roca</p>
+    
+            </div>
+
+            <div id="telefonos">
+                <h3>Teléfonos</h3>
+                <p><a href="tel:+542984796019">2984 479-6019</a></p>
+            </div>
+
+            <div id="email">
+                <h3>Email</h3>
+                <p><a href="mailto:contacto@gra.com.ar">contacto@gra.com.ar</a></p>
+            </div>
+
+
+            <div id="horario">
+                <h2>Horario de atención</h2>
+                <p><strong>Lun – Sáb:</strong> 9:00 a 13:00 y 17:30 a 21:30 h</p>
+                <p><strong>Domingos:</strong> 9:00 a 13:00 h</p>
+            </div>
+
+        </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-final">
+        <p>© 2026 Pollerías Patagónicas. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('form-contacto');
+    const estado = document.getElementById('estado');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        estado.className = '';
+
+        if (!form.checkValidity()) {
+            estado.textContent = 'Completá todos los campos con datos válidos.';
+            estado.className = 'error';
+            form.reportValidity();
+            return;
+        }
+
+        const datos = Object.fromEntries(new FormData(form));
+
+        console.log('Datos del formulario:', datos);
+
+        estado.textContent = 'Gracias, recibimos tu mensaje y te respondemos pronto.';
+        estado.className = 'ok';
+        form.reset();
+    });
+  </script>
+
+</body>
+</html>
