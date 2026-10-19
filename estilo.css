@@ -191,6 +191,85 @@ h2 {
     margin-top: 20px;
 }
 
+
+.carrusel {
+    width: 100%;
+    max-width: 490px;
+    aspect-ratio: 3 / 4;
+    height: 600px;
+    margin: 40px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 3px solid var(--marron);
+}
+
+.carrusel-imagenes img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.carrusel-imagenes img.activa {
+    opacity: 1;
+}
+
+.flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.anterior {
+    left: 15px;
+}
+
+.siguiente {
+    right: 15px;
+}
+
+.indicadores {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.punto {
+    width: 11px;
+    height: 11px;
+    border: none;
+    border-radius: 50%;
+    background: #aaa;
+    cursor: pointer;
+}
+
+.punto.activo {
+    background: var(--amarillo);
+}
+
+@media (max-width: 600px) {
+    .carrusel {
+        height: 300px;
+        width: 95%;
+    }
+}
+
+
 @media (max-width: 600px) {
     .footer {
         padding: 1.5rem 1rem 1rem;
