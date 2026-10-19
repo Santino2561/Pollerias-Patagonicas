@@ -177,6 +177,20 @@ h2 {
     color: var(--naranja);
 }
 
+.ubicacion {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: var(--amarillo);
+}
+
+.ubicacion iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 350px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
 @media (max-width: 600px) {
     .footer {
         padding: 1.5rem 1rem 1rem;
