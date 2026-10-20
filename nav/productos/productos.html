@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Pollerías Patagónicas</title>
+    <link rel="stylesheet" href="/estilo.css">
+    <link rel="stylesheet" href="/nav/productos/productos.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap">
+</head>
+<body>
+   <header class="header">
+        <a href="#" class="marca">
+            <img src="/img/logo.png" alt="Logo de Pollerías Patagónicas">
+            <span>Pollerías Patagónicas</span>
+        </a>
+
+        <nav class="menu">
+            <a href="/index.html">Inicio</a>
+            <a href="/nav/productos/productos.html">Productos</a>
+            <a href="/index.html#nosotros">Nosotros</a>
+            <a href="/nav/contactos/contacto.html">Contacto</a>
+            <!-- Botón del carrito SIN onclick -->
+            <button class="btn-carrito" id="btn-carrito">
+                🛒 <span class="badge" id="contador-carrito">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <div style="text-align: center;">
+            <h1 class="titulo-seccion">Nuestros Productos</h1>
+        </div>
+        
+        <!-- Grilla donde se inyectan los productos con JS -->
+        <div class="grilla-tienda" id="contenedor-productos">
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <section class="info">
+            <div>
+                <h2>Horarios</h2>
+                <p>Lunes a sábados</p>
+                <p>9:00 a 13:00 y 17:30 a 21:30 h</p>
+                <p>Domingos</p>
+                <p>9:00 a 13:00 h</p>
+            </div>
+            <div>
+                <h2>Dirección</h2>
+                <p>Villegas 2671, Local 3</p>
+                <p>General Roca, Río Negro</p>
+            </div>
+            <div>
+                <h2>Pedidos</h2>
+                <p>Teléfono: 2984 479-6020</p>
+                <p>Retiro en el local o envío</p>
+            </div>
+        </section>
+        <div class="footer-final">
+            <p>© 2026 Pollerías Patagónicas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Flotante -->
+    <a class="wsp-flotante" href="https://wa.me/5492984796020" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">💬</a>
+
+    <!-- Overlay oscuro para el carrito -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar Carrito -->
+    <div class="sidebar-carrito" id="sidebar-carrito">
+        <div class="carrito-header">
+            <h2>Mi Pedido</h2>
+            <button class="btn-cerrar" id="btn-cerrar-carrito">&times;</button>
+        </div>
+        
+        <div class="carrito-body" id="carrito-body">
+            <div class="carrito-vacio">El carrito está vacío</div>
+        </div>
+
+        <div class="carrito-footer">
+            <!-- Mensaje de error para compra vacía -->
+            <div id="mensaje-error" style="color: red; font-size: 0.9rem; margin-bottom: 0.5rem; text-align: center; display: none;">
+                El carrito está vacío. Agregá productos antes de comprar.
+            </div>
+            
+            <div class="total-carrito">
+                <span>Total:</span>
+                <span id="precio-total">$0</span>
+            </div>
+            
+            <!-- Botón finalizar compra -->
+            <button class="btn btn-comprar" id="btn-finalizar-compra">Finalizar Compra por WhatsApp</button>
+        </div>
+    </div>
+    
+    <script src="/nav/productos/productos.js"></script>
+</body>
+</html>

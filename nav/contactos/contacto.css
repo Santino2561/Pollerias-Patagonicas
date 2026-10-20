@@ -1,23 +1,5 @@
-:root {
-  --amarillo: #FFD23F;
-  --naranja: #FF8A1F;
-  --marron: #2B1A0E;
-}
 
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
 
-body {
-  margin: 0;
-  background: var(--amarillo);
-  color: var(--marron);
-  font-family: "DM Sans", system-ui, sans-serif;
-  line-height: 1.5;
-  font-size: 1.05rem;
-}
 
 .wrap {
   max-width: 60rem;
@@ -44,7 +26,7 @@ body {
 }
 
 .contacto-franja {
-  background: var(--naranja);
+  background: #FF8A1F;
 }
 
 .contacto-info {

@@ -1,0 +1,92 @@
+:root {
+            --amarillo: #FFD23F;
+            --naranja: #c28750;
+            --marron: #2B1A0E;
+        }
+
+/* --- Main & Grid de Productos --- */
+        main {
+            flex: 1;
+            max-width: 75rem;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            width: 100%;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 2rem;
+            color: var(--marron);
+            border-bottom: 4px solid var(--naranja);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .grilla-tienda {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .tarjeta-producto {
+            background: var(--marron);
+            color: var(--amarillo);
+            border-radius: 0.8rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 6px solid var(--naranja);
+            transition: transform 0.2s;
+        }
+
+        .tarjeta-producto:hover {
+            transform: translateY(-5px);
+        }
+
+        .tarjeta-producto img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .producto-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .producto-info h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .producto-precio {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--naranja);
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 1.6rem;
+            background: var(--naranja);
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 0.4rem;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: background 0.2s;
+            margin-top: auto;
+        }
+
+        .btn:hover {
+            background: #a67342;
+        }
