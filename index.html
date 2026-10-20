@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pollerias Patagónicas</title>
     <link rel="stylesheet" href="estilo.css">
-    <link rel="stylesheet" href="decoracion.css">
-    <link rel="icon" href="./img/logo.png?v=2" type="image/png">
+    <link rel="icon" href="/img/logo.png" type="image/png">
 </head>
 <body>
 
@@ -14,15 +13,18 @@
 
   <header class="header">
     <a href="#" class="marca">
-        <img src="./img/logo.png" alt="Logo de Pollerías Patagónicas">
+        <img src="/img/logo.png" alt="Logo de Pollerías Patagónicas">
         <span>Pollerías Patagónicas</span>
     </a>
 
     <nav class="menu">
-        <a href="index.html">Inicio</a>
-        <a href="./nav/productos.html">Productos</a>
+        <a href="/index.html">Inicio</a>
+        <a href="/nav/productos/productos.html">Productos</a>
         <a href="#nosotros">Nosotros</a>
-        <a href="./nav/contacto.html">Contacto</a>
+        <a href="/nav/contactos/contacto.html">Contacto</a>
+        <button class="btn-carrito" onclick="abrirCarrito()">
+                🛒 <span class="badge" id="contador-carrito">0</span>
+        </button>
     </nav>
   </header>
 
@@ -40,9 +42,9 @@
 
   <section class="carrusel">
     <div class="carrusel-imagenes">
-        <img src="./img/oferta.png" alt="Pollito" class="activa">
-        <img src="./img/oferta2.png" alt="Milanesas">
-        <img src="./img/oferta3.png" alt="Chorizos">
+        <img src="/img/oferta.png" alt="Pollito" class="activa">
+        <img src="/img/oferta2.png" alt="Milanesas">
+        <img src="/img/oferta3.png" alt="Chorizos">
     </div>
 
     <button class="flecha anterior" aria-label="Imagen anterior">&#10094;</button>
