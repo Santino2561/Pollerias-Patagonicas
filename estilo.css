@@ -143,11 +143,10 @@ h2 {
 }
 
 .footer {
-  margin-top: 2rem;
+  border-top: 0.1rem solid rgb(122, 78, 27);
   background: var(--marron);
   color: var(--amarillo);
   padding: 2rem 1.5rem 1rem;
-  margin-top: 2rem;
 }
 
 .footer .info {
@@ -228,7 +227,18 @@ h2 {
 .ubicacion {
   padding: 40px 20px;
   text-align: center;
-  background-color: var(--amarillo);
+  background-color:#1b1306
+}
+.ubicacion h2 {
+  color: var(--amarillo);
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.ubicacion p {
+  color: var(--amarillo);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
 .ubicacion iframe {
@@ -253,16 +263,25 @@ h2 {
   border: 0;
 }
 
+#ofertas{
+  text-align: center;
+  font-size: 5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.1rem;
+  color: var(--amarillo);
+}
+
 .carrusel {
   width: 100%;
-  max-width: 490px;
+  max-width: 485px;
   aspect-ratio: 3 / 4;
   height: 600px;
   margin: 40px auto;
   position: relative;
   overflow: hidden;
   border-radius: 18px;
-  border: 3px solid var(--marron);
+  border: 3px solid;
+  border-color:#000
 }
 
 .carrusel-imagenes img {
@@ -657,6 +676,72 @@ h2 {
 }
 .btn-comprar:hover {
   background: #1ebc5a;
+}
+
+.portada {
+  position: relative;
+  padding-bottom: 6rem;
+  isolation: isolate;
+}
+
+/* Imagen de fondo con velo negro encima */
+.portada::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), /* velo negro */
+    url("/img/fondo.png") center top / cover no-repeat;
+  z-index: -2;
+}
+
+/* Fade final hacia el amarillo */
+.portada::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 210, 63, 0) 0%,
+    rgba(255, 210, 63, 0.6) 65%,
+    var(--amarillo) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+.portada main,
+.portada .carrusel {
+  position: relative;
+  z-index: 1;
+}
+
+/* Textos claros sobre el fondo oscuro */
+.portada .hero h1 {
+  color: #fff;
+}
+.portada .hero .descripcion {
+  color: var(--amarillo);
+}
+
+/* Botón invertido para que resalte sobre lo oscuro */
+.portada .btn {
+  background: var(--amarillo);
+  color: var(--marron);
+}
+.portada .btn:hover {
+  background: #fff;
+}
+.portada .btn:focus-visible {
+  outline-color: var(--amarillo);
+}
+
+/* Borde del carrusel visible sobre lo oscuro */
+.portada .carrusel {
+  border-color: var(--marron)
 }
 
 /* --- Media Queries --- */
