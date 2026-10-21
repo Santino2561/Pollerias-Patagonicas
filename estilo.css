@@ -45,7 +45,7 @@ main {
 }
 
 .hero {
-  padding: 4rem 0 3rem;
+  padding: 4rem 0 0rem;
   text-align: center;
 }
 
@@ -266,7 +266,7 @@ h2 {
 #ofertas{
   text-align: center;
   font-size: 5rem;
-  margin-top: 1rem;
+  margin-top: 0.1rem;
   margin-bottom: 0.1rem;
   color: var(--amarillo);
 }
