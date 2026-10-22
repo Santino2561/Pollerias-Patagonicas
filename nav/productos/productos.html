@@ -21,7 +21,7 @@
         <a href="../../index.html#nosotros">Nosotros</a>
         <a href="../contactos/contacto.html">Contacto</a>
 
-        <button class="btn-carrito" id="btn-carrito">
+        <button class="btn-carrito" id="btn-carrito" onclick="abrirCarrito()">
             🛒 <span class="badge" id="contador-carrito">0</span>
         </button>
     </nav>
@@ -87,6 +87,21 @@
                 El carrito está vacío. Agregá productos antes de comprar.
             </div>
             
+            <!-- Métodos de Pago -->
+            <div class="metodo-pago">
+                <label for="selector-pago">Medio de pago:</label>
+                <select id="selector-pago">
+                    <option value="efectivo">Efectivo (5% OFF)</option>
+                    <option value="transferencia">Transferencia / Tarjeta</option>
+                </select>
+                
+            </div>
+            <!-- Descuentos en Efectivo -->
+            <div class="descuento-carrito" id="fila-descuento">
+                <span>Descuento (5%)</span>
+                <span id="precio-descuento">$0</span>
+            </div>
+
             <div class="total-carrito">
                 <span>Total:</span>
                 <span id="precio-total">$0</span>
@@ -96,7 +111,6 @@
             <button class="btn btn-comprar" id="btn-finalizar-compra">Finalizar Compra por WhatsApp</button>
         </div>
     </div>
-    
     <script src="./productos.js"></script>
 </body>
 </html>
