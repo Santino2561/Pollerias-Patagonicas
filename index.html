@@ -117,13 +117,38 @@
     </div>
   </section>
 
-  <!-- BANNER DE PEDIDOS -->
-  <section class="banner-pedidos">
-    <div>
-        <h2>¿Armamos tu pedido?</h2>
-        <p>Escribinos por WhatsApp y lo tenés listo para retirar.</p>
-    </div>
-  </section>
+<!-- BANNER DE PEDIDOS -->
+<section class="banner-pedidos banner-tienda" id="pedido">
+  <div class="grilla-tienda">
+    <article class="tarjeta-producto">
+      <img src="./img/pollito.jpg" alt="Pollo fresco">
+      <h3>Pollo fresco</h3>
+      <p class="precio">$5.500 <small>/ kg</small></p>
+      <button class="btn-agregar" data-nombre="Pollo fresco" data-precio="5500">Agregar al carrito</button>
+    </article>
+
+    <article class="tarjeta-producto">
+      <img src="./img/milas.png" alt="Milanesas">
+      <h3>Milanesas</h3>
+      <p class="precio">$8.000 <small>/ kg</small></p>
+      <button class="btn-agregar" data-nombre="Milanesas" data-precio="8000">Agregar al carrito</button>
+    </article>
+
+    <article class="tarjeta-producto">
+      <img src="./img/chori.png" alt="Chorizos">
+      <h3>Chorizos</h3>
+      <p class="precio">$7.200 <small>/ kg</small></p>
+      <button class="btn-agregar" data-nombre="Chorizos" data-precio="7200">Agregar al carrito</button>
+    </article>
+
+    <article class="tarjeta-producto">
+      <img src="./img/burguer.png" alt="Hamburguesas">
+      <h3>Hamburguesas</h3>
+      <p class="precio">$6.000 <small>/ pack</small></p>
+      <button class="btn-agregar" data-nombre="Hamburguesas" data-precio="6000">Agregar al carrito</button>
+    </article>
+  </div>
+</section>
 
   <section class="ubicacion" id="contacto">
     <h2>Encontranos</h2>
@@ -158,6 +183,23 @@
         <p>© 2026 Pollerías Patagónicas. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+  <div class="overlay" id="overlay"></div>
+
+<aside class="sidebar-carrito" id="sidebar-carrito">
+  <div class="carrito-header">
+    <h2>Tu pedido</h2>
+    <button class="btn-cerrar" id="btn-cerrar" aria-label="Cerrar carrito">&times;</button>
+  </div>
+  <div class="carrito-body" id="carrito-items"></div>
+  <div class="carrito-footer">
+    <div class="total-carrito">
+      <span>Total</span>
+      <span id="total-carrito">$0</span>
+    </div>
+    <button class="btn btn-comprar" id="btn-comprar">Pedir por WhatsApp</button>
+  </div>
+</aside>
 
   <script src="./script.js"></script>
 </body>
