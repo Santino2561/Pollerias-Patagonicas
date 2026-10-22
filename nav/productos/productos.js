@@ -1,67 +1,19 @@
-// Todos los productos
-const productos = [
-  {
-    id: 1,
-    nombre: "Pollo Entero",
-    precio: 2500,
-    unidad: "kg",
-    img: "https://www.carnave.com.ar/wp-content/uploads/2020/05/Pollo-entero.jpg",
-  },
-  {
-    id: 2,
-    nombre: "Pechuga Deshuesada",
-    precio: 4500,
-    unidad: "kg",
-    img: "https://www.carnave.com.ar/wp-content/uploads/2020/10/2-pechugas.png",
-  },
-  {
-    id: 3,
-    nombre: "Milanesas de Pollo",
-    precio: 3800,
-    unidad: "kg",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdUQHB-ydH4rk4_zZB49yEdpA7sER5f_7DZo7KE32nFHHtWAeGeTxPwvk&s=10",
-  },
-  {
-    id: 4,
-    nombre: "Pata Muslo",
-    precio: 2200,
-    unidad: "kg",
-    img: "https://arcordiezb2c.vtexassets.com/arquivos/ids/176245/Pata-Y-Muslo-X-Kg-1-5539.jpg?v=638042097762030000",
-  },
-  {
-    id: 5,
-    nombre: "Alitas",
-    precio: 1500,
-    unidad: "kg",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_UGsPBNzLTWO7JXVU3E8HJPykfwJjqEcxRbfaJeG721WZ471YjaCHAFMJ&s=10",
-  },
-  {
-    id: 6,
-    nombre: "Suprema Rellena",
-    precio: 5000,
-    unidad: "un",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBAIAQAvxWOBYA5JRYF7igDKUYqeQrkf_fqWnT7pjnbHgzrmpajQ84uek&s=10",
-  },
-  {
-    id: 7,
-    nombre: "Menudos de Pollo",
-    precio: 800,
-    unidad: "kg",
-    img: "https://http2.mlstatic.com/D_NQ_NP_750868-MLA83540782459_042025-O.webp",
-  },
-  {
-    id: 8,
-    nombre: "Pata Sola",
-    precio: 2400,
-    unidad: "kg",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXowmi7bWTs9WxfYslNEKVsmFQNYWoKXMUeU60pLA4XdAhlcQqtlso6_PW&s=10",
-  },
-];
+let productos = []
+let carrito = JSON.parse(localStorage.getItem('carritoPolleria')) || [];
 
-let carrito = [];
+async function cargarProductos() {
+  try {
+    const respuesta = await fetch('./productos.json')
+    productos = await respuesta.json()
+    renderizarProductos()
+  } catch (error) {
+      console.error('Error al cargar productos: ', error)
+  }
+}
 
 function renderizarProductos() {
   const contenedor = document.getElementById("contenedor-productos");
+  if (!contenedor) return 
   contenedor.textContent = "";
 
   productos.forEach((producto) => {
@@ -205,8 +157,28 @@ function actualizarCarrito() {
       contenedorBody.appendChild(itemCarrito);
     });
   }
-  contadorSpan.textContent = totalItems;
-  precioTotalSpan.textContent = `$${totalPrecio}`;
+
+  // METODOS DE PAGO
+  const selectorPago = document.getElementById('selector-pago')
+  const filaDescuento = document.getElementById('fila-descuento')
+  const spanDescuento = document.getElementById('precio-descuento')
+
+  let descuento = 0
+
+  if (selectorPago && selectorPago.value === 'efectivo' && totalPrecio > 0) {
+    descuento = Math.round(totalPrecio * 0.05)
+    if (filaDescuento) filaDescuento.style.display = 'flex'
+    if (spanDescuento) spanDescuento.textContent = `-$${descuento}`
+  } else {
+    if (filaDescuento) filaDescuento.style.display = 'none'
+  }
+
+  let totalFinal = totalPrecio - descuento
+
+  contadorSpan.textContent = totalItems
+  precioTotalSpan.textContent = `-$${totalFinal}`
+
+  localStorage.setItem('carritoPolleria', JSON.stringify(carrito))
 }
 
 // Sidebar Carrito
@@ -240,24 +212,43 @@ function finalizarCompra() {
     msjError.style.display = "block";
     return;
   }
+
+const selectorPago = document.getElementById('selector-pago')
+const esEfectivo = selectorPago && selectorPago.value === 'efectivo'
+
   let mensaje =
     "Hola buenas tardes! Quiero realizar el siguiente pedido:%0A%0A";
-  let total = 0;
+  let totalPrecio = 0;
 
   carrito.forEach((item) => {
     mensaje += `- ${item.cantidad}x ${item.nombre} ($${item.precio * item.cantidad})%0A`;
     total += item.precio * item.cantidad;
   });
 
-  mensaje += `%0A*Total a pagar: $${total}*%0A%0A`;
+  if (esEfectivo) {
+    let descuento = Math.round(totalPrecio * 0.05)
+    let totalFinal = totalPrecio - descuento
+    mensaje += `%0A*Medio de pago:* Efectivo / Transferencia (5% OFF)%0A`;
+    mensaje += `*Subtotal:* $${totalPrecio}%0A`;
+    mensaje += `*Descuento:* -$${descuento}%0A`;
+    mensaje += `*Total a pagar: $${totalFinal}*%0A%0A`;
+  } else {
+    mensaje += `%0A*Medio de pago:* Tarjeta / Otro%0A`;
+    mensaje += `*Total a pagar: $${totalPrecio}*%0A%0A`;
+  }
   mensaje += "Por favor, confírmenme el pedido. ¡Gracias!";
 
   const urlWhatsapp = `https://wa.me/5492984796020?text=${mensaje}`;
   window.open(urlWhatsapp, "_blank");
 }
 
+const selectorPago = document.getElementById("selector-pago");
+if(selectorPago) {
+  selectorPago.addEventListener("change", actualizarCarrito);
+}
+
 // Iniciar Página
-window.onload = () => {
-  renderizarProductos();
+document.addEventListener("DOMContentLoaded", () => {
+  cargarProductos();
   actualizarCarrito();
-};
+});

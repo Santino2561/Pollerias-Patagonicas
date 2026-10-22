@@ -659,6 +659,51 @@ h2 {
   border-top: 2px solid #ddd;
 }
 
+/*METODOS DE PAGO*/
+.metodo-pago {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.metodo-pago label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--marron);
+}
+
+.metodo-pago select {
+  padding: 0.6rem;
+  border-radius: 0.4rem;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--marron);
+  background-color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.metodo-pago select:focus {
+  border-color: var(--naranja);
+}
+
+.metodo-pago option:hover {
+  text-decoration: none;
+  background-color: var(--naranja);
+}
+
+.descuento-carrito {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  color: red;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+
 .total-carrito {
   display: flex;
   justify-content: space-between;
@@ -678,6 +723,7 @@ h2 {
   background: #1ebc5a;
 }
 
+/*PORTADA PRINCIPAL*/
 .portada {
   position: relative;
   padding-bottom: 6rem;

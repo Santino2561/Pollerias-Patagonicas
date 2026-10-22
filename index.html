@@ -22,7 +22,7 @@
         <a href="./nav/productos/productos.html">Productos</a>
         <a href="#nosotros">Nosotros</a>
         <a href="./nav/contactos/contacto.html">Contacto</a>
-        <button class="btn-carrito" onclick="abrirCarrito()">
+        <button class="btn-carrito" id="btn-carrito" onclick="abrirCarrito()">
                 🛒 <span class="badge" id="contador-carrito">0</span>
         </button>
     </nav>
@@ -184,23 +184,49 @@
     </div>
   </footer>
 
-  <div class="overlay" id="overlay"></div>
+  <!-- Overlay oscuro para el carrito -->
+    <div class="overlay" id="overlay"></div>
 
-<aside class="sidebar-carrito" id="sidebar-carrito">
-  <div class="carrito-header">
-    <h2>Tu pedido</h2>
-    <button class="btn-cerrar" id="btn-cerrar" aria-label="Cerrar carrito">&times;</button>
-  </div>
-  <div class="carrito-body" id="carrito-items"></div>
-  <div class="carrito-footer">
-    <div class="total-carrito">
-      <span>Total</span>
-      <span id="total-carrito">$0</span>
+    <!-- Sidebar Carrito -->
+    <div class="sidebar-carrito" id="sidebar-carrito">
+        <div class="carrito-header">
+            <h2>Mi Pedido</h2>
+            <button class="btn-cerrar" id="btn-cerrar-carrito">&times;</button>
+        </div>
+        
+        <div class="carrito-body" id="carrito-body">
+            <div class="carrito-vacio">El carrito está vacío</div>
+        </div>
+
+        <div class="carrito-footer">
+            <div id="mensaje-error" style="color: red; font-size: 0.9rem; margin-bottom: 0.5rem; text-align: center; display: none;">
+                El carrito está vacío. Agregá productos antes de comprar.
+            </div>
+            
+            <!-- Métodos de Pago -->
+            <div class="metodo-pago">
+                <label for="selector-pago">Medio de pago:</label>
+                <select id="selector-pago">
+                    <option value="efectivo">Efectivo (5% OFF)</option>
+                    <option value="transferencia">Transferencia / Tarjeta</option>
+                </select>
+            </div>
+            <!-- Descuentos en Efectivo -->
+            <div class="descuento-carrito" id="fila-descuento" style="display: none;">
+                <span>Descuento (5%)</span>
+                <span id="precio-descuento">$0</span>
+            </div>
+
+            <div class="total-carrito">
+                <span>Total:</span>
+                <span id="precio-total">$0</span>
+            </div>
+            
+            <button class="btn btn-comprar" id="btn-finalizar-compra">Finalizar Compra por WhatsApp</button>
+        </div>
     </div>
-    <button class="btn btn-comprar" id="btn-comprar">Pedir por WhatsApp</button>
-  </div>
-</aside>
 
   <script src="./script.js"></script>
+  <script src="./nav/productos/productos.js"></script>
 </body>
 </html>
