@@ -26,7 +26,7 @@
         <a href="../../index.html#nosotros">Nosotros</a>
         <a href="./contacto.html">Contacto</a>
 
-        <button class="btn-carrito" onclick="abrirCarrito()">
+        <button class="btn-carrito" id="btn-carrito" onclick="abrirCarrito()">
             🛒 <span class="badge" id="contador-carrito">0</span>
         </button>
     </nav>
@@ -121,30 +121,50 @@
         <p>© 2026 Pollerías Patagónicas. Todos los derechos reservados.</p>
     </div>
   </footer>
-  <script>
-    const form = document.getElementById('form-contacto');
-    const estado = document.getElementById('estado');
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        estado.className = '';
+  <!-- Overlay oscuro para el carrito -->
+    <div class="overlay" id="overlay"></div>
 
-        if (!form.checkValidity()) {
-            estado.textContent = 'Completá todos los campos con datos válidos.';
-            estado.className = 'error';
-            form.reportValidity();
-            return;
-        }
+    <!-- Sidebar Carrito -->
+    <div class="sidebar-carrito" id="sidebar-carrito">
+        <div class="carrito-header">
+            <h2>Mi Pedido</h2>
+            <button class="btn-cerrar" id="btn-cerrar-carrito">&times;</button>
+        </div>
+        
+        <div class="carrito-body" id="carrito-body">
+            <div class="carrito-vacio">El carrito está vacío</div>
+        </div>
 
-        const datos = Object.fromEntries(new FormData(form));
+        <div class="carrito-footer">
+            <div id="mensaje-error" style="color: red; font-size: 0.9rem; margin-bottom: 0.5rem; text-align: center; display: none;">
+                El carrito está vacío. Agregá productos antes de comprar.
+            </div>
+            
+            <!-- Métodos de Pago -->
+            <div class="metodo-pago">
+                <label for="selector-pago">Medio de pago:</label>
+                <select id="selector-pago">
+                    <option value="efectivo">Efectivo (5% OFF)</option>
+                    <option value="transferencia">Transferencia / Tarjeta</option>
+                </select>
+            </div>
+            <!-- Descuentos en Efectivo -->
+            <div class="descuento-carrito" id="fila-descuento" style="display: none;">
+                <span>Descuento (5%)</span>
+                <span id="precio-descuento">$0</span>
+            </div>
 
-        console.log('Datos del formulario:', datos);
+            <div class="total-carrito">
+                <span>Total:</span>
+                <span id="precio-total">$0</span>
+            </div>
+            
+            <button class="btn btn-comprar" id="btn-finalizar-compra">Finalizar Compra por WhatsApp</button>
+        </div>
+    </div>
 
-        estado.textContent = 'Gracias, recibimos tu mensaje y te respondemos pronto.';
-        estado.className = 'ok';
-        form.reset();
-    });
-  </script>
-
+  <script src="./contacto.js"></script>
+    <script src="../productos/productos.js"></script>
 </body>
 </html>
