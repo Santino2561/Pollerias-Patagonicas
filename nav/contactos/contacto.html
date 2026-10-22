@@ -38,6 +38,31 @@
         <h1>Contacto</h1>
         <p class="tag">Escribinos, llamanos o pasá por alguna de nuestras sucursales.</p>
     </section>
+   
+    <section class="contacto-form contacto-franja" id="formulario">
+        <div class="wrap">
+            <h2>Formulario de contacto</h2>
+            <p class="nota">Todos los campos son obligatorios.</p>
+ 
+            <form id="form-contacto" novalidate>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribí acá tu nombre" autocomplete="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email-consulta" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email-consulta" name="email" placeholder="Escribí acá tu email" autocomplete="email" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                    <label for="consulta" class="form-label">Tu consulta</label>
+                    <textarea class="form-control" id="consulta" name="consulta" rows="5" placeholder="Escribí acá tu consulta" required></textarea>
+                </div>
+                <button type="submit" class="btn-solid theme-primary">Enviar consulta</button>
+                <p id="estado" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </section>
+ 
 
     <section class="contacto-franja">
         <div class="contacto-info wrap">

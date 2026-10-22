@@ -1,5 +1,23 @@
+:root {
+  --amarillo: #FFD23F;
+  --naranja: #FF8A1F;
+  --marron: #2B1A0E;
+}
 
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
 
+body {
+  margin: 0;
+  background: var(--amarillo);
+  color: var(--marron);
+  font-family: "DM Sans", system-ui, sans-serif;
+  line-height: 1.5;
+  font-size: 1.05rem;
+}
 
 .wrap {
   max-width: 60rem;
@@ -7,8 +25,9 @@
   padding: 0 1.5rem;
 }
 
+/* Título  */
 .contacto-hero {
-  padding: 5rem 0 3.5rem;
+  padding: 3rem 0 3.5rem;
 }
 
 .contacto-hero h1 {
@@ -25,8 +44,9 @@
   margin: 1.5rem 0 0;
 }
 
+/* Franja naranja con los datos */
 .contacto-franja {
-  background: #FF8A1F;
+  background: var(--naranja);
 }
 
 .contacto-info {
@@ -56,6 +76,7 @@
   text-decoration-thickness: 3px;
 }
 
+/*Formulario  */
 .contacto-form {
   padding: 3.5rem 0 5rem;
   border-top: 3px solid var(--marron);
@@ -74,41 +95,64 @@
 }
 
 #form-contacto {
-  display: grid;
-  gap: 1.1rem;
   max-width: 36rem;
 }
 
-#form-contacto label {
-  display: grid;
-  gap: 0.35rem;
+#form-contacto .mb-3 {
+  margin-bottom: 1.1rem;
+}
+
+#form-contacto .form-label {
+  display: block;
+  margin-bottom: 0.35rem;
   font-weight: 700;
 }
 
-#form-contacto input,
-#form-contacto textarea {
+#form-contacto .form-control {
+  display: block;
+  width: 100%;
   font: inherit;
-  font-weight: 400;
   padding: 0.75rem 0.9rem;
   background: #fff;
   color: var(--marron);
-  border: 3px solid var(--marron);
+  border: 2px solid var(--marron);
   border-radius: 0.4rem;
 }
 
-#form-contacto textarea {
-  min-height: 8rem;
+#form-contacto textarea.form-control {
+  min-height: 9rem;
   resize: vertical;
 }
 
-#form-contacto input:focus-visible,
-#form-contacto textarea:focus-visible {
+#form-contacto .form-control:focus-visible {
+  outline: none;
+  border-color: #000;
+}
+
+#form-contacto .form-text {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+}
+
+#form-contacto .form-field {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+#form-contacto .check {
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  accent-color: var(--marron);
+}
+
+#form-contacto .check:focus-visible {
   outline: 3px solid var(--marron);
   outline-offset: 2px;
 }
 
-#form-contacto .btn {
-  justify-self: start;
+#form-contacto .btn-solid {
   padding: 0.9rem 1.6rem;
   background: var(--marron);
   color: var(--amarillo);
@@ -119,18 +163,18 @@
   cursor: pointer;
 }
 
-#form-contacto .btn:hover {
+#form-contacto .btn-solid:hover {
   background: #000;
 }
 
-#form-contacto .btn:focus-visible {
+#form-contacto .btn-solid:focus-visible {
   outline: 3px solid var(--marron);
   outline-offset: 3px;
 }
 
 #estado {
   min-height: 1.5em;
-  margin: 0;
+  margin: 1rem 0 0;
   font-weight: 700;
 }
 
