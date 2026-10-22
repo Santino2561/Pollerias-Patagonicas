@@ -168,7 +168,7 @@ function actualizarCarrito() {
   if (selectorPago && selectorPago.value === 'efectivo' && totalPrecio > 0) {
     descuento = Math.round(totalPrecio * 0.05)
     if (filaDescuento) filaDescuento.style.display = 'flex'
-    if (spanDescuento) spanDescuento.textContent = `-$${descuento}`
+    if (spanDescuento) spanDescuento.textContent = `$${descuento}`
   } else {
     if (filaDescuento) filaDescuento.style.display = 'none'
   }
@@ -176,7 +176,7 @@ function actualizarCarrito() {
   let totalFinal = totalPrecio - descuento
 
   contadorSpan.textContent = totalItems
-  precioTotalSpan.textContent = `-$${totalFinal}`
+  precioTotalSpan.textContent = `$${totalFinal}`
 
   localStorage.setItem('carritoPolleria', JSON.stringify(carrito))
 }
@@ -221,7 +221,7 @@ const esEfectivo = selectorPago && selectorPago.value === 'efectivo'
   let totalPrecio = 0;
 
   carrito.forEach((item) => {
-    mensaje += `- ${item.cantidad}x ${item.nombre} ($${item.precio * item.cantidad})%0A`;
+    mensaje += ` ${item.cantidad}x ${item.nombre} ($${item.precio * item.cantidad})%0A`;
     total += item.precio * item.cantidad;
   });
 
@@ -230,7 +230,7 @@ const esEfectivo = selectorPago && selectorPago.value === 'efectivo'
     let totalFinal = totalPrecio - descuento
     mensaje += `%0A*Medio de pago:* Efectivo / Transferencia (5% OFF)%0A`;
     mensaje += `*Subtotal:* $${totalPrecio}%0A`;
-    mensaje += `*Descuento:* -$${descuento}%0A`;
+    mensaje += `*Descuento:* $${descuento}%0A`;
     mensaje += `*Total a pagar: $${totalFinal}*%0A%0A`;
   } else {
     mensaje += `%0A*Medio de pago:* Tarjeta / Otro%0A`;
