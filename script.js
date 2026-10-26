@@ -1,46 +1,20 @@
-// Carrusel
-let imagenes = document.querySelectorAll(".carrusel-imagenes img");
-let puntos = document.querySelectorAll(".punto");
-let anterior = document.querySelector(".anterior");
-let siguiente = document.querySelector(".siguiente");
+// Carrusel de la tienda: repetir tarjetas hasta cubrir la pantalla
+const pista = document.querySelector(".grilla-tienda");
 
-if (imagenes.length > 0) {
-    let indice = 0;
-    let temporizador;
+if (pista) {
+    const originales = Array.from(pista.children);
+    const anchoSet = pista.scrollWidth;
+    const veces = Math.max(1, Math.ceil(window.innerWidth / anchoSet));
 
-    function mostrarImagen(numero) {
-        imagenes[indice].classList.remove("activa");
-        puntos[indice].classList.remove("activo");
-
-        indice = (numero + imagenes.length) % imagenes.length;
-
-        imagenes[indice].classList.add("activa");
-        puntos[indice].classList.add("activo");
-    }
-
-    function reiniciarTemporizador() {
-        clearInterval(temporizador);
-        temporizador = setInterval(function() {
-            mostrarImagen(indice + 1);
-        }, 4000);
-    }
-
-    anterior.addEventListener("click", function() {
-        mostrarImagen(indice - 1);
-        reiniciarTemporizador();
-    });
-
-    siguiente.addEventListener("click", function() {
-        mostrarImagen(indice + 1);
-        reiniciarTemporizador();
-    });
-
-    puntos.forEach(function(punto, i) {
-        punto.addEventListener("click", function() {
-            mostrarImagen(i);
-            reiniciarTemporizador();
+    // repetir el set hasta superar el ancho de la pantalla
+    for (let i = 1; i < veces; i++) {
+        originales.forEach(function(tarjeta) {
+            pista.appendChild(tarjeta.cloneNode(true));
         });
-    });
+    }
 
-    reiniciarTemporizador();
+    // duplicar todo una vez más para que el loop no tenga saltos
+    Array.from(pista.children).forEach(function(tarjeta) {
+        pista.appendChild(tarjeta.cloneNode(true));
+    });
 }

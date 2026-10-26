@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <a class="wsp-flotante" href="https://wa.me/5492984796020" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">💬</a>
+    <a class="wsp-flotante" href="https://wa.me/5492984796020" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp"><img src="./img/whatsapp.svg" alt="WhatsApp" width="40"></a>
 
   <header class="header">
     <a href="#" class="marca">
@@ -38,22 +38,23 @@
     </section>
   </main>
 
-  <h1 id="ofertas">Ofertas</h1>
-  <section class="carrusel">
-    <div class="carrusel-imagenes">
-        <img src="./img/oferta.png" alt="Pollito" class="activa">
-        <img src="./img/oferta2.png" alt="Milanesas">
-        <img src="./img/oferta3.png" alt="Chorizos">
-    </div>
+  <h2 id="ofertas">Ofertas</h2>
+<section class="ofertas">
+  <article class="oferta">
+    <img src="./img/oferta.png" alt="Pollito">
+    <button class="btn-agregar" data-nombre="Pollo fresco" data-precio="5500">COMPRAR</button>
+  </article>
 
-    <button class="flecha anterior" aria-label="Imagen anterior">&#10094;</button>
-    <button class="flecha siguiente" aria-label="Imagen siguiente">&#10095;</button>
+  <article class="oferta">
+    <img src="./img/oferta2.png" alt="Milanesas">
+    <button class="btn-agregar" data-nombre="Milanesas" data-precio="8000">COMPRAR</button>
+  </article>
 
-    <div class="indicadores">
-        <button class="punto activo" aria-label="Mostrar imagen 1"></button>
-        <button class="punto" aria-label="Mostrar imagen 2"></button>
-        <button class="punto" aria-label="Mostrar imagen 3"></button>
-    </div>
+  <article class="oferta">
+    <img src="./img/oferta3.png" alt="Chorizos">
+    <button class="btn-agregar" data-nombre="Chorizos" data-precio="7200">COMPRAR</button>
+  </article>
+</section>
   </section>
   </div>
 
@@ -97,28 +98,9 @@
    </div>
   </section>
 
-  <section class="seccion" id="nosotros">
-    <h2>Quiénes somos</h2>
-    <p class="bajada">Somos una pollería de barrio en General Roca, con dos locales y atención de lunes a domingo.</p>
-
-    <div class="ventajas">
-        <div>
-            <h3>Frescura todos los días</h3>
-            <p>Recibimos mercadería a diario para que lleves siempre producto fresco.</p>
-        </div>
-        <div>
-            <h3>Elaboración propia</h3>
-            <p>Milanesas, hamburguesas y más, hechos por nosotros.</p>
-        </div>
-        <div>
-            <h3>Retiro o envío</h3>
-            <p>Retirá en el local o pedinos y te lo llevamos.</p>
-        </div>
-    </div>
-  </section>
-
 <!-- BANNER DE PEDIDOS -->
 <section class="banner-pedidos banner-tienda" id="pedido">
+  <div class="carrusel-tienda">
   <div class="grilla-tienda">
     <article class="tarjeta-producto">
       <img src="./img/pollito.jpg" alt="Pollo fresco">
@@ -147,6 +129,7 @@
       <p class="precio">$6.000 <small>/ pack</small></p>
       <button class="btn-agregar" data-nombre="Hamburguesas" data-precio="6000">Agregar al carrito</button>
     </article>
+  </div>
   </div>
 </section>
 
