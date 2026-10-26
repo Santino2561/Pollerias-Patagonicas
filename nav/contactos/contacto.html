@@ -7,12 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../estilo.css">
-<link rel="stylesheet" href="./contacto.css">
+    <link rel="stylesheet" href="../../estilo.css">
+    <link rel="stylesheet" href="./contacto.css">
 </head>
 <body>
 
-  <a class="wsp-flotante" href="https://wa.me/5492984796020" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">💬</a>
+  <a class="wsp-flotante" href="https://wa.me/5492984796020" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp"><img src="../../img/whatsapp.svg" alt="WhatsApp" width="40"></a>
 
 <header class="header">
     <a href="../../index.html" class="marca">
@@ -39,64 +39,31 @@
         <p class="tag">Escribinos, llamanos o pasá por alguna de nuestras sucursales.</p>
     </section>
    
-    <section class="contacto-form contacto-franja" id="formulario">
-        <div class="wrap">
-            <h2>Formulario de contacto</h2>
-            <p class="nota">Todos los campos son obligatorios.</p>
- 
+        <section class="contacto-form" id="formulario">
+        <div class="wrap-formulario">
             <form id="form-contacto" novalidate>
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribí acá tu nombre" autocomplete="name" required>
+                    <span class="error-feedback" id="error-nombre" aria-live="polite"></span>
                 </div>
                 <div class="mb-3">
                     <label for="email-consulta" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email-consulta" name="email" placeholder="Escribí acá tu email" autocomplete="email" aria-describedby="emailHelp" required>
+                    <input type="email" class="form-control" id="email-consulta" name="email" placeholder="Escribí acá tu email" autocomplete="email" inputmode="email" required>
+                    <span class="error-feedback" id="error-email" aria-live="polite"></span>
                 </div>
                 <div class="mb-3">
                     <label for="consulta" class="form-label">Tu consulta</label>
                     <textarea class="form-control" id="consulta" name="consulta" rows="5" placeholder="Escribí acá tu consulta" required></textarea>
+                    <span class="error-feedback" id="error-consulta" aria-live="polite"></span>
                 </div>
-                <button type="submit" class="btn-solid theme-primary">Enviar consulta</button>
+                <button type="submit" class="btn-solid">Enviar consulta</button>
                 <p id="estado" role="status" aria-live="polite"></p>
             </form>
         </div>
     </section>
- 
-
-    <section class="contacto-franja">
-        <div class="contacto-info wrap">
-
-            <div id="sucursales">
-                <h3>Sucursales</h3>
-                <p> Villegas 2671, General Roca</p>
-                <p> Alsina 986, General Roca</p>
-                <p> Tucuman y Brown, General Roca</p>
-    
-            </div>
-
-            <div id="telefonos">
-                <h3>Teléfonos</h3>
-                <p><a href="tel:+542984796019">2984 479-6019</a></p>
-            </div>
-
-            <div id="email">
-                <h3>Email</h3>
-                <p><a href="mailto:contacto@gra.com.ar">contacto@gra.com.ar</a></p>
-            </div>
-
-
-            <div id="horario">
-                <h2>Horario de atención</h2>
-                <p><strong>Lun – Sáb:</strong> 9:00 a 13:00 y 17:30 a 21:30 h</p>
-                <p><strong>Domingos:</strong> 9:00 a 13:00 h</p>
-            </div>
-
-        </div>
-    </section>
-
   </main>
-
+  <br> <br>
   <footer class="footer">
     <section class="info">
       <div>
