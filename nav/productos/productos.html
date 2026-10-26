@@ -19,6 +19,7 @@
     <nav class="menu">
         <a href="../../index.html">Inicio</a>
         <a href="./productos.html">Productos</a>
+        <a href="../../index.html#nosotros">Nosotros</a>
         <a href="../contactos/contacto.html">Contacto</a>
 
         <button class="btn-carrito" id="btn-carrito" onclick="abrirCarrito()">
@@ -34,71 +35,42 @@
             <aside class="filtros" aria-label="Filtros de productos">
                 <div class="filtros-titulo">
                     <h2>Filtros</h2>
-                    <button type="button" class="btn-limpiar">Limpiar todo</button>
+                    <button type="button" class="btn-limpiar" id="btn-limpiar-filtros">Limpiar todo</button>
                 </div>
 
+                <!-- Categoría, Tipo y Marca se generan solos desde productos.json -->
                 <details class="grupo-filtro" open>
-                    <summary>Tipo de carne</summary>
-                    <div class="opciones">
-                        <label class="opcion"><input type="checkbox"> Pollo <span class="cantidad">24</span></label>
-                        <label class="opcion"><input type="checkbox"> Cerdo <span class="cantidad">12</span></label>
-                        <label class="opcion"><input type="checkbox"> Vacuno <span class="cantidad">9</span></label>
-                        <label class="opcion"><input type="checkbox"> Pavo <span class="cantidad">3</span></label>
-                    </div>
-                </details>
-
-                <details class="grupo-filtro" open>
-                    <summary>Corte</summary>
-                    <div class="opciones">
-                        <label class="opcion"><input type="checkbox"> Pollo entero</label>
-                        <label class="opcion"><input type="checkbox"> Pechuga</label>
-                        <label class="opcion"><input type="checkbox"> Pata muslo</label>
-                        <label class="opcion"><input type="checkbox"> Muslo deshuesado</label>
-                        <label class="opcion"><input type="checkbox"> Alas</label>
-                        <label class="opcion"><input type="checkbox"> Suprema</label>
-                        <label class="opcion"><input type="checkbox"> Carcasa</label>
-                    </div>
+                    <summary>Categoría</summary>
+                    <div class="opciones" id="filtro-categorias"></div>
                 </details>
 
                 <details class="grupo-filtro">
-                    <summary>Presentación</summary>
-                    <div class="opciones">
-                        <label class="opcion"><input type="checkbox"> Fresco</label>
-                        <label class="opcion"><input type="checkbox"> Congelado</label>
-                        <label class="opcion"><input type="checkbox"> Envasado al vacío</label>
-                        <label class="opcion"><input type="checkbox"> Marinado</label>
-                        <label class="opcion"><input type="checkbox"> Cocido / listo para calentar</label>
-                    </div>
+                    <summary>Tipo</summary>
+                    <div class="opciones" id="filtro-tipos"></div>
+                </details>
+
+                <details class="grupo-filtro">
+                    <summary>Marca</summary>
+                    <div class="opciones" id="filtro-marcas"></div>
                 </details>
 
                 <details class="grupo-filtro">
                     <summary>Se vende por</summary>
                     <div class="opciones">
-                        <label class="opcion"><input type="radio" name="venta" checked> Todos</label>
-                        <label class="opcion"><input type="radio" name="venta"> Kilo</label>
-                        <label class="opcion"><input type="radio" name="venta"> Unidad</label>
-                        <label class="opcion"><input type="radio" name="venta"> Pack / bandeja</label>
+                        <label class="opcion"><input type="radio" name="venta" value="todos" checked> Todos</label>
+                        <label class="opcion"><input type="radio" name="venta" value="kg"> Por kilo</label>
+                        <label class="opcion"><input type="radio" name="venta" value="otros"> Packs, unidades y cajas</label>
                     </div>
                 </details>
 
                 <details class="grupo-filtro" open>
                     <summary>Precio</summary>
                     <div class="rango-precio">
-                        <input type="number" placeholder="Mín $" aria-label="Precio mínimo">
+                        <input type="number" id="precio-min" min="0" placeholder="Mín $" aria-label="Precio mínimo">
                         <span>–</span>
-                        <input type="number" placeholder="Máx $" aria-label="Precio máximo">
+                        <input type="number" id="precio-max" min="0" placeholder="Máx $" aria-label="Precio máximo">
                     </div>
-                    <button type="button" class="btn-aplicar">Aplicar</button>
-                </details>
-
-                <details class="grupo-filtro">
-                    <summary>Más opciones</summary>
-                    <div class="opciones">
-                        <label class="opcion"><input type="checkbox"> En oferta</label>
-                        <label class="opcion"><input type="checkbox"> Producto del día</label>
-                        <label class="opcion"><input type="checkbox"> Sin TACC</label>
-                        <label class="opcion"><input type="checkbox"> Pack familiar</label>
-                    </div>
+                    <button type="button" class="btn-aplicar" id="btn-aplicar-precio">Aplicar</button>
                 </details>
             </aside>
 
@@ -122,26 +94,16 @@
             <label class="orden">
                 Ordenar por
                 <select id="orden-productos">
-                    <option>Más vendidos</option>
-                    <option>Menor precio</option>
-                    <option>Mayor precio</option>
-                    <option>Nombre (A-Z)</option>
+                    <option value="catalogo">Por categoría</option>
+                    <option value="precio-asc">Menor precio</option>
+                    <option value="precio-desc">Mayor precio</option>
+                    <option value="nombre">Nombre (A-Z)</option>
                 </select>
             </label>
         </div>
 
         <!-- Categorías rápidas -->
-        <div class="chips" aria-label="Categorías">
-            <button type="button" class="chip activo">Todos</button>
-            <button type="button" class="chip">Pollo</button>
-            <button type="button" class="chip">Cerdo</button>
-            <button type="button" class="chip">Vacuno</button>
-            <button type="button" class="chip">Embutidos</button>
-            <button type="button" class="chip">Achuras</button>
-            <button type="button" class="chip">Rebozados</button>
-            <button type="button" class="chip">Listos para llevar</button>
-            <button type="button" class="chip">Ofertas</button>
-        </div>
+        <div class="chips" id="chips-categorias" aria-label="Categorías"></div>
 
                 <p class="resultados-info">Mostrando <strong id="total-resultados">12</strong> productos</p>
 

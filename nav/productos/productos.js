@@ -1,13 +1,285 @@
 let productos = [];
 let carrito = JSON.parse(localStorage.getItem('carritoPolleria')) || [];
+
+// Paginación: 4 por fila x 3 filas = 12 por página
 const POR_PAGINA = 12;
 let paginaActual = 1;
+
+// Emoji del placeholder según categoría (o subcategoría, si tiene una más específica)
+const EMOJI_CATEGORIA = {
+  "Pollo fresco": "🐔",
+  "Milanesas": "🥩",
+  "Especialidades": "🍔",
+  "Rebozados": "🍗",
+  "Congelados": "❄️",
+  "Cajas por mayor": "📦",
+};
+const EMOJI_SUBCATEGORIA = {
+  "Pollo rebozado": "🍗",
+  "Merluza rebozada": "🐟",
+  "Papas": "🍟",
+  "Picadas": "🥩",
+  "Hamburguesas": "🍔",
+  "Cerdo": "🐖",
+};
+
+function emojiDe(producto) {
+  return (
+    EMOJI_SUBCATEGORIA[producto.subcategoria] ||
+    EMOJI_CATEGORIA[producto.categoria] ||
+    "🍗"
+  );
+}
+
+// Devuelve la foto del producto; si no tiene o no carga, un placeholder con emoji
+function crearImagen(producto) {
+  const crearPlaceholder = () => {
+    const div = document.createElement("div");
+    div.className = "img-placeholder";
+    div.setAttribute("role", "img");
+    div.setAttribute("aria-label", producto.nombre);
+    div.textContent = emojiDe(producto);
+    return div;
+  };
+
+  if (!producto.img) return crearPlaceholder();
+
+  const img = document.createElement("img");
+  img.src = producto.img;
+  img.alt = producto.nombre;
+  img.onerror = () => img.replaceWith(crearPlaceholder());
+  return img;
+}
+
+// ========== FILTROS, BÚSQUEDA Y ORDEN ==========
+let visibles = []; // productos que pasan los filtros (ya ordenados)
+
+const filtros = {
+  busqueda: "",
+  categorias: new Set(),
+  tipos: new Set(),
+  marcas: new Set(),
+  venta: "todos", // todos | kg | otros
+  min: null,
+  max: null,
+  orden: "catalogo", // catalogo | precio-asc | precio-desc | nombre
+};
+
+// Minúsculas y sin tildes: "milanesa" encuentra "Milanesa" y "Albóndigas" = "albondigas"
+const normalizar = (t) =>
+  String(t || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+
+function pasaFiltros(p) {
+  if (filtros.busqueda) {
+    const texto = normalizar(
+      [p.nombre, p.categoria, p.subcategoria, p.marca].filter(Boolean).join(" "),
+    );
+    if (!filtros.busqueda.split(/\s+/).every((palabra) => texto.includes(palabra))) return false;
+  }
+  if (filtros.categorias.size && !filtros.categorias.has(p.categoria)) return false;
+  if (filtros.tipos.size && !filtros.tipos.has(p.subcategoria)) return false;
+  if (filtros.marcas.size && !filtros.marcas.has(p.marca)) return false;
+  if (filtros.venta === "kg" && p.unidad !== "kg") return false;
+  if (filtros.venta === "otros" && p.unidad === "kg") return false;
+  if (filtros.min !== null && p.precio < filtros.min) return false;
+  if (filtros.max !== null && p.precio > filtros.max) return false;
+  return true;
+}
+// FIN-NUCLEO
+
+function aplicarFiltros() {
+  visibles = productos.filter(pasaFiltros);
+
+  if (filtros.orden === "precio-asc") visibles.sort((a, b) => a.precio - b.precio);
+  else if (filtros.orden === "precio-desc") visibles.sort((a, b) => b.precio - a.precio);
+  else if (filtros.orden === "nombre") visibles.sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+
+  paginaActual = 1;
+  renderizarProductos();
+}
+
+// Crea los checkboxes de un grupo (con cantidad) a partir de los datos
+function crearOpciones(idContenedor, campo, clave) {
+  const contenedor = document.getElementById(idContenedor);
+  if (!contenedor) return;
+  contenedor.textContent = "";
+
+  const cuentas = new Map();
+  productos.forEach((p) => {
+    if (p[campo]) cuentas.set(p[campo], (cuentas.get(p[campo]) || 0) + 1);
+  });
+
+  // Si ningún producto tiene ese dato, el grupo no se muestra
+  if (cuentas.size === 0) {
+    const grupo = contenedor.closest("details");
+    if (grupo) grupo.remove();
+    return;
+  }
+
+  cuentas.forEach((cantidad, valor) => {
+    const label = document.createElement("label");
+    label.className = "opcion";
+
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.value = valor;
+    input.addEventListener("change", () => {
+      if (input.checked) filtros[clave].add(valor);
+      else filtros[clave].delete(valor);
+      actualizarChips();
+      aplicarFiltros();
+    });
+
+    const span = document.createElement("span");
+    span.className = "cantidad";
+    span.textContent = cantidad;
+
+    label.append(input, " " + valor + " ", span);
+    contenedor.appendChild(label);
+  });
+}
+
+// Chips de categorías (arriba de los productos)
+function crearChips() {
+  const contenedor = document.getElementById("chips-categorias");
+  if (!contenedor) return;
+  contenedor.textContent = "";
+
+  const categorias = [...new Set(productos.map((p) => p.categoria).filter(Boolean))];
+  ["Todos", ...categorias].forEach((nombre) => {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "chip";
+    chip.textContent = nombre;
+    chip.dataset.categoria = nombre === "Todos" ? "" : nombre;
+    chip.addEventListener("click", () => {
+      filtros.categorias.clear();
+      if (nombre !== "Todos") filtros.categorias.add(nombre);
+      sincronizarControles();
+      aplicarFiltros();
+    });
+    contenedor.appendChild(chip);
+  });
+  actualizarChips();
+}
+
+function actualizarChips() {
+  const cats = filtros.categorias;
+  document.querySelectorAll("#chips-categorias .chip").forEach((chip) => {
+    const c = chip.dataset.categoria;
+    const activo = c === "" ? cats.size === 0 : cats.size === 1 && cats.has(c);
+    chip.classList.toggle("activo", activo);
+  });
+}
+
+// Deja los checkboxes, chips y radios iguales al estado actual
+function sincronizarControles() {
+  [
+    ["filtro-categorias", "categorias"],
+    ["filtro-tipos", "tipos"],
+    ["filtro-marcas", "marcas"],
+  ].forEach(([id, clave]) => {
+    document.querySelectorAll(`#${id} input`).forEach((input) => {
+      input.checked = filtros[clave].has(input.value);
+    });
+  });
+  actualizarChips();
+
+  const radio = document.querySelector(`input[name="venta"][value="${filtros.venta}"]`);
+  if (radio) radio.checked = true;
+}
+
+function limpiarFiltros() {
+  filtros.busqueda = "";
+  filtros.categorias.clear();
+  filtros.tipos.clear();
+  filtros.marcas.clear();
+  filtros.venta = "todos";
+  filtros.min = null;
+  filtros.max = null;
+  filtros.orden = "catalogo";
+
+  ["buscar-producto", "precio-min", "precio-max"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.value = "";
+  });
+  const selectOrden = document.getElementById("orden-productos");
+  if (selectOrden) selectOrden.value = "catalogo";
+
+  sincronizarControles();
+  aplicarFiltros();
+}
+
+// Conecta los controles que ya están en el HTML (buscador, orden, precio, "venta")
+function configurarFiltros() {
+  const buscador = document.getElementById("buscar-producto");
+  const buscar = () => {
+    filtros.busqueda = normalizar(buscador ? buscador.value : "");
+    aplicarFiltros();
+  };
+  if (buscador) buscador.addEventListener("input", buscar);
+  const lupa = document.querySelector(".btn-lupa");
+  if (lupa) {
+    lupa.addEventListener("click", () => {
+      buscar();
+      if (buscador) buscador.focus();
+    });
+  }
+
+  const selectOrden = document.getElementById("orden-productos");
+  if (selectOrden) {
+    selectOrden.addEventListener("change", () => {
+      filtros.orden = selectOrden.value;
+      aplicarFiltros();
+    });
+  }
+
+  document.querySelectorAll('input[name="venta"]').forEach((radio) => {
+    radio.addEventListener("change", () => {
+      filtros.venta = radio.value;
+      aplicarFiltros();
+    });
+  });
+
+  const inputMin = document.getElementById("precio-min");
+  const inputMax = document.getElementById("precio-max");
+  const leerPrecio = (input) => {
+    if (!input || input.value === "") return null;
+    const n = Number(input.value);
+    return Number.isNaN(n) ? null : Math.max(0, n);
+  };
+  const aplicarPrecio = () => {
+    filtros.min = leerPrecio(inputMin);
+    filtros.max = leerPrecio(inputMax);
+    aplicarFiltros();
+  };
+  const btnPrecio = document.getElementById("btn-aplicar-precio");
+  if (btnPrecio) btnPrecio.addEventListener("click", aplicarPrecio);
+  [inputMin, inputMax].forEach((input) => {
+    if (!input) return;
+    input.addEventListener("change", aplicarPrecio);
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") aplicarPrecio();
+    });
+  });
+
+  const btnLimpiar = document.getElementById("btn-limpiar-filtros");
+  if (btnLimpiar) btnLimpiar.addEventListener("click", limpiarFiltros);
+}
 
 async function cargarProductos() {
   try {
     const respuesta = await fetch('./productos.json');
     productos = await respuesta.json();
-    renderizarProductos();
+    crearOpciones("filtro-categorias", "categoria", "categorias");
+    crearOpciones("filtro-tipos", "subcategoria", "tipos");
+    crearOpciones("filtro-marcas", "marca", "marcas");
+    crearChips();
+    aplicarFiltros();
   } catch (error) {
     console.error('Error al cargar productos: ', error);
   }
@@ -18,19 +290,28 @@ function renderizarProductos() {
   if (!contenedor) return;
   contenedor.textContent = "";
 
+  if (visibles.length === 0) {
+    const vacio = document.createElement("div");
+    vacio.className = "sin-resultados";
+    const msj = document.createElement("p");
+    msj.textContent = "No encontramos productos con esos filtros.";
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn-aplicar";
+    btn.textContent = "Limpiar filtros";
+    btn.addEventListener("click", limpiarFiltros);
+    vacio.append(msj, btn);
+    contenedor.appendChild(vacio);
+  }
+
   const inicio = (paginaActual - 1) * POR_PAGINA;
-productos.slice(inicio, inicio + POR_PAGINA).forEach((producto) => {
+  const productosPagina = visibles.slice(inicio, inicio + POR_PAGINA);
+
+  productosPagina.forEach((producto) => {
     const tarjeta = document.createElement("div");
     tarjeta.className = "tarjeta-producto";
 
-    const imagenProd = document.createElement("img");
-    imagenProd.src = producto.img;
-    imagenProd.alt = producto.nombre;
-    imagenProd.onerror = () => {
-      imagenProd.src =
-        "https://placehold.co/400x300/2B1A0E/FFD23F?text=" +
-        encodeURIComponent(producto.nombre);
-    };
+    const imagenProd = crearImagen(producto);
 
     const infoProd = document.createElement("div");
     infoProd.className = "producto-info";
@@ -58,31 +339,40 @@ productos.slice(inicio, inicio + POR_PAGINA).forEach((producto) => {
 
     contenedor.appendChild(tarjeta);
   });
+
+  const total = document.getElementById("total-resultados");
+  if (total) total.textContent = visibles.length;
+
+  renderizarPaginacion();
 }
 
 function renderizarPaginacion() {
   const nav = document.getElementById("paginacion");
   if (!nav) return;
   nav.textContent = "";
-  const totalPaginas = Math.ceil(productos.length / POR_PAGINA);
+
+  const totalPaginas = Math.ceil(visibles.length / POR_PAGINA);
   if (totalPaginas <= 1) return;
 
-  const crear = (texto, pagina, deshabilitado = false) => {
-    const b = document.createElement("button");
-    b.textContent = texto;
-    b.disabled = deshabilitado;
-    if (pagina === paginaActual && !isNaN(texto)) b.classList.add("activo");
-    b.addEventListener("click", () => {
+  const crearBoton = (texto, pagina, deshabilitado = false, activo = false) => {
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.textContent = texto;
+    boton.disabled = deshabilitado;
+    if (activo) boton.classList.add("activo");
+    boton.addEventListener("click", () => {
       paginaActual = pagina;
       renderizarProductos();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
-    nav.appendChild(b);
+    nav.appendChild(boton);
   };
 
-  crear("Anterior", paginaActual - 1, paginaActual === 1);
-  for (let i = 1; i <= totalPaginas; i++) crear(String(i), i);
-  crear("Siguiente", paginaActual + 1, paginaActual === totalPaginas);
+  crearBoton("Anterior", paginaActual - 1, paginaActual === 1);
+  for (let i = 1; i <= totalPaginas; i++) {
+    crearBoton(String(i), i, false, i === paginaActual);
+  }
+  crearBoton("Siguiente", paginaActual + 1, paginaActual === totalPaginas);
 }
 
 // Funciones del Carrito
@@ -136,9 +426,7 @@ function actualizarCarrito() {
       const itemCarrito = document.createElement("div");
       itemCarrito.classList.add("item-carrito");
 
-      const imagen = document.createElement("img");
-      imagen.src = item.img;
-      imagen.alt = item.nombre;
+      const imagen = crearImagen(item);
 
       const infoCarrito = document.createElement("div");
       infoCarrito.classList.add("item-info");
@@ -251,7 +539,7 @@ function finalizarCompra() {
 
   carrito.forEach((item) => {
     mensaje += ` ${item.cantidad}x ${item.nombre} ($${item.precio * item.cantidad})%0A`;
-    totalPrecio += item.precio * item.cantidad; // <--- CORREGIDO: antes decía total += ...
+    totalPrecio += item.precio * item.cantidad;
   });
 
   if (esEfectivo) {
@@ -279,6 +567,7 @@ if (selectorPagoGlobal) {
 
 // Iniciar Página
 document.addEventListener("DOMContentLoaded", () => {
+  configurarFiltros();
   cargarProductos();
   actualizarCarrito();
 });
