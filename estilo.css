@@ -145,7 +145,7 @@ h2 {
 }
 
 .btn-carrito:hover {
-  background: #a67342;
+  background: #af9e8e;
 }
 
 .badge {
@@ -455,7 +455,8 @@ h2 {
 
 /* Banner de pedidos */
 .banner-pedidos {
-  border: 2px solid rgb(83, 64, 10);
+  border-bottom: 2px solid rgb(94, 5, 5);
+  border-top: 2px solid rgb(255, 0, 0);
   background: var(--naranja);
   text-align: center;
   padding: 3.5rem 1.5rem;
