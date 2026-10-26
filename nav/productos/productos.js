@@ -1,5 +1,7 @@
 let productos = [];
 let carrito = JSON.parse(localStorage.getItem('carritoPolleria')) || [];
+const POR_PAGINA = 12;
+let paginaActual = 1;
 
 async function cargarProductos() {
   try {
@@ -16,7 +18,8 @@ function renderizarProductos() {
   if (!contenedor) return;
   contenedor.textContent = "";
 
-  productos.forEach((producto) => {
+  const inicio = (paginaActual - 1) * POR_PAGINA;
+productos.slice(inicio, inicio + POR_PAGINA).forEach((producto) => {
     const tarjeta = document.createElement("div");
     tarjeta.className = "tarjeta-producto";
 
@@ -55,6 +58,31 @@ function renderizarProductos() {
 
     contenedor.appendChild(tarjeta);
   });
+}
+
+function renderizarPaginacion() {
+  const nav = document.getElementById("paginacion");
+  if (!nav) return;
+  nav.textContent = "";
+  const totalPaginas = Math.ceil(productos.length / POR_PAGINA);
+  if (totalPaginas <= 1) return;
+
+  const crear = (texto, pagina, deshabilitado = false) => {
+    const b = document.createElement("button");
+    b.textContent = texto;
+    b.disabled = deshabilitado;
+    if (pagina === paginaActual && !isNaN(texto)) b.classList.add("activo");
+    b.addEventListener("click", () => {
+      paginaActual = pagina;
+      renderizarProductos();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    nav.appendChild(b);
+  };
+
+  crear("Anterior", paginaActual - 1, paginaActual === 1);
+  for (let i = 1; i <= totalPaginas; i++) crear(String(i), i);
+  crear("Siguiente", paginaActual + 1, paginaActual === totalPaginas);
 }
 
 // Funciones del Carrito

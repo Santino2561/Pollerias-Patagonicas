@@ -54,5 +54,26 @@
     "precio": 2400,
     "unidad": "kg",
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXowmi7bWTs9WxfYslNEKVsmFQNYWoKXMUeU60pLA4XdAhlcQqtlso6_PW&s=10"
+  },
+    {
+    "id": 9,
+    "nombre": "Pata Sola",
+    "precio": 2400,
+    "unidad": "kg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXowmi7bWTs9WxfYslNEKVsmFQNYWoKXMUeU60pLA4XdAhlcQqtlso6_PW&s=10"
+  },
+    {
+    "id": 10,
+    "nombre": "Pata Sola",
+    "precio": 2400,
+    "unidad": "kg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXowmi7bWTs9WxfYslNEKVsmFQNYWoKXMUeU60pLA4XdAhlcQqtlso6_PW&s=10"
+  },
+    {
+    "id":11,
+    "nombre": "Menudos de Pollo",
+    "precio": 800,
+    "unidad": "kg",
+    "img": "https://http2.mlstatic.com/D_NQ_NP_750868-MLA83540782459_042025-O.webp"
   }
 ]
