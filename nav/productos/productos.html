@@ -6,7 +6,8 @@
     <title>Productos - Pollerías Patagónicas</title>
 <link rel="stylesheet" href="../../estilo.css">
 <link rel="stylesheet" href="./productos.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap">
+    <link rel="icon" href="../../img/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap">
 </head>
 <body>
 <header class="header">
@@ -18,7 +19,6 @@
     <nav class="menu">
         <a href="../../index.html">Inicio</a>
         <a href="./productos.html">Productos</a>
-        <a href="../../index.html#nosotros">Nosotros</a>
         <a href="../contactos/contacto.html">Contacto</a>
 
         <button class="btn-carrito" id="btn-carrito" onclick="abrirCarrito()">
@@ -28,13 +28,130 @@
 </header>
 
     <!-- Main -->
-    <main>
-        <div style="text-align: center;">
+    <main class="tienda">
+        <div class="tienda-layout">
+            <!-- Filtros laterales -->
+            <aside class="filtros" aria-label="Filtros de productos">
+                <div class="filtros-titulo">
+                    <h2>Filtros</h2>
+                    <button type="button" class="btn-limpiar">Limpiar todo</button>
+                </div>
+
+                <details class="grupo-filtro" open>
+                    <summary>Tipo de carne</summary>
+                    <div class="opciones">
+                        <label class="opcion"><input type="checkbox"> Pollo <span class="cantidad">24</span></label>
+                        <label class="opcion"><input type="checkbox"> Cerdo <span class="cantidad">12</span></label>
+                        <label class="opcion"><input type="checkbox"> Vacuno <span class="cantidad">9</span></label>
+                        <label class="opcion"><input type="checkbox"> Pavo <span class="cantidad">3</span></label>
+                    </div>
+                </details>
+
+                <details class="grupo-filtro" open>
+                    <summary>Corte</summary>
+                    <div class="opciones">
+                        <label class="opcion"><input type="checkbox"> Pollo entero</label>
+                        <label class="opcion"><input type="checkbox"> Pechuga</label>
+                        <label class="opcion"><input type="checkbox"> Pata muslo</label>
+                        <label class="opcion"><input type="checkbox"> Muslo deshuesado</label>
+                        <label class="opcion"><input type="checkbox"> Alas</label>
+                        <label class="opcion"><input type="checkbox"> Suprema</label>
+                        <label class="opcion"><input type="checkbox"> Carcasa</label>
+                    </div>
+                </details>
+
+                <details class="grupo-filtro">
+                    <summary>Presentación</summary>
+                    <div class="opciones">
+                        <label class="opcion"><input type="checkbox"> Fresco</label>
+                        <label class="opcion"><input type="checkbox"> Congelado</label>
+                        <label class="opcion"><input type="checkbox"> Envasado al vacío</label>
+                        <label class="opcion"><input type="checkbox"> Marinado</label>
+                        <label class="opcion"><input type="checkbox"> Cocido / listo para calentar</label>
+                    </div>
+                </details>
+
+                <details class="grupo-filtro">
+                    <summary>Se vende por</summary>
+                    <div class="opciones">
+                        <label class="opcion"><input type="radio" name="venta" checked> Todos</label>
+                        <label class="opcion"><input type="radio" name="venta"> Kilo</label>
+                        <label class="opcion"><input type="radio" name="venta"> Unidad</label>
+                        <label class="opcion"><input type="radio" name="venta"> Pack / bandeja</label>
+                    </div>
+                </details>
+
+                <details class="grupo-filtro" open>
+                    <summary>Precio</summary>
+                    <div class="rango-precio">
+                        <input type="number" placeholder="Mín $" aria-label="Precio mínimo">
+                        <span>–</span>
+                        <input type="number" placeholder="Máx $" aria-label="Precio máximo">
+                    </div>
+                    <button type="button" class="btn-aplicar">Aplicar</button>
+                </details>
+
+                <details class="grupo-filtro">
+                    <summary>Más opciones</summary>
+                    <div class="opciones">
+                        <label class="opcion"><input type="checkbox"> En oferta</label>
+                        <label class="opcion"><input type="checkbox"> Producto del día</label>
+                        <label class="opcion"><input type="checkbox"> Sin TACC</label>
+                        <label class="opcion"><input type="checkbox"> Pack familiar</label>
+                    </div>
+                </details>
+            </aside>
+
+            <div class="tienda-contenido">
+                <div style="text-align: center;">
             <h1 class="titulo-seccion">Nuestros Productos</h1>
         </div>
-        
-        <!-- Grilla donde se inyectan los productos con JS -->
-        <div class="grilla-tienda" id="contenedor-productos">
+
+        <!-- Barra superior: buscador + orden -->
+        <div class="barra-tienda">
+            <div class="buscador" role="search">
+                <input type="search" id="buscar-producto" placeholder="Buscar por nombre: pechuga, milanesas, chorizo…" aria-label="Buscar producto por nombre">
+                <button type="button" class="btn-lupa" aria-label="Buscar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="M20 20l-4-4"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <label class="orden">
+                Ordenar por
+                <select id="orden-productos">
+                    <option>Más vendidos</option>
+                    <option>Menor precio</option>
+                    <option>Mayor precio</option>
+                    <option>Nombre (A-Z)</option>
+                </select>
+            </label>
+        </div>
+
+        <!-- Categorías rápidas -->
+        <div class="chips" aria-label="Categorías">
+            <button type="button" class="chip activo">Todos</button>
+            <button type="button" class="chip">Pollo</button>
+            <button type="button" class="chip">Cerdo</button>
+            <button type="button" class="chip">Vacuno</button>
+            <button type="button" class="chip">Embutidos</button>
+            <button type="button" class="chip">Achuras</button>
+            <button type="button" class="chip">Rebozados</button>
+            <button type="button" class="chip">Listos para llevar</button>
+            <button type="button" class="chip">Ofertas</button>
+        </div>
+
+                <p class="resultados-info">Mostrando <strong id="total-resultados">12</strong> productos</p>
+
+                <!-- Grilla donde se inyectan los productos con JS -->
+                <div class="grilla-tienda" id="contenedor-productos">
+                </div>
+
+                <!-- Paginación (la genera productos.js) -->
+                <nav class="paginacion" id="paginacion" aria-label="Páginas de productos"></nav>
+            </div>
         </div>
     </main>
 
