@@ -1,79 +1,646 @@
 [
   {
     "id": 1,
-    "nombre": "Pollo Entero",
-    "precio": 2500,
+    "nombre": "Pata muslo",
+    "grupo": "Pata muslo",
+    "categoria": "Pollo fresco",
+    "precio": 4900,
     "unidad": "kg",
-    "img": "https://www.carnave.com.ar/wp-content/uploads/2020/05/Pollo-entero.jpg"
+    "img": ""
   },
   {
     "id": 2,
-    "nombre": "Pechuga Deshuesada",
-    "precio": 4500,
-    "unidad": "kg",
-    "img": "https://www.carnave.com.ar/wp-content/uploads/2020/10/2-pechugas.png"
+    "nombre": "Pata muslo x 2 kg",
+    "grupo": "Pata muslo",
+    "categoria": "Pollo fresco",
+    "precio": 12500,
+    "unidad": "pack",
+    "img": ""
   },
   {
     "id": 3,
-    "nombre": "Milanesas de Pollo",
-    "precio": 3800,
-    "unidad": "kg",
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdUQHB-ydH4rk4_zZB49yEdpA7sER5f_7DZo7KE32nFHHtWAeGeTxPwvk&s=10"
+    "nombre": "Pata muslo x 5 kg",
+    "grupo": "Pata muslo",
+    "categoria": "Pollo fresco",
+    "precio": 20000,
+    "unidad": "pack",
+    "img": ""
   },
   {
     "id": 4,
-    "nombre": "Pata Muslo",
-    "precio": 2200,
+    "nombre": "Presitas",
+    "grupo": "Presitas",
+    "categoria": "Pollo fresco",
+    "precio": 6300,
     "unidad": "kg",
-    "img": "https://arcordiezb2c.vtexassets.com/arquivos/ids/176245/Pata-Y-Muslo-X-Kg-1-5539.jpg?v=638042097762030000"
+    "img": ""
   },
   {
     "id": 5,
-    "nombre": "Alitas",
-    "precio": 1500,
-    "unidad": "kg",
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_UGsPBNzLTWO7JXVU3E8HJPykfwJjqEcxRbfaJeG721WZ471YjaCHAFMJ&s=10"
+    "nombre": "Presitas x 2 kg",
+    "grupo": "Presitas",
+    "categoria": "Pollo fresco",
+    "precio": 10600,
+    "unidad": "pack",
+    "img": ""
   },
   {
     "id": 6,
-    "nombre": "Suprema Rellena",
-    "precio": 5000,
-    "unidad": "un",
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBAIAQAvxWOBYA5JRYF7igDKUYqeQrkf_fqWnT7pjnbHgzrmpajQ84uek&s=10"
+    "nombre": "Filet de pechuga",
+    "grupo": "Filet de pechuga",
+    "categoria": "Pollo fresco",
+    "precio": 10900,
+    "unidad": "kg",
+    "img": ""
   },
   {
     "id": 7,
-    "nombre": "Menudos de Pollo",
-    "precio": 800,
-    "unidad": "kg",
-    "img": "https://http2.mlstatic.com/D_NQ_NP_750868-MLA83540782459_042025-O.webp"
+    "nombre": "Filet de pechuga x 3 kg",
+    "grupo": "Filet de pechuga",
+    "categoria": "Pollo fresco",
+    "precio": 29700,
+    "unidad": "pack",
+    "img": ""
   },
   {
     "id": 8,
-    "nombre": "Pata Sola",
-    "precio": 2400,
-    "unidad": "kg",
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXowmi7bWTs9WxfYslNEKVsmFQNYWoKXMUeU60pLA4XdAhlcQqtlso6_PW&s=10"
+    "nombre": "Filet de pechuga x 5 kg",
+    "grupo": "Filet de pechuga",
+    "categoria": "Pollo fresco",
+    "precio": 46000,
+    "unidad": "pack",
+    "img": ""
   },
-    {
+  {
     "id": 9,
-    "nombre": "Pata Sola",
-    "precio": 2400,
+    "nombre": "Alitas",
+    "grupo": "Alitas",
+    "categoria": "Pollo fresco",
+    "precio": 4900,
     "unidad": "kg",
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXowmi7bWTs9WxfYslNEKVsmFQNYWoKXMUeU60pLA4XdAhlcQqtlso6_PW&s=10"
+    "img": ""
   },
-    {
+  {
     "id": 10,
-    "nombre": "Pata Sola",
-    "precio": 2400,
-    "unidad": "kg",
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXowmi7bWTs9WxfYslNEKVsmFQNYWoKXMUeU60pLA4XdAhlcQqtlso6_PW&s=10"
+    "nombre": "Alitas x 3 kg",
+    "grupo": "Alitas",
+    "categoria": "Pollo fresco",
+    "precio": 12900,
+    "unidad": "pack",
+    "img": ""
   },
-    {
-    "id":11,
-    "nombre": "Menudos de Pollo",
-    "precio": 800,
+  {
+    "id": 11,
+    "nombre": "Alitas x 5 kg",
+    "grupo": "Alitas",
+    "categoria": "Pollo fresco",
+    "precio": 21000,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 12,
+    "nombre": "Pata muslo deshuesado",
+    "grupo": "Pata muslo deshuesado",
+    "categoria": "Pollo fresco",
+    "precio": 7200,
     "unidad": "kg",
-    "img": "https://http2.mlstatic.com/D_NQ_NP_750868-MLA83540782459_042025-O.webp"
+    "img": ""
+  },
+  {
+    "id": 13,
+    "nombre": "Pata muslo deshuesado x 3 kg",
+    "grupo": "Pata muslo deshuesado",
+    "categoria": "Pollo fresco",
+    "precio": 20900,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 14,
+    "nombre": "Picada de pollo",
+    "grupo": "Picada de pollo",
+    "categoria": "Pollo fresco",
+    "precio": 11500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 15,
+    "nombre": "Picada de pollo x 2 kg",
+    "grupo": "Picada de pollo",
+    "categoria": "Pollo fresco",
+    "precio": 22000,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 16,
+    "nombre": "Pollo entero",
+    "grupo": "Pollo entero",
+    "categoria": "Pollo fresco",
+    "precio": 5200,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 17,
+    "nombre": "Pechuga con hueso",
+    "grupo": "Pechuga con hueso",
+    "categoria": "Pollo fresco",
+    "precio": 8500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 18,
+    "nombre": "Chorizo de pollo",
+    "grupo": "Chorizo de pollo",
+    "categoria": "Pollo fresco",
+    "precio": 15500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 19,
+    "nombre": "Pata o muslo (elección)",
+    "grupo": "Pata o muslo (elección)",
+    "categoria": "Pollo fresco",
+    "precio": 6500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 20,
+    "nombre": "Milanesa de pechuga",
+    "grupo": "Milanesa de pechuga",
+    "categoria": "Milanesas",
+    "precio": 9990,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 21,
+    "nombre": "Milanesa de pechuga x 2 kg",
+    "grupo": "Milanesa de pechuga",
+    "categoria": "Milanesas",
+    "precio": 18900,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 22,
+    "nombre": "Milanesa de pechuga x 3 kg",
+    "grupo": "Milanesa de pechuga",
+    "categoria": "Milanesas",
+    "precio": 24950,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 23,
+    "nombre": "Milanesa de pata muslo",
+    "grupo": "Milanesa de pata muslo",
+    "categoria": "Milanesas",
+    "precio": 10700,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 24,
+    "nombre": "Milanesa de pechuga rellena con jamón y queso",
+    "grupo": "Milanesa de pechuga rellena con jamón y queso",
+    "categoria": "Milanesas",
+    "precio": 12800,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 25,
+    "nombre": "Milanesa cuadrada",
+    "grupo": "Milanesa cuadrada",
+    "categoria": "Milanesas",
+    "precio": 18500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 26,
+    "nombre": "Milanesa de peceto",
+    "grupo": "Milanesa de peceto",
+    "categoria": "Milanesas",
+    "precio": 19500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 27,
+    "nombre": "Albóndigas de pollo clásicas",
+    "grupo": "Albóndigas de pollo clásicas",
+    "categoria": "Especialidades",
+    "precio": 9000,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 28,
+    "nombre": "Albóndigas de pollo con jamón y queso",
+    "grupo": "Albóndigas de pollo con jamón y queso",
+    "categoria": "Especialidades",
+    "precio": 9300,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 29,
+    "nombre": "Hamburguesa de pollo clásica",
+    "grupo": "Hamburguesa de pollo clásica",
+    "categoria": "Especialidades",
+    "precio": 10000,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 30,
+    "nombre": "Hamburguesa de pollo clásica x 2 kg",
+    "grupo": "Hamburguesa de pollo clásica",
+    "categoria": "Especialidades",
+    "precio": 18800,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 31,
+    "nombre": "Hamburguesa de pollo rellena con jamón y queso",
+    "grupo": "Hamburguesa de pollo rellena con jamón y queso",
+    "categoria": "Especialidades",
+    "precio": 11000,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 32,
+    "nombre": "Arrollados de pollo",
+    "grupo": "Arrollados de pollo",
+    "categoria": "Especialidades",
+    "precio": 16900,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 33,
+    "nombre": "Medallones de pollo mix primavera",
+    "grupo": "Medallones de pollo mix primavera",
+    "categoria": "Rebozados",
+    "subcategoria": "Pollo rebozado",
+    "precio": 13500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 34,
+    "nombre": "Medallones de pollo clásicos",
+    "grupo": "Medallones de pollo clásicos",
+    "categoria": "Rebozados",
+    "subcategoria": "Pollo rebozado",
+    "precio": 13500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 35,
+    "nombre": "Medallones de pollo con jamón y queso",
+    "grupo": "Medallones de pollo con jamón y queso",
+    "categoria": "Rebozados",
+    "subcategoria": "Pollo rebozado",
+    "precio": 13500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 36,
+    "nombre": "Medallones de pollo con espinaca y queso",
+    "grupo": "Medallones de pollo con espinaca y queso",
+    "categoria": "Rebozados",
+    "subcategoria": "Pollo rebozado",
+    "precio": 13500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 37,
+    "nombre": "Patitas clásicas",
+    "grupo": "Patitas clásicas",
+    "categoria": "Rebozados",
+    "subcategoria": "Pollo rebozado",
+    "precio": 13500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 38,
+    "nombre": "Patitas de jamón y queso",
+    "grupo": "Patitas de jamón y queso",
+    "categoria": "Rebozados",
+    "subcategoria": "Pollo rebozado",
+    "precio": 13500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 39,
+    "nombre": "Pechugas rebozadas",
+    "grupo": "Pechugas rebozadas",
+    "categoria": "Rebozados",
+    "subcategoria": "Pollo rebozado",
+    "precio": 21500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 40,
+    "nombre": "Ricosaurio",
+    "grupo": "Ricosaurio",
+    "categoria": "Rebozados",
+    "subcategoria": "Pollo rebozado",
+    "precio": 13500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 41,
+    "nombre": "Nuggets de pollo crocantes",
+    "grupo": "Nuggets de pollo crocantes",
+    "categoria": "Rebozados",
+    "subcategoria": "Pollo rebozado",
+    "precio": 13500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 42,
+    "nombre": "Filet de merluza sin rebozar, sin espina",
+    "grupo": "Filet de merluza sin rebozar, sin espina",
+    "categoria": "Rebozados",
+    "subcategoria": "Merluza rebozada",
+    "precio": 16500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 43,
+    "nombre": "Medallones de merluza clásicos",
+    "grupo": "Medallones de merluza clásicos",
+    "categoria": "Rebozados",
+    "subcategoria": "Merluza rebozada",
+    "precio": 10500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 44,
+    "nombre": "Formitas de merluza",
+    "grupo": "Formitas de merluza",
+    "categoria": "Rebozados",
+    "subcategoria": "Merluza rebozada",
+    "precio": 10500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 45,
+    "nombre": "Bastones de merluza crocantes",
+    "grupo": "Bastones de merluza crocantes",
+    "categoria": "Rebozados",
+    "subcategoria": "Merluza rebozada",
+    "precio": 10500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 46,
+    "nombre": "Medallones de merluza con espinaca y queso",
+    "grupo": "Medallones de merluza con espinaca y queso",
+    "categoria": "Rebozados",
+    "subcategoria": "Merluza rebozada",
+    "precio": 10500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 47,
+    "nombre": "Medallones de merluza con brócoli y queso",
+    "grupo": "Medallones de merluza con brócoli y queso",
+    "categoria": "Rebozados",
+    "subcategoria": "Merluza rebozada",
+    "precio": 10500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 48,
+    "nombre": "Medallones de merluza con jamón y queso",
+    "grupo": "Medallones de merluza con jamón y queso",
+    "categoria": "Rebozados",
+    "subcategoria": "Merluza rebozada",
+    "precio": 10500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 49,
+    "nombre": "Medallones de merluza roquefort",
+    "grupo": "Medallones de merluza roquefort",
+    "categoria": "Rebozados",
+    "subcategoria": "Merluza rebozada",
+    "precio": 10500,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 50,
+    "nombre": "Papas McCain bastón",
+    "grupo": "Papas McCain bastón",
+    "categoria": "Congelados",
+    "subcategoria": "Papas",
+    "marca": "McCain",
+    "precio": 10000,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 51,
+    "nombre": "Papas McCain smiles",
+    "grupo": "Papas McCain smiles",
+    "categoria": "Congelados",
+    "subcategoria": "Papas",
+    "marca": "McCain",
+    "precio": 14000,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 52,
+    "nombre": "Papas McCain noisette",
+    "grupo": "Papas McCain noisette",
+    "categoria": "Congelados",
+    "subcategoria": "Papas",
+    "marca": "McCain",
+    "precio": 14000,
+    "unidad": "kg",
+    "img": ""
+  },
+  {
+    "id": 53,
+    "nombre": "Picada de carne Swift x 500 g",
+    "grupo": "Picada de carne Swift",
+    "categoria": "Congelados",
+    "subcategoria": "Picadas",
+    "marca": "Swift",
+    "precio": 12300,
+    "unidad": "unidad",
+    "img": ""
+  },
+  {
+    "id": 54,
+    "nombre": "Picada de carne Swift x 2 unidades",
+    "grupo": "Picada de carne Swift",
+    "categoria": "Congelados",
+    "subcategoria": "Picadas",
+    "marca": "Swift",
+    "precio": 23300,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 55,
+    "nombre": "Hamburguesas Swift clásicas x 2 medallones",
+    "grupo": "Hamburguesas Swift clásicas",
+    "categoria": "Congelados",
+    "subcategoria": "Hamburguesas",
+    "marca": "Swift",
+    "precio": 4950,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 56,
+    "nombre": "Bondiolita de cerdo Cagnoli x 2 unidades",
+    "grupo": "Bondiolita de cerdo Cagnoli",
+    "categoria": "Congelados",
+    "subcategoria": "Cerdo",
+    "marca": "Cagnoli",
+    "precio": 6700,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 57,
+    "nombre": "Lomitos de cerdo Cagnoli x 2 unidades",
+    "grupo": "Lomitos de cerdo Cagnoli",
+    "categoria": "Congelados",
+    "subcategoria": "Cerdo",
+    "marca": "Cagnoli",
+    "precio": 6700,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 58,
+    "nombre": "Hamburguesas Grupolar x 69 g x 2 medallones",
+    "grupo": "Hamburguesas Grupolar x 69 g",
+    "categoria": "Congelados",
+    "subcategoria": "Hamburguesas",
+    "marca": "Grupolar",
+    "precio": 1400,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 59,
+    "nombre": "Hamburguesas Grupolar x 69 g x 6 medallones",
+    "grupo": "Hamburguesas Grupolar x 69 g",
+    "categoria": "Congelados",
+    "subcategoria": "Hamburguesas",
+    "marca": "Grupolar",
+    "precio": 3800,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 60,
+    "nombre": "Hamburguesas Grupolar x 110 g x 2 medallones",
+    "grupo": "Hamburguesas Grupolar x 110 g",
+    "categoria": "Congelados",
+    "subcategoria": "Hamburguesas",
+    "marca": "Grupolar",
+    "precio": 2200,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 61,
+    "nombre": "Hamburguesas Grupolar x 110 g x 4 medallones",
+    "grupo": "Hamburguesas Grupolar x 110 g",
+    "categoria": "Congelados",
+    "subcategoria": "Hamburguesas",
+    "marca": "Grupolar",
+    "precio": 4000,
+    "unidad": "pack",
+    "img": ""
+  },
+  {
+    "id": 62,
+    "nombre": "Caja de pata muslo (15 kg)",
+    "grupo": "Caja de pata muslo (15 kg)",
+    "categoria": "Cajas por mayor",
+    "precio": 52000,
+    "unidad": "caja",
+    "img": ""
+  },
+  {
+    "id": 63,
+    "nombre": "Caja de alitas",
+    "grupo": "Caja de alitas",
+    "categoria": "Cajas por mayor",
+    "precio": 50000,
+    "unidad": "caja",
+    "img": ""
+  },
+  {
+    "id": 64,
+    "nombre": "Caja de pollo entero",
+    "grupo": "Caja de pollo entero",
+    "categoria": "Cajas por mayor",
+    "precio": 78000,
+    "unidad": "caja",
+    "img": ""
+  },
+  {
+    "id": 65,
+    "nombre": "Caja de filet de pechuga (15 kg)",
+    "grupo": "Caja de filet de pechuga (15 kg)",
+    "categoria": "Cajas por mayor",
+    "precio": 110000,
+    "unidad": "caja",
+    "img": ""
+  },
+  {
+    "id": 66,
+    "nombre": "Caja de pechuga con hueso (20 kg)",
+    "grupo": "Caja de pechuga con hueso (20 kg)",
+    "categoria": "Cajas por mayor",
+    "precio": 115000,
+    "unidad": "caja",
+    "img": ""
+  },
+  {
+    "id": 67,
+    "nombre": "Caja de pata muslo deshuesado",
+    "grupo": "Caja de pata muslo deshuesado",
+    "categoria": "Cajas por mayor",
+    "precio": 76000,
+    "unidad": "caja",
+    "img": ""
   }
 ]

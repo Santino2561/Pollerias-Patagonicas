@@ -207,6 +207,130 @@ main {
   color: #fff;
 }
 
+/* ========== BUSCADOR + FILTROS (solo visual) ==========
+   Pegar al FINAL de productos.css */
+
+.tienda {
+  --borde: color-mix(in srgb, var(--marron) 18%, transparent);
+  --fondo-panel: #fff;
+  --texto-suave: color-mix(in srgb, var(--marron) 70%, white);
+}
+
+/* ---------- Barra superior ---------- */
+.barra-tienda {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.buscador {
+  flex: 1 1 18rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.5rem 0 1rem;
+  background: var(--fondo-panel);
+  border: 2px solid var(--borde);
+  border-radius: 999px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.buscador:focus-within {
+  border-color: var(--marron);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--amarillo) 55%, transparent);
+}
+
+.buscador input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.8rem 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--marron);
+}
+
+.buscador input::placeholder {
+  color: var(--texto-suave);
+}
+
+.btn-lupa {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background: var(--amarillo);
+  color: var(--marron);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.btn-lupa:hover {
+  transform: scale(1.08);
+}
+
+.btn-lupa svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.orden {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--marron);
+}
+
+.orden select {
+  padding: 0.7rem 0.9rem;
+  border: 2px solid var(--borde);
+  border-radius: 0.5rem;
+  background: var(--fondo-panel);
+  font: inherit;
+  color: var(--marron);
+}
+
+/* ---------- Chips de categorías ---------- */
+.chips {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.chip {
+  flex: none;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--borde);
+  border-radius: 999px;
+  background: var(--fondo-panel);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--marron);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.chip:hover {
+  border-color: var(--marron);
+}
+
+.chip.activo {
+  background: var(--marron);
+  border-color: var(--marron);
+  color: #fff;
+}
+
 /* ---------- Layout: filtros + productos ---------- */
 /* Página a todo el ancho: filtros pegados al borde izquierdo */
 main.tienda {
@@ -445,16 +569,16 @@ main.tienda {
 /* ---------- Tarjetas compactas: foto protagonista, texto chico ----------
    Va AL FINAL de productos.css para pisar los valores anteriores */
 .tienda-layout .grilla-tienda {
-  grid-template-columns: repeat(4, minmax(0, 16rem));
+  grid-template-columns: repeat(4, minmax(0, 18rem));
   justify-content: center;
-  gap: 2.25rem;
+  gap: 1.25rem;
 }
 
 .tarjeta-producto {
   padding-bottom: 0.9rem;
 }
 
-/* Foto vertical (4:5), sin altura fija */
+/* Foto cuadrada (1:1), sin altura fija */
 .tarjeta-producto img {
   height: auto;
   aspect-ratio: 1 / 1;
@@ -498,4 +622,49 @@ main.tienda {
 
 @media (max-width: 32rem) {
   .tienda-layout .grilla-tienda { grid-template-columns: minmax(0, 18rem); }
+}
+
+/* ---------- Placeholder con emoji (cuando el producto no tiene foto) ----------
+   Va AL FINAL de productos.css */
+.img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: color-mix(in srgb, var(--amarillo) 14%, var(--marron));
+  font-size: clamp(3.5rem, 7vw, 5rem);
+  line-height: 1;
+  user-select: none;
+}
+
+/* Versión chica dentro del carrito */
+.item-carrito .img-placeholder {
+  flex: none;
+  width: 70px;
+  height: 70px;
+  aspect-ratio: auto;
+  border-radius: 0.4rem;
+  font-size: 2rem;
+}
+
+/* ---------- Estado sin resultados ----------
+   Va AL FINAL de productos.css */
+.sin-resultados {
+  grid-column: 1 / -1;
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--marron);
+}
+
+.sin-resultados p {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.sin-resultados .btn-aplicar {
+  width: auto;
+  margin: 0;
+  padding: 0.7rem 1.5rem;
 }
