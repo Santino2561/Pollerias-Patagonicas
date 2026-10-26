@@ -12,7 +12,7 @@
 
 body {
   margin: 0;
-  background: var(--amarillo);
+  background: rgb(255, 249, 210);
   color: var(--marron);
   font-family: "DM Sans", system-ui, sans-serif;
   line-height: 1.5;
