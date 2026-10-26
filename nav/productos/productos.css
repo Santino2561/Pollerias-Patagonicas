@@ -350,15 +350,15 @@ main.tienda {
 }
 
 .filtros {
-  --alto-header: 4.7rem; /* alto del .header sticky (55px de logo + 0.6rem de padding arriba y abajo) */
-  position: sticky;
+  --alto-header: 1.7rem; /* alto del .header sticky (55px de logo + 0.6rem de padding arriba y abajo) */
+  position: relative;
   top: var(--alto-header);
   align-self: start;
   max-height: calc(100vh - var(--alto-header));
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
-  padding: 1.5rem 1.25rem;
+  padding: 5.5rem 1.25rem;
   background: var(--fondo-panel);
   border-right: 2px solid var(--borde);
   color: var(--marron);
@@ -595,6 +595,7 @@ main.tienda {
   line-height: 1.2;
   /* máximo 2 líneas, así todas las tarjetas quedan parejas */
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;

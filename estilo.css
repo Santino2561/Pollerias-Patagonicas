@@ -170,7 +170,7 @@ h2 {
   inset: 0;
   background:
     linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-    url("./img/fondo.png") center top / cover no-repeat;
+    url("./img/pollo_flyer.png") center top / cover no-repeat;
   z-index: -2;
 }
 
@@ -183,8 +183,8 @@ h2 {
   background: linear-gradient(
     to bottom,
     rgba(255, 210, 63, 0) 0%,
-    rgba(177, 171, 152, 0.6) 65%,
-    rgb(255, 244, 196) 100%
+    rgba(20, 19, 14, 0.6) 65%,
+    rgb(0, 0, 0) 100%
   );
   pointer-events: none;
   z-index: -1;
@@ -372,8 +372,8 @@ h2 {
 
 .tarjeta-producto img {
   display: block;
-  width: 100%;
-  height: 150px;
+  width: 250px;
+  height: 200px;
   object-fit: cover;
 }
 
@@ -400,7 +400,7 @@ h2 {
   color: var(--marron);
   border: none;
   border-radius: 0.4rem;
-  padding: 0.9rem 1.9rem;
+  padding: 0.9rem 0.9rem;
   font-family: inherit;
   font-size: 1.25rem;
   font-weight: 700;
