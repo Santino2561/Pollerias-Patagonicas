@@ -16,7 +16,6 @@ main {
   margin-bottom: 2rem;
   padding-bottom: 0.5rem;
   color: var(--marron);
-  border-bottom: 4px solid var(--naranja);
 }
 
 /* Grilla: anula el carrusel infinito de estilo.css */
@@ -62,17 +61,15 @@ main {
   margin-bottom: 0.9rem;
 }
 
-/* Botón: mismo aspecto que .btn-agregar del inicio.
-   Va limitado a la tarjeta para no afectar al botón del carrito. */
 .tarjeta-producto .btn {
   margin-top: auto;
-  padding: 0.9rem 1.9rem;
+  padding: 0.9rem 1rem;
   background: var(--amarillo);
   color: var(--marron);
   border: none;
   border-radius: 0.4rem;
   font-family: inherit;
-  font-size: 1.25rem;
+  font-size: 1.20rem;
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
@@ -81,4 +78,8 @@ main {
 .tarjeta-producto .btn:hover {
   background: #fff;
   transform: scale(1.04);
+}
+
+#btn-finalizar-compra {
+  cursor: pointer;
 }

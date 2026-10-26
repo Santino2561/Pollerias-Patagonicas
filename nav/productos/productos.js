@@ -1,19 +1,19 @@
-let productos = []
+let productos = [];
 let carrito = JSON.parse(localStorage.getItem('carritoPolleria')) || [];
 
 async function cargarProductos() {
   try {
-    const respuesta = await fetch('./productos.json')
-    productos = await respuesta.json()
-    renderizarProductos()
+    const respuesta = await fetch('./productos.json');
+    productos = await respuesta.json();
+    renderizarProductos();
   } catch (error) {
-      console.error('Error al cargar productos: ', error)
+    console.error('Error al cargar productos: ', error);
   }
 }
 
 function renderizarProductos() {
   const contenedor = document.getElementById("contenedor-productos");
-  if (!contenedor) return 
+  if (!contenedor) return;
   contenedor.textContent = "";
 
   productos.forEach((producto) => {
@@ -89,8 +89,8 @@ function actualizarCarrito() {
   const precioTotalSpan = document.getElementById("precio-total");
   const mensajeError = document.getElementById("mensaje-error");
 
-  mensajeError.style.display = "none";
-  contenedorBody.textContent = "";
+  if (mensajeError) mensajeError.style.display = "none";
+  if (contenedorBody) contenedorBody.textContent = "";
 
   let totalItems = 0;
   let totalPrecio = 0;
@@ -99,7 +99,7 @@ function actualizarCarrito() {
     const msjVacio = document.createElement("div");
     msjVacio.className = "carrito-vacio";
     msjVacio.textContent = "El carrito está vacío";
-    contenedorBody.appendChild(msjVacio);
+    if (contenedorBody) contenedorBody.appendChild(msjVacio);
   } else {
     carrito.forEach((item) => {
       totalItems += item.cantidad;
@@ -154,31 +154,31 @@ function actualizarCarrito() {
       itemCarrito.appendChild(imagen);
       itemCarrito.appendChild(subtotalCarrito);
 
-      contenedorBody.appendChild(itemCarrito);
+      if (contenedorBody) contenedorBody.appendChild(itemCarrito);
     });
   }
 
-  // METODOS DE PAGO
-  const selectorPago = document.getElementById('selector-pago')
-  const filaDescuento = document.getElementById('fila-descuento')
-  const spanDescuento = document.getElementById('precio-descuento')
+  // MÉTODOS DE PAGO
+  const selectorPago = document.getElementById('selector-pago');
+  const filaDescuento = document.getElementById('fila-descuento');
+  const spanDescuento = document.getElementById('precio-descuento');
 
-  let descuento = 0
+  let descuento = 0;
 
   if (selectorPago && selectorPago.value === 'efectivo' && totalPrecio > 0) {
-    descuento = Math.round(totalPrecio * 0.05)
-    if (filaDescuento) filaDescuento.style.display = 'flex'
-    if (spanDescuento) spanDescuento.textContent = `$${descuento}`
+    descuento = Math.round(totalPrecio * 0.05);
+    if (filaDescuento) filaDescuento.style.display = 'flex';
+    if (spanDescuento) spanDescuento.textContent = `$${descuento}`;
   } else {
-    if (filaDescuento) filaDescuento.style.display = 'none'
+    if (filaDescuento) filaDescuento.style.display = 'none';
   }
 
-  let totalFinal = totalPrecio - descuento
+  let totalFinal = totalPrecio - descuento;
 
-  contadorSpan.textContent = totalItems
-  precioTotalSpan.textContent = `$${totalFinal}`
+  if (contadorSpan) contadorSpan.textContent = totalItems;
+  if (precioTotalSpan) precioTotalSpan.textContent = `$${totalFinal}`;
 
-  localStorage.setItem('carritoPolleria', JSON.stringify(carrito))
+  localStorage.setItem('carritoPolleria', JSON.stringify(carrito));
 }
 
 // Sidebar Carrito
@@ -187,53 +187,54 @@ const overlay = document.getElementById("overlay");
 const btnCerrarCarrito = document.getElementById("btn-cerrar-carrito");
 const btnCarrito = document.getElementById("btn-carrito");
 
-btnCerrarCarrito.addEventListener("click", cerrarCarrito);
-btnCarrito.addEventListener("click", abrirCarrito);
-overlay.addEventListener("click", cerrarCarrito);
+if (btnCerrarCarrito) btnCerrarCarrito.addEventListener("click", cerrarCarrito);
+if (btnCarrito) btnCarrito.addEventListener("click", abrirCarrito);
+if (overlay) overlay.addEventListener("click", cerrarCarrito);
 
 function abrirCarrito() {
-  sidebar.classList.add("abierto");
-  overlay.classList.add("activo");
+  if (sidebar) sidebar.classList.add("abierto");
+  if (overlay) overlay.classList.add("activo");
 }
 function cerrarCarrito() {
-  sidebar.classList.remove("abierto");
-  overlay.classList.remove("activo");
+  if (sidebar) sidebar.classList.remove("abierto");
+  if (overlay) overlay.classList.remove("activo");
 }
 
 // Finalizar Compra por WhatsApp
 const btnFinalizarCompra = document.getElementById("btn-finalizar-compra");
-btnFinalizarCompra.addEventListener("click", () => {
-  finalizarCompra();
-});
+if (btnFinalizarCompra) {
+  btnFinalizarCompra.addEventListener("click", () => {
+    finalizarCompra();
+  });
+}
 
 function finalizarCompra() {
   if (carrito.length === 0) {
     const msjError = document.getElementById("mensaje-error");
-    msjError.style.display = "block";
+    if (msjError) msjError.style.display = "block";
     return;
   }
 
-const selectorPago = document.getElementById('selector-pago')
-const esEfectivo = selectorPago && selectorPago.value === 'efectivo'
+  const selectorPago = document.getElementById('selector-pago');
+  const esEfectivo = selectorPago && selectorPago.value === 'efectivo';
 
-  let mensaje =
-    "Hola buenas tardes! Quiero realizar el siguiente pedido:%0A%0A";
+  let mensaje = "Hola buenas tardes! Quiero realizar el siguiente pedido:%0A%0A";
   let totalPrecio = 0;
 
   carrito.forEach((item) => {
     mensaje += ` ${item.cantidad}x ${item.nombre} ($${item.precio * item.cantidad})%0A`;
-    total += item.precio * item.cantidad;
+    totalPrecio += item.precio * item.cantidad; // <--- CORREGIDO: antes decía total += ...
   });
 
   if (esEfectivo) {
-    let descuento = Math.round(totalPrecio * 0.05)
-    let totalFinal = totalPrecio - descuento
-    mensaje += `%0A*Medio de pago:* Efectivo / Transferencia (5% OFF)%0A`;
+    let descuento = Math.round(totalPrecio * 0.05);
+    let totalFinal = totalPrecio - descuento;
+    mensaje += `%0A*Medio de pago:* Efectivo (5% OFF)%0A`;
     mensaje += `*Subtotal:* $${totalPrecio}%0A`;
     mensaje += `*Descuento:* $${descuento}%0A`;
     mensaje += `*Total a pagar: $${totalFinal}*%0A%0A`;
   } else {
-    mensaje += `%0A*Medio de pago:* Tarjeta / Otro%0A`;
+    mensaje += `%0A*Medio de pago:* Transferencia / Tarjeta%0A`;
     mensaje += `*Total a pagar: $${totalPrecio}*%0A%0A`;
   }
   mensaje += "Por favor, confírmenme el pedido. ¡Gracias!";
@@ -242,9 +243,10 @@ const esEfectivo = selectorPago && selectorPago.value === 'efectivo'
   window.open(urlWhatsapp, "_blank");
 }
 
-const selectorPago = document.getElementById("selector-pago");
-if(selectorPago) {
-  selectorPago.addEventListener("change", actualizarCarrito);
+// Escuchador para cambios en el selector de pago
+const selectorPagoGlobal = document.getElementById("selector-pago");
+if (selectorPagoGlobal) {
+  selectorPagoGlobal.addEventListener("change", actualizarCarrito);
 }
 
 // Iniciar Página

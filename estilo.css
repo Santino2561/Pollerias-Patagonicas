@@ -31,7 +31,7 @@ main {
 }
 
 h1 {
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: clamp(2rem, 6vw, 4rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -163,14 +163,14 @@ h2 {
   isolation: isolate;
 }
 
-/* Fondo con velo negro */
+/* Fondo con velo negro ajustado para la nueva imagen panorámica */
 .portada::before {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-    url("./img/fondo.png") center top / cover no-repeat;
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Bajamos un poquito el velo para que luzca más la imagen */
+    url("./img/pollo_flyer.png") center center / cover no-repeat;
   z-index: -2;
 }
 
@@ -262,7 +262,7 @@ h2 {
 
 #ofertas {
   text-align: center;
-  font-size: 5rem;
+  font-size: 4rem;
   margin: 0.1rem 0;
   color: var(--amarillo);
 }
@@ -327,14 +327,12 @@ h2 {
   }
 }
 
-.producto,
-.tarjeta-producto {
+.producto,.tarjeta-producto {
   flex: 0 0 14rem;
   scroll-snap-align: start;
   background: var(--marron);
   color: var(--amarillo);
   border-radius: 0.8rem;
-  border-bottom: 6px solid var(--amarillo);
 }
 
 .producto {
@@ -402,8 +400,8 @@ h2 {
   border-radius: 0.4rem;
   padding: 0.9rem 1.9rem;
   font-family: inherit;
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
 }
@@ -419,9 +417,9 @@ h2 {
   color: var(--marron);
   border: none;
   border-radius: 0.4rem;
-  padding: 1.2rem 3rem;
+  padding: 0.7rem 4rem;
   font-family: inherit;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
