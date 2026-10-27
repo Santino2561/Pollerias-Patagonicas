@@ -136,13 +136,12 @@ main.tienda {
 
 /* ---------- Panel de Filtros ---------- */
 .filtros {
-  border: 2px solid rgb(160, 137, 102);
   margin-top: 2rem;
   border-radius: 0 0.5rem 0.5rem 0;
   position: relative;
   align-self: stretch;
   min-height: 100vh;
-  padding: 2rem 1.5rem;
+  padding: 2rem 1rem 0 0;
   background: rgb(247, 245, 241);
   color: var(--marron);
 }

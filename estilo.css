@@ -16,7 +16,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: rgb(255, 244, 196);
+  background: rgb(249, 240, 222) !important;
   color: var(--marron);
   font-family: "DM Sans", system-ui, sans-serif;
   font-size: 1.05rem;
@@ -103,6 +103,10 @@ h2 {
   height: 55px;
   object-fit: cover;
   border-radius: 50%;
+}
+.marca:hover {
+  transform: scale(1.04);
+  transition-duration: 100ms;
 }
 .menu {
   display: flex;
