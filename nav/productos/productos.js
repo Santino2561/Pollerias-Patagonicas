@@ -13,6 +13,8 @@ const EMOJI_CATEGORIA = {
   "Rebozados": "🍗",
   "Congelados": "❄️",
   "Cajas por mayor": "📦",
+  "Frutas": "🍓",
+  "Vegetales": "🥬",
 };
 const EMOJI_SUBCATEGORIA = {
   "Pollo rebozado": "🍗",

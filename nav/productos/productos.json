@@ -466,7 +466,7 @@
     "marca": "McCain",
     "precio": 10000,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/papas-tradicionales.png"
   },
   {
     "id": 51,
@@ -477,7 +477,7 @@
     "marca": "McCain",
     "precio": 14000,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/smiles.png"
   },
   {
     "id": 52,
@@ -488,7 +488,7 @@
     "marca": "McCain",
     "precio": 14000,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/noisette.png"
   },
   {
     "id": 53,
@@ -641,6 +641,78 @@
     "categoria": "Cajas por mayor",
     "precio": 76000,
     "unidad": "caja",
+    "img": ""
+  },
+  {
+    "id": 68,
+    "nombre": "Espinaca Congelada x 800grs",
+    "grupo": "Espinaca",
+    "categoria": "Vegetales",
+    "precio": 7600,
+    "unidad": "kg",
+    "img": ""
+  },
+    {
+    "id": 69,
+    "nombre": "Brocoli Congelada x 800grs",
+    "grupo": "Brocoli",
+    "categoria": "Vegetales",
+    "precio": 8400,
+    "unidad": "kg",
+    "img": ""
+  },
+    {
+    "id": 70,
+    "nombre": "Arveja Congelada x 500grs",
+    "grupo": "Arveja",
+    "categoria": "Vegetales",
+    "precio": 5500,
+    "unidad": "kg",
+    "img": ""
+  },
+      {
+    "id": 71,
+    "nombre": "Choclo Congelado x 500grs",
+    "grupo": "Choclo",
+    "categoria": "Vegetales",
+    "precio": 5600,
+    "unidad": "kg",
+    "img": ""
+  },
+        {
+    "id": 72,
+    "nombre": "Mix tacos Congelado x 500grs",
+    "grupo": "Tacos",
+    "categoria": "Vegetales",
+    "precio": 4800,
+    "unidad": "kg",
+    "img": ""
+  },
+          {
+    "id": 73,
+    "nombre": "Cebolla Congelado x 500grs",
+    "grupo": "Cebolla",
+    "categoria": "Vegetales",
+    "precio": 4900,
+    "unidad": "kg",
+    "img": ""
+  },
+            {
+    "id": 74,
+    "nombre": "Frutillas Congeladas x 500grs",
+    "grupo": "Frutillas",
+    "categoria": "Frutas",
+    "precio": 5500,
+    "unidad": "kg",
+    "img": ""
+  },
+            {
+    "id": 75,
+    "nombre": "Frutos rojos Congeladas x 500grs",
+    "grupo": "Frutos rojos",
+    "categoria": "Frutas",
+    "precio": 9900,
+    "unidad": "kg",
     "img": ""
   }
 ]
