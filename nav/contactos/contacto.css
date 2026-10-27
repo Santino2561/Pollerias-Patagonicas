@@ -1,35 +1,12 @@
-:root {
-  --amarillo: #FFD23F;
-  --naranja: #c28750;
-  --marron: #2B1A0E;
-}
-
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background: rgb(255, 249, 210);
-  color: var(--marron);
-  font-family: "DM Sans", system-ui, sans-serif;
-  line-height: 1.5;
-  font-size: 1.05rem;
-}
-
+/* ========== PÁGINA DE CONTACTO ========== */
 .wrap {
   max-width: 60rem;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
-
-/* Título  */
 .contacto-hero {
   padding: 3rem 0 3.5rem;
 }
-
 .contacto-hero h1 {
   font-size: clamp(1rem, 7vw, 4.5rem);
   font-weight: 600;
@@ -38,7 +15,6 @@ body {
   margin: 0;
   text-align: center;
 }
-
 .contacto-hero .tag {
   font-size: 1.3rem;
   max-width: 40rem;
@@ -51,63 +27,54 @@ body {
   gap: 2rem;
   padding: 2.5rem 1.5rem 3rem;
 }
-
 .contacto-info p {
   margin: 0.1rem 0;
 }
-
 .contacto-info a {
   color: var(--marron);
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
-
 .contacto-info a:hover {
   text-decoration-thickness: 3px;
 }
 
-/*Formulario  */
+/* Formulario */
 .contacto-form {
   padding: 1.5rem 0 2rem;
   border: 4px solid var(--marron);
   border-radius: 12px;
-  background: var(--marron); 
+  background: var(--marron);
   color: var(--amarillo);
   max-width: 44rem;
   margin: 0.1rem auto;
 }
-
 .wrap-formulario {
   max-width: 100%;
   padding: 0 2.5rem;
 }
-
 #form-contacto {
   max-width: 100%;
   margin: 0 auto;
 }
-
-
 .contacto-form h2 {
   font-size: clamp(2rem, 6vw, 3rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
   margin: 0 0 0.5rem;
-  color: #ffffff; /* Título en blanco para jerarquía visual */
+  color: #ffffff;
 }
-
 .contacto-form .nota {
   margin: 0 0 2.5rem;
   font-size: 0.95rem;
-  color: rgba(255, 210, 63, 0.8); /* Amarillo sutil */
+  color: rgba(255, 210, 63, 0.8);
 }
 
 #form-contacto .mb-3 {
-  margin-bottom: 1.8rem; /* Mayor espacio entre bloques */
+  margin-bottom: 1.8rem;
 }
-
 #form-contacto .form-label {
   display: block;
   margin-bottom: 0.6rem;
@@ -115,7 +82,6 @@ body {
   font-size: 1rem;
   color: var(--amarillo);
 }
-
 #form-contacto .form-control {
   display: block;
   width: 100%;
@@ -127,20 +93,15 @@ body {
   border-radius: 0.5rem;
   transition: all 0.2s ease;
 }
-
-/* Enfoque del input elegante */
 #form-contacto .form-control:focus-visible {
   outline: none;
   border-color: var(--amarillo);
   box-shadow: 0 0 0 4px rgba(255, 210, 63, 0.2);
 }
-
-/* Errores dinámicos en los campos */
 #form-contacto .form-control.is-invalid {
   border-color: #ff4d4d;
   background: #fff5f5;
 }
-
 .error-feedback {
   display: block;
   color: #ff4d4d;
@@ -148,17 +109,15 @@ body {
   font-weight: 700;
   margin-top: 0.5rem;
 }
-
 #form-contacto textarea.form-control {
   min-height: 11rem;
   resize: vertical;
 }
 
-/* Rediseño del Botón para máximo contraste */
 #form-contacto .btn-solid {
   display: inline-block;
   padding: 0.7rem 2rem;
-  background: var(--amarillo); /* Invertimos: botón amarillo sobre fondo marrón */
+  background: var(--amarillo);
   color: var(--marron);
   font: inherit;
   font-weight: 700;
@@ -167,20 +126,18 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
 #form-contacto .btn-solid:hover {
   background: #ffffff;
   color: var(--marron);
   box-shadow: 0 4px 0px #cccccc;
   transform: translateY(-2px);
 }
-
 #form-contacto .btn-solid:active {
   transform: translateY(2px);
   box-shadow: 0 0px 0px transparent;
 }
 
-/* Mensajes de Estado */
+/* Estado */
 #estado {
   min-height: 1.5em;
   margin: 1.5rem 0 0;
@@ -189,17 +146,19 @@ body {
   border-radius: 0.5rem;
   display: none;
 }
-
 #estado.ok {
   display: block;
   background: #28a745;
   color: #ffffff;
 }
-#estado.ok::before { content: "✓ "; }
-
+#estado.ok::before {
+  content: "✓ ";
+}
 #estado.error {
   display: block;
   background: #dc3545;
   color: #ffffff;
 }
-#estado.error::before { content: "⚠ "; }
+#estado.error::before {
+  content: "⚠ ";
+}

@@ -1,0 +1,267 @@
+/* ========== PORTADA PRINCIPAL ========== */
+.portada {
+  position: relative;
+  padding-bottom: 6rem;
+  isolation: isolate;
+}
+.portada::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    url("./img/pollo_flyer.png") center top / cover no-repeat;
+}
+.portada::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 10rem;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 210, 63, 0) 0%,
+    rgba(20, 19, 14, 0.6) 65%,
+    rgb(0, 0, 0) 100%
+  );
+}
+.portada main,
+.portada .ofertas {
+  position: relative;
+  z-index: 1;
+}
+.hero {
+  padding: 4rem 0 0;
+  text-align: center;
+}
+.portada .hero h1 {
+  color: #fff;
+}
+.descripcion {
+  font-size: 1.3rem;
+  max-width: 36rem;
+  margin: 1.5rem auto 2rem;
+}
+.portada .descripcion {
+  color: var(--amarillo);
+}
+.portada .btn {
+  background: var(--amarillo);
+  color: var(--marron);
+}
+.portada .btn:hover {
+  background: #fff;
+}
+
+/* ========== SECCIÓN OFERTAS ========== */
+#ofertas {
+  text-align: center;
+  font-size: 5rem;
+  margin: 0.1rem 0;
+  color: var(--amarillo);
+}
+.ofertas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 90%;
+  margin: 50px auto;
+  padding: 0 1.5rem;
+}
+.oferta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.oferta img {
+  width: 100%;
+  height: auto;
+  border: 5px solid rgb(143, 23, 23);
+  border-radius: 18px;
+}
+.oferta .btn-agregar {
+  background: var(--amarillo);
+  color: var(--marron);
+  border: none;
+  border-radius: 0.4rem;
+  padding: 1.2rem 3rem;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+}
+.oferta .btn-agregar:hover {
+  background: #f5ecec;
+  transform: scale(1.04);
+}
+
+/* ========== ANIMACIÓN PRODUCTOS DESTACADOS ========== */
+.banner-pedidos {
+  border-bottom: 2px solid rgb(94, 5, 5);
+  border-top: 2px solid rgb(94, 5, 5);
+  background: var(--naranja);
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+}
+.banner-pedidos.banner-tienda {
+  display: block;
+  text-align: left;
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
+}
+.carrusel-tienda {
+  overflow: hidden;
+}
+.grilla-tienda {
+  display: flex;
+  gap: 2.5rem;
+  width: max-content;
+  padding-bottom: 1rem;
+  animation: deslizar 40s linear infinite;
+}
+.grilla-tienda:hover {
+  animation-play-state: paused;
+}
+@keyframes deslizar {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .grilla-tienda {
+    animation: none;
+  }
+}
+
+/* ========== NOSOTROS Y MAPA ========== */
+.seccion {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem;
+}
+.seccion h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 0.6rem;
+}
+.seccion .bajada {
+  max-width: 36rem;
+  margin: 0 0 2rem;
+}
+.ventajas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 2rem;
+}
+.ventajas div {
+  border-left: 5px solid var(--marron);
+  padding-left: 1rem;
+}
+.ventajas h3 {
+  font-size: 1.15rem;
+  margin: 0 0 0.3rem;
+}
+.ventajas p {
+  margin: 0;
+}
+
+.ubicacion {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 40px 20px;
+  text-align: center;
+  background: #1b1306;
+}
+.ubicacion h2,
+.ubicacion p {
+  color: var(--amarillo);
+  margin-bottom: 20px;
+}
+.ubicacion h2 {
+  font-size: 2rem;
+}
+.ubicacion p {
+  font-size: 1.2rem;
+}
+.ubicacion .mapa-recorte {
+  overflow: hidden;
+  height: 350px;
+  max-width: 800px;
+  margin: 20px auto 0;
+  border-radius: 12px;
+}
+.ubicacion .mapa-recorte iframe {
+  width: 100%;
+  height: 400px;
+  margin-top: -70px;
+  border: 0;
+}
+.ubicacion::before,
+.ubicacion::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background-repeat: no-repeat;
+  background-size: auto 150%;
+  opacity: 0.7;
+  z-index: -1;
+  pointer-events: none;
+}
+.ubicacion::before {
+  left: 0;
+  background-image: url("./img/local-i.png");
+  background-position: 50% 0;
+  -webkit-mask-image: linear-gradient(to right, #000, transparent 50%);
+  mask-image: linear-gradient(to right, #000, transparent 50%);
+}
+.ubicacion::after {
+  right: 0;
+  background-image: url("./img/local-d.png");
+  background-position: -550% 110%;
+  -webkit-mask-image: linear-gradient(to left, #000, transparent 50%);
+  mask-image: linear-gradient(to left, #000, transparent 50%);
+}
+
+/* ========== RESPONSIVE ESPECÍFICO INICIO ========== */
+@media (min-width: 900px) {
+  #nosotros {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  #nosotros .bajada {
+    margin: 0;
+  }
+  #nosotros h2 {
+    grid-column: 1;
+  }
+  #nosotros .ventajas {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .ubicacion::before,
+  .ubicacion::after {
+    opacity: 0.35;
+  }
+}
+@media (max-width: 600px) {
+  .ofertas {
+    grid-template-columns: 1fr;
+    max-width: 22rem;
+  }
+}
