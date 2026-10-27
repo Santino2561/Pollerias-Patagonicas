@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos - Pollerías Patagónicas</title>
-<link rel="stylesheet" href="../../estilo.css">
-<link rel="stylesheet" href="./productos.css">
+    <link rel="stylesheet" href="../../estilo.css">
+    <link rel="stylesheet" href="./productos.css">
     <link rel="icon" href="../../img/logo.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap">
 </head>
 <body>
-<header class="header">
-    <a href="../../index.html" class="marca">
-        <img src="../../img/logo.png" alt="Logo de Pollerías Patagónicas">
-        <span>Pollerías Patagónicas</span>
-    </a>
+    <header class="header">
+        <a href="../../index.html" class="marca">
+            <img src="../../img/logo.png" alt="Logo de Pollerías Patagónicas">
+            <span>Pollerías Patagónicas</span>
+        </a>
 
-    <nav class="menu">
-        <a href="../../index.html">Inicio</a>
-        <a href="./productos.html">Productos</a>
-        <a href="../contactos/contacto.html">Contacto</a>
+        <nav class="menu">
+            <a href="../../index.html">Inicio</a>
+            <a href="./productos.html">Productos</a>
+            <a href="../contactos/contacto.html">Contacto</a>
 
-        <button class="btn-carrito" id="btn-carrito" onclick="abrirCarrito()">
-            🛒 <span class="badge" id="contador-carrito">0</span>
-        </button>
-    </nav>
-</header>
+            <button class="btn-carrito" id="btn-carrito" onclick="abrirCarrito()">
+                🛒 <span class="badge" id="contador-carrito">0</span>
+            </button>
+        </nav>
+    </header>
 
     <!-- Main -->
     <main class="tienda">
@@ -58,7 +59,8 @@
                     <div class="opciones">
                         <label class="opcion"><input type="radio" name="venta" value="todos" checked> Todos</label>
                         <label class="opcion"><input type="radio" name="venta" value="kg"> Por kilo</label>
-                        <label class="opcion"><input type="radio" name="venta" value="otros"> Packs, unidades y cajas</label>
+                        <label class="opcion"><input type="radio" name="venta" value="otros"> Packs, unidades y
+                            cajas</label>
                     </div>
                 </details>
 
@@ -75,34 +77,37 @@
 
             <div class="tienda-contenido">
                 <div style="text-align: center;">
-            <h1 class="titulo-seccion">Nuestros Productos</h1>
-        </div>
+                    <h1 class="titulo-seccion">Nuestros Productos</h1>
+                </div>
+                <br>
+                <!-- Barra superior: buscador + orden -->
+                <div class="barra-tienda">
+                    <div class="buscador" role="search">
+                        <input type="search" id="buscar-producto"
+                            placeholder="Buscar por nombre: pechuga, milanesas, chorizo…"
+                            aria-label="Buscar producto por nombre">
+                        <button type="button" class="btn-lupa" aria-label="Buscar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" aria-hidden="true">
+                                <circle cx="11" cy="11" r="7"></circle>
+                                <path d="M20 20l-4-4"></path>
+                            </svg>
+                        </button>
+                    </div>
 
-        <!-- Barra superior: buscador + orden -->
-        <div class="barra-tienda">
-            <div class="buscador" role="search">
-                <input type="search" id="buscar-producto" placeholder="Buscar por nombre: pechuga, milanesas, chorizo…" aria-label="Buscar producto por nombre">
-                <button type="button" class="btn-lupa" aria-label="Buscar">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-                        <circle cx="11" cy="11" r="7"></circle>
-                        <path d="M20 20l-4-4"></path>
-                    </svg>
-                </button>
-            </div>
+                    <label class="orden">
+                        Ordenar por
+                        <select id="orden-productos">
+                            <option value="catalogo">Por categoría</option>
+                            <option value="precio-asc">Menor precio</option>
+                            <option value="precio-desc">Mayor precio</option>
+                            <option value="nombre">Nombre (A-Z)</option>
+                        </select>
+                    </label>
+                </div>
 
-            <label class="orden">
-                Ordenar por
-                <select id="orden-productos">
-                    <option value="catalogo">Por categoría</option>
-                    <option value="precio-asc">Menor precio</option>
-                    <option value="precio-desc">Mayor precio</option>
-                    <option value="nombre">Nombre (A-Z)</option>
-                </select>
-            </label>
-        </div>
-
-        <!-- Categorías rápidas -->
-        <div class="chips" id="chips-categorias" aria-label="Categorías"></div>
+                <!-- Categorías rápidas -->
+                <div class="chips" id="chips-categorias" aria-label="Categorías"></div>
 
                 <p class="resultados-info">Mostrando <strong id="total-resultados">12</strong> productos</p>
 
@@ -143,7 +148,8 @@
     </footer>
 
     <!-- WhatsApp Flotante -->
-    <a class="wsp-flotante" href="https://wa.me/5492984796020" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp"><img src="../../img/whatsapp.svg" alt="WhatsApp" width="40"></a>
+    <a class="wsp-flotante" href="https://wa.me/5492984796020" target="_blank" rel="noopener"
+        aria-label="Escribinos por WhatsApp"><img src="../../img/whatsapp.svg" alt="WhatsApp" width="40"></a>
 
     <!-- Overlay oscuro para el carrito -->
     <div class="overlay" id="overlay"></div>
@@ -154,17 +160,18 @@
             <h2>Mi Pedido</h2>
             <button class="btn-cerrar" id="btn-cerrar-carrito">&times;</button>
         </div>
-        
+
         <div class="carrito-body" id="carrito-body">
             <div class="carrito-vacio">El carrito está vacío</div>
         </div>
 
         <div class="carrito-footer">
             <!-- Mensaje de error para compra vacía -->
-            <div id="mensaje-error" style="color: red; font-size: 0.9rem; margin-bottom: 0.5rem; text-align: center; display: none;">
+            <div id="mensaje-error"
+                style="color: red; font-size: 0.9rem; margin-bottom: 0.5rem; text-align: center; display: none;">
                 El carrito está vacío. Agregá productos antes de comprar.
             </div>
-            
+
             <!-- Métodos de Pago -->
             <div class="metodo-pago">
                 <label for="selector-pago">Medio de pago:</label>
@@ -172,7 +179,7 @@
                     <option value="efectivo">Efectivo (5% OFF)</option>
                     <option value="transferencia">Transferencia / Tarjeta</option>
                 </select>
-                
+
             </div>
             <!-- Descuentos en Efectivo -->
             <div class="descuento-carrito" id="fila-descuento">
@@ -184,11 +191,12 @@
                 <span>Total:</span>
                 <span id="precio-total">$0</span>
             </div>
-            
+
             <!-- Botón finalizar compra -->
             <button class="btn btn-comprar" id="btn-finalizar-compra">Finalizar Compra por WhatsApp</button>
         </div>
     </div>
-    <script src="./productos.js"></script>
+    <script src="../carrito/carrito.js"></script>
+    <script src="/nav/productos/productos.js"></script>
 </body>
 </html>

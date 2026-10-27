@@ -1,73 +1,86 @@
-let productos = [];
-let carrito = JSON.parse(localStorage.getItem('carritoPolleria')) || [];
+// ===== productos.js =====
 
-// Paginación: 4 por fila x 3 filas = 12 por página
+let productos = [];
+let visibles = [];
 const POR_PAGINA = 12;
 let paginaActual = 1;
 
-// Emoji del placeholder según categoría (o subcategoría, si tiene una más específica)
-const EMOJI_CATEGORIA = {
-  "Pollo fresco": "🐔",
-  "Milanesas": "🥩",
-  "Especialidades": "🍔",
-  "Rebozados": "🍗",
-  "Congelados": "❄️",
-  "Cajas por mayor": "📦",
-  "Frutas": "🍓",
-  "Vegetales": "🥬",
-};
-const EMOJI_SUBCATEGORIA = {
-  "Pollo rebozado": "🍗",
-  "Merluza rebozada": "🐟",
-  "Papas": "🍟",
-  "Picadas": "🥩",
-  "Hamburguesas": "🍔",
-  "Cerdo": "🐖",
-};
+// Objeto de emojis para placeholders
+const EMOJI_CATEGORIA = { "Pollo fresco": "🐔", "Milanesas": "🥩", "Especialidades": "🍔", "Rebozados": "🍗", "Congelados": "❄️", "Cajas por mayor": "📦", "Frutas": "🍓", "Vegetales": "🥬" };
+const EMOJI_SUBCATEGORIA = { "Pollo rebozado": "🍗", "Merluza rebozada": "🐟", "Papas": "🍟", "Picadas": "🥩", "Hamburguesas": "🍔", "Cerdo": "🐖" };
 
-function emojiDe(producto) {
-  return (
-    EMOJI_SUBCATEGORIA[producto.subcategoria] ||
-    EMOJI_CATEGORIA[producto.categoria] ||
-    "🍗"
-  );
+const filtros = { busqueda: "", categorias: new Set(), tipos: new Set(), marcas: new Set(), venta: "todos", min: null, max: null, orden: "catalogo" };
+
+document.addEventListener("DOMContentLoaded", () => {
+    configurarFiltros();
+    cargarCatalogoCompleto();
+});
+
+async function cargarCatalogoCompleto() {
+    try {
+        const respuesta = await fetch('/nav/productos/productos.json');
+        productos = await respuesta.json();
+        crearOpciones("filtro-categorias", "categoria", "categorias");
+        crearOpciones("filtro-tipos", "subcategoria", "tipos");
+        crearOpciones("filtro-marcas", "marca", "marcas");
+        crearChips();
+        aplicarFiltros();
+    } catch (error) {
+        console.error('Error cargando catálogo:', error);
+    }
 }
 
-// Devuelve la foto del producto; si no tiene o no carga, un placeholder con emoji
 function crearImagen(producto) {
-  const crearPlaceholder = () => {
-    const div = document.createElement("div");
-    div.className = "img-placeholder";
-    div.setAttribute("role", "img");
-    div.setAttribute("aria-label", producto.nombre);
-    div.textContent = emojiDe(producto);
-    return div;
-  };
+    if (!producto.img) {
+        const div = document.createElement("div");
+        div.className = "img-placeholder";
+        div.textContent = EMOJI_SUBCATEGORIA[producto.subcategoria] || EMOJI_CATEGORIA[producto.categoria] || "🍗";
+        return div;
+    }
+    const img = document.createElement("img");
+    img.src = producto.img;
+    img.alt = producto.nombre;
+    return img;
+}
 
-  if (!producto.img) return crearPlaceholder();
+function renderizarProductos() {
+    const contenedor = document.getElementById("contenedor-productos");
+    if (!contenedor) return;
+    contenedor.textContent = "";
 
-  const img = document.createElement("img");
-  img.src = producto.img;
-  img.alt = producto.nombre;
-  img.onerror = () => img.replaceWith(crearPlaceholder());
-  return img;
+    const inicio = (paginaActual - 1) * POR_PAGINA;
+    const productosPagina = visibles.slice(inicio, inicio + POR_PAGINA);
+
+    productosPagina.forEach((producto) => {
+        const tarjeta = document.createElement("div");
+        tarjeta.className = "tarjeta-producto";
+
+        const imagenProd = crearImagen(producto);
+        const infoProd = document.createElement("div");
+        infoProd.className = "producto-info";
+        
+        const tituloProd = document.createElement("h3");
+        tituloProd.textContent = producto.nombre;
+        
+        const precioProd = document.createElement("div");
+        precioProd.className = "producto-precio";
+        precioProd.textContent = `$${producto.precio} / ${producto.unidad}`;
+
+        const botonAgregar = document.createElement("button");
+        botonAgregar.className = "btn";
+        botonAgregar.textContent = "Agregar al Carrito";
+        // IMPORTANTE: Se pasa el producto entero, el carrito se encarga del resto
+        botonAgregar.addEventListener("click", () => agregarAlCarrito(producto));
+
+        infoProd.append(tituloProd, precioProd, botonAgregar);
+        tarjeta.append(imagenProd, infoProd);
+        contenedor.appendChild(tarjeta);
+    });
+    renderizarPaginacion();
 }
 
 // ========== FILTROS, BÚSQUEDA Y ORDEN ==========
-let visibles = []; // productos que pasan los filtros (ya ordenados)
 
-const filtros = {
-  busqueda: "",
-  categorias: new Set(),
-  tipos: new Set(),
-  marcas: new Set(),
-  venta: "todos", // todos | kg | otros
-  min: null,
-  max: null,
-  orden: "catalogo", // catalogo | precio-asc | precio-desc | nombre
-};
-
-// Minúsculas y sin tildes: "milanesa" encuentra "Milanesa" y "Albóndigas" = "albondigas"
 const normalizar = (t) =>
   String(t || "")
     .normalize("NFD")
@@ -275,16 +288,72 @@ function configurarFiltros() {
 
 async function cargarProductos() {
   try {
-    const respuesta = await fetch('./productos.json');
+    // Usamos la ruta absoluta con "/" para que funcione desde cualquier HTML
+    const respuesta = await fetch('/nav/productos/productos.json'); 
     productos = await respuesta.json();
-    crearOpciones("filtro-categorias", "categoria", "categorias");
-    crearOpciones("filtro-tipos", "subcategoria", "tipos");
-    crearOpciones("filtro-marcas", "marca", "marcas");
-    crearChips();
-    aplicarFiltros();
+    
+    // Estos if evitan que tire error si no existen los filtros en la página actual
+    if(document.getElementById("filtro-categorias")) {
+        crearOpciones("filtro-categorias", "categoria", "categorias");
+        crearOpciones("filtro-tipos", "subcategoria", "tipos");
+        crearOpciones("filtro-marcas", "marca", "marcas");
+        crearChips();
+        aplicarFiltros();
+    }
+    
+    // Llamamos a la función que dibuja el inicio
+    renderizarDestacados();
+
   } catch (error) {
     console.error('Error al cargar productos: ', error);
   }
+}
+
+// Función para dibujar las tarjetas en el Inicio
+function renderizarDestacados() {
+  const contenedor = document.getElementById("contenedor-destacados");
+  // Si no estamos en index.html, se frena acá y no tira error
+  if (!contenedor) return; 
+  
+  contenedor.textContent = ""; 
+
+  const destacados = productos.slice(0, 4);
+
+  destacados.forEach((producto) => {
+    const tarjeta = document.createElement("article");
+    tarjeta.className = "tarjeta-producto";
+
+    const imagenProd = document.createElement("img");
+    imagenProd.src = producto.img; 
+    imagenProd.alt = producto.nombre;
+
+    const tituloProd = document.createElement("h3");
+    tituloProd.textContent = producto.nombre;
+
+    const precioProd = document.createElement("p");
+    precioProd.className = "precio";
+    precioProd.textContent = `$${producto.precio} `;
+
+    const unidadProd = document.createElement("small");
+    unidadProd.textContent = `/ ${producto.unidad}`;
+    
+    precioProd.appendChild(unidadProd);
+
+    const botonAgregar = document.createElement("button");
+    botonAgregar.className = "btn-agregar";
+    botonAgregar.textContent = "Agregar al carrito";
+    
+    botonAgregar.addEventListener("click", () => {
+      agregarAlCarrito(producto.id);
+    });
+
+    tarjeta.appendChild(imagenProd);
+    tarjeta.appendChild(tituloProd);
+    tarjeta.appendChild(precioProd);
+    tarjeta.appendChild(botonAgregar);
+
+    contenedor.appendChild(tarjeta);
+  });
 }
 
 function renderizarProductos() {
@@ -326,7 +395,7 @@ function renderizarProductos() {
     precioProd.textContent = `$${producto.precio} / ${producto.unidad}`;
 
     const botonAgregar = document.createElement("button");
-    botonAgregar.className = "btn";
+    botonAgregar.className = "btn-agregar";
     botonAgregar.textContent = "Agregar al Carrito";
     botonAgregar.addEventListener("click", () => {
       agregarAlCarrito(producto.id);
