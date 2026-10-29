@@ -186,6 +186,11 @@ h2 {
   font-size: 0.8rem;
   font-weight: 400;
 }
+.producto-precio {
+  color: white;
+  font-weight: 600 !important;
+  font-size: 1.3rem;
+}
 .tarjeta-producto .btn-agregar {
   margin-top: 0.5rem;
   background: var(--amarillo);

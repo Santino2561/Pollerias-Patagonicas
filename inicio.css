@@ -6,6 +6,10 @@ h2 {
   margin: 0 0 0.6rem;
 }
 
+#pedido h2 {
+  margin-top: 0%;
+}
+
 .portada {
   position: relative;
   padding-bottom: 6rem;
@@ -114,7 +118,7 @@ h2 {
   border-top: 2px solid rgb(94, 5, 5);
   background: var(--naranja);
   text-align: center;
-  padding: 3.5rem 1.5rem;
+  padding: 1.5rem 1.5rem;
 }
 .banner-pedidos.banner-tienda {
   display: block;
@@ -122,6 +126,11 @@ h2 {
   padding-left: 0;
   padding-right: 0;
   overflow: hidden;
+}
+#pedido h2 {
+  margin: 0 0 1.2rem 0;
+  text-align: center;
+  align-items: center;
 }
 .carrusel-tienda {
   overflow: hidden;
