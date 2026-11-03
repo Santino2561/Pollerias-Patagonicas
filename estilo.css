@@ -122,6 +122,49 @@ h2 {
 .menu a:hover {
   color: var(--naranja);
 }
+
+/* ---------- MENÚ DESPLEGABLE ---------- */
+.menu-desplegable {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 0;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--marron);
+  min-width: 22 0px;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  z-index: 1000;
+  padding: 1rem 0;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.menu-desplegable:hover .submenu {
+  display: flex;
+}
+
+.submenu a {
+  padding: 0.5rem 1.5rem;
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  border: none;
+}
+
+.submenu a:hover {
+  background-color: var(--amarillo);
+  color: var(--marron);
+}
+
 .btn-carrito {
   display: flex;
   align-items: center;

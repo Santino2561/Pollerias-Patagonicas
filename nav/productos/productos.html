@@ -18,14 +18,29 @@
         </a>
 
         <nav class="menu">
-            <a href="../../index.html">Inicio</a>
-            <a href="./productos.html">Productos</a>
-            <a href="../contactos/contacto.html">Contacto</a>
+      <a href="../../index.html">Inicio</a>
+      
+      <!-- Contenedor del desplegable -->
+      <div class="menu-desplegable">
+        <a href="./nav/productos/productos.html">Productos</a>
+        <div class="submenu">
+          <!-- Pasamos la categoría por la URL con "?categoria=..." -->
+          <a href="./productos.html?categoria=Pollo fresco">Pollo fresco</a>
+          <a href="./productos.html?categoria=Milanesas">Milanesas</a>
+          <a href="./productos.html?categoria=Especialidades">Especialidades</a>
+          <a href="./productos.html?categoria=Rebozados">Rebozados</a>
+          <a href="./productos.html?categoria=Congelados">Congelados</a>
+          <a href="./productos.html?categoria=Cajas por mayor">Cajas por mayor</a>
+          <a href="./productos.html?categoria=Vegetales">Vegetales</a>
+          <a href="./productos.html?categoria=Frutas">Frutas</a>
+        </div>
+      </div>
 
-            <button class="btn-carrito" id="btn-carrito" onclick="abrirCarrito()">
-                🛒 <span class="badge" id="contador-carrito">0</span>
-            </button>
-        </nav>
+      <a href="../contactos/contacto.html">Contacto</a>
+      <button class="btn-carrito" id="btn-carrito">
+        🛒 <span class="badge" id="contador-carrito">0</span>
+      </button>
+    </nav>
     </header>
 
     <!-- Main -->

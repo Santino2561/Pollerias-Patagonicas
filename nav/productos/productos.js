@@ -6,77 +6,105 @@ const POR_PAGINA = 12;
 let paginaActual = 1;
 
 // Objeto de emojis para placeholders
-const EMOJI_CATEGORIA = { "Pollo fresco": "🐔", "Milanesas": "🥩", "Especialidades": "🍔", "Rebozados": "🍗", "Congelados": "❄️", "Cajas por mayor": "📦", "Frutas": "🍓", "Vegetales": "🥬" };
-const EMOJI_SUBCATEGORIA = { "Pollo rebozado": "🍗", "Merluza rebozada": "🐟", "Papas": "🍟", "Picadas": "🥩", "Hamburguesas": "🍔", "Cerdo": "🐖" };
+const EMOJI_CATEGORIA = {
+  "Pollo fresco": "🐔",
+  Milanesas: "🥩",
+  Especialidades: "🍔",
+  Rebozados: "🍗",
+  Congelados: "❄️",
+  "Cajas por mayor": "📦",
+  Frutas: "🍓",
+  Vegetales: "🥬",
+};
+const EMOJI_SUBCATEGORIA = {
+  "Pollo rebozado": "🍗",
+  "Merluza rebozada": "🐟",
+  Papas: "🍟",
+  Picadas: "🥩",
+  Hamburguesas: "🍔",
+  Cerdo: "🐖",
+};
 
-const filtros = { busqueda: "", categorias: new Set(), tipos: new Set(), marcas: new Set(), venta: "todos", min: null, max: null, orden: "catalogo" };
+const filtros = {
+  busqueda: "",
+  categorias: new Set(),
+  tipos: new Set(),
+  marcas: new Set(),
+  venta: "todos",
+  min: null,
+  max: null,
+  orden: "catalogo",
+};
 
 document.addEventListener("DOMContentLoaded", () => {
-    configurarFiltros();
-    cargarCatalogoCompleto();
+  configurarFiltros();
+  cargarCatalogoCompleto();
 });
 
 async function cargarCatalogoCompleto() {
-    try {
-        const respuesta = await fetch('/nav/productos/productos.json');
-        productos = await respuesta.json();
-        crearOpciones("filtro-categorias", "categoria", "categorias");
-        crearOpciones("filtro-tipos", "subcategoria", "tipos");
-        crearOpciones("filtro-marcas", "marca", "marcas");
-        crearChips();
-        aplicarFiltros();
-    } catch (error) {
-        console.error('Error cargando catálogo:', error);
-    }
+  try {
+    const respuesta = await fetch("/nav/productos/productos.json");
+    productos = await respuesta.json();
+    crearOpciones("filtro-categorias", "categoria", "categorias");
+    crearOpciones("filtro-tipos", "subcategoria", "tipos");
+    crearOpciones("filtro-marcas", "marca", "marcas");
+    crearChips();
+    aplicarFiltros();
+  } catch (error) {
+    console.error("Error cargando catálogo:", error);
+  }
 }
 
 function crearImagen(producto) {
-    if (!producto.img) {
-        const div = document.createElement("div");
-        div.className = "img-placeholder";
-        div.textContent = EMOJI_SUBCATEGORIA[producto.subcategoria] || EMOJI_CATEGORIA[producto.categoria] || "🍗";
-        return div;
-    }
-    const img = document.createElement("img");
-    img.src = producto.img;
-    img.alt = producto.nombre;
-    return img;
+  if (!producto.img) {
+    const div = document.createElement("div");
+    div.className = "img-placeholder";
+    div.textContent =
+      EMOJI_SUBCATEGORIA[producto.subcategoria] ||
+      EMOJI_CATEGORIA[producto.categoria] ||
+      "🍗";
+    return div;
+  }
+  const img = document.createElement("img");
+  img.src = producto.img;
+  img.alt = producto.nombre;
+  return img;
 }
 
 function renderizarProductos() {
-    const contenedor = document.getElementById("contenedor-productos");
-    if (!contenedor) return;
-    contenedor.textContent = "";
+  const contenedor = document.getElementById("contenedor-productos");
+  if (!contenedor) return;
+  contenedor.textContent = "";
 
-    const inicio = (paginaActual - 1) * POR_PAGINA;
-    const productosPagina = visibles.slice(inicio, inicio + POR_PAGINA);
+  const inicio = (paginaActual - 1) * POR_PAGINA;
+  const productosPagina = visibles.slice(inicio, inicio + POR_PAGINA);
 
-    productosPagina.forEach((producto) => {
-        const tarjeta = document.createElement("div");
-        tarjeta.className = "tarjeta-producto";
+  productosPagina.forEach((producto) => {
+    const tarjeta = document.createElement("div");
+    tarjeta.className = "tarjeta-producto";
 
-        const imagenProd = crearImagen(producto);
-        const infoProd = document.createElement("div");
-        infoProd.className = "producto-info";
-        
-        const tituloProd = document.createElement("h3");
-        tituloProd.textContent = producto.nombre;
-        
-        const precioProd = document.createElement("div");
-        precioProd.className = "producto-precio";
-        precioProd.textContent = `$${producto.precio} / ${producto.unidad}`;
+    const imagenProd = crearImagen(producto);
+    const infoProd = document.createElement("div");
+    infoProd.className = "producto-info";
 
-        const botonAgregar = document.createElement("button");
-        botonAgregar.className = "btn";
-        botonAgregar.textContent = "Agregar al Carrito";
-        // IMPORTANTE: Se pasa el producto entero, el carrito se encarga del resto
-        botonAgregar.addEventListener("click", () => agregarAlCarrito(producto));
+    const tituloProd = document.createElement("h3");
+    tituloProd.textContent = producto.nombre;
 
-        infoProd.append(tituloProd, precioProd, botonAgregar);
-        tarjeta.append(imagenProd, infoProd);
-        contenedor.appendChild(tarjeta);
-    });
-    renderizarPaginacion();
+    const precioProd = document.createElement("div");
+    precioProd.className = "producto-precio";
+    precioProd.textContent = `$${producto.precio} / ${producto.unidad}`;
+
+    const botonAgregar = document.createElement("button");
+    botonAgregar.className = "btn";
+    botonAgregar.textContent = "Agregar al Carrito";
+    // IMPORTANTE: Se pasa el producto entero, el carrito se encarga del resto
+    botonAgregar.addEventListener("click", () => agregarAlCarrito(producto));
+
+    infoProd.append(tituloProd, precioProd, botonAgregar);
+    tarjeta.append(imagenProd, infoProd);
+    contenedor.appendChild(tarjeta);
+  });
+  renderizarPaginacion();
 }
 
 // ========== FILTROS, BÚSQUEDA Y ORDEN ==========
@@ -91,11 +119,17 @@ const normalizar = (t) =>
 function pasaFiltros(p) {
   if (filtros.busqueda) {
     const texto = normalizar(
-      [p.nombre, p.categoria, p.subcategoria, p.marca].filter(Boolean).join(" "),
+      [p.nombre, p.categoria, p.subcategoria, p.marca]
+        .filter(Boolean)
+        .join(" "),
     );
-    if (!filtros.busqueda.split(/\s+/).every((palabra) => texto.includes(palabra))) return false;
+    if (
+      !filtros.busqueda.split(/\s+/).every((palabra) => texto.includes(palabra))
+    )
+      return false;
   }
-  if (filtros.categorias.size && !filtros.categorias.has(p.categoria)) return false;
+  if (filtros.categorias.size && !filtros.categorias.has(p.categoria))
+    return false;
   if (filtros.tipos.size && !filtros.tipos.has(p.subcategoria)) return false;
   if (filtros.marcas.size && !filtros.marcas.has(p.marca)) return false;
   if (filtros.venta === "kg" && p.unidad !== "kg") return false;
@@ -109,9 +143,12 @@ function pasaFiltros(p) {
 function aplicarFiltros() {
   visibles = productos.filter(pasaFiltros);
 
-  if (filtros.orden === "precio-asc") visibles.sort((a, b) => a.precio - b.precio);
-  else if (filtros.orden === "precio-desc") visibles.sort((a, b) => b.precio - a.precio);
-  else if (filtros.orden === "nombre") visibles.sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+  if (filtros.orden === "precio-asc")
+    visibles.sort((a, b) => a.precio - b.precio);
+  else if (filtros.orden === "precio-desc")
+    visibles.sort((a, b) => b.precio - a.precio);
+  else if (filtros.orden === "nombre")
+    visibles.sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
 
   paginaActual = 1;
   renderizarProductos();
@@ -164,7 +201,9 @@ function crearChips() {
   if (!contenedor) return;
   contenedor.textContent = "";
 
-  const categorias = [...new Set(productos.map((p) => p.categoria).filter(Boolean))];
+  const categorias = [
+    ...new Set(productos.map((p) => p.categoria).filter(Boolean)),
+  ];
   ["Todos", ...categorias].forEach((nombre) => {
     const chip = document.createElement("button");
     chip.type = "button";
@@ -204,7 +243,9 @@ function sincronizarControles() {
   });
   actualizarChips();
 
-  const radio = document.querySelector(`input[name="venta"][value="${filtros.venta}"]`);
+  const radio = document.querySelector(
+    `input[name="venta"][value="${filtros.venta}"]`,
+  );
   if (radio) radio.checked = true;
 }
 
@@ -289,23 +330,32 @@ function configurarFiltros() {
 async function cargarProductos() {
   try {
     // Usamos la ruta absoluta con "/" para que funcione desde cualquier HTML
-    const respuesta = await fetch('/nav/productos/productos.json'); 
+    const respuesta = await fetch("/nav/productos/productos.json");
     productos = await respuesta.json();
-    
+
     // Estos if evitan que tire error si no existen los filtros en la página actual
-    if(document.getElementById("filtro-categorias")) {
-        crearOpciones("filtro-categorias", "categoria", "categorias");
-        crearOpciones("filtro-tipos", "subcategoria", "tipos");
-        crearOpciones("filtro-marcas", "marca", "marcas");
-        crearChips();
+    if (document.getElementById("filtro-categorias")) {
+      crearOpciones("filtro-categorias", "categoria", "categorias");
+      crearOpciones("filtro-tipos", "subcategoria", "tipos");
+      crearOpciones("filtro-marcas", "marca", "marcas");
+      crearChips();
+      aplicarFiltros();
+
+      const parametros = new URLSearchParams(window.location.search);
+      const categoriaURL = parametros.get("categoria");
+
+      if (categoriaURL) {
+        // Tildamos la categoría, sincronizamos el menú visual y filtramos
+        filtros.categorias.add(categoriaURL);
+        sincronizarControles();
         aplicarFiltros();
+      }
     }
-    
+
     // Llamamos a la función que dibuja el inicio
     renderizarDestacados();
-
   } catch (error) {
-    console.error('Error al cargar productos: ', error);
+    console.error("Error al cargar productos: ", error);
   }
 }
 
@@ -313,9 +363,9 @@ async function cargarProductos() {
 function renderizarDestacados() {
   const contenedor = document.getElementById("contenedor-destacados");
   // Si no estamos en index.html, se frena acá y no tira error
-  if (!contenedor) return; 
-  
-  contenedor.textContent = ""; 
+  if (!contenedor) return;
+
+  contenedor.textContent = "";
 
   const destacados = productos.slice(0, 4);
 
@@ -324,7 +374,7 @@ function renderizarDestacados() {
     tarjeta.className = "tarjeta-producto";
 
     const imagenProd = document.createElement("img");
-    imagenProd.src = producto.img; 
+    imagenProd.src = producto.img;
     imagenProd.alt = producto.nombre;
 
     const tituloProd = document.createElement("h3");
@@ -336,13 +386,13 @@ function renderizarDestacados() {
 
     const unidadProd = document.createElement("small");
     unidadProd.textContent = `/ ${producto.unidad}`;
-    
+
     precioProd.appendChild(unidadProd);
 
     const botonAgregar = document.createElement("button");
     botonAgregar.className = "btn-agregar";
     botonAgregar.textContent = "Agregar al carrito";
-    
+
     botonAgregar.addEventListener("click", () => {
       agregarAlCarrito(producto.id);
     });
@@ -546,18 +596,18 @@ function actualizarCarrito() {
   }
 
   // MÉTODOS DE PAGO
-  const selectorPago = document.getElementById('selector-pago');
-  const filaDescuento = document.getElementById('fila-descuento');
-  const spanDescuento = document.getElementById('precio-descuento');
+  const selectorPago = document.getElementById("selector-pago");
+  const filaDescuento = document.getElementById("fila-descuento");
+  const spanDescuento = document.getElementById("precio-descuento");
 
   let descuento = 0;
 
-  if (selectorPago && selectorPago.value === 'efectivo' && totalPrecio > 0) {
+  if (selectorPago && selectorPago.value === "efectivo" && totalPrecio > 0) {
     descuento = Math.round(totalPrecio * 0.05);
-    if (filaDescuento) filaDescuento.style.display = 'flex';
+    if (filaDescuento) filaDescuento.style.display = "flex";
     if (spanDescuento) spanDescuento.textContent = `$${descuento}`;
   } else {
-    if (filaDescuento) filaDescuento.style.display = 'none';
+    if (filaDescuento) filaDescuento.style.display = "none";
   }
 
   let totalFinal = totalPrecio - descuento;
@@ -565,7 +615,7 @@ function actualizarCarrito() {
   if (contadorSpan) contadorSpan.textContent = totalItems;
   if (precioTotalSpan) precioTotalSpan.textContent = `$${totalFinal}`;
 
-  localStorage.setItem('carritoPolleria', JSON.stringify(carrito));
+  localStorage.setItem("carritoPolleria", JSON.stringify(carrito));
 }
 
 // Sidebar Carrito
@@ -602,10 +652,11 @@ function finalizarCompra() {
     return;
   }
 
-  const selectorPago = document.getElementById('selector-pago');
-  const esEfectivo = selectorPago && selectorPago.value === 'efectivo';
+  const selectorPago = document.getElementById("selector-pago");
+  const esEfectivo = selectorPago && selectorPago.value === "efectivo";
 
-  let mensaje = "Hola buenas tardes! Quiero realizar el siguiente pedido:%0A%0A";
+  let mensaje =
+    "Hola buenas tardes! Quiero realizar el siguiente pedido:%0A%0A";
   let totalPrecio = 0;
 
   carrito.forEach((item) => {

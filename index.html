@@ -23,9 +23,24 @@
 
     <nav class="menu">
       <a href="./index.html">Inicio</a>
-      <a href="./nav/productos/productos.html">Productos</a>
+      
+      <!-- Contenedor desplegable -->
+      <div class="menu-desplegable">
+        <a href="./nav/productos/productos.html">Productos</a>
+        <div class="submenu">
+          <a href="./nav/productos/productos.html?categoria=Pollo fresco">Pollo fresco</a>
+          <a href="./nav/productos/productos.html?categoria=Milanesas">Milanesas</a>
+          <a href="./nav/productos/productos.html?categoria=Especialidades">Especialidades</a>
+          <a href="./nav/productos/productos.html?categoria=Rebozados">Rebozados</a>
+          <a href="./nav/productos/productos.html?categoria=Congelados">Congelados</a>
+          <a href="./nav/productos/productos.html?categoria=Cajas por mayor">Cajas por mayor</a>
+          <a href="./nav/productos/productos.html?categoria=Vegetales">Vegetales</a>
+          <a href="./nav/productos/productos.html?categoria=Frutas">Frutas</a>
+        </div>
+      </div>
+
       <a href="./nav/contactos/contacto.html">Contacto</a>
-      <button class="btn-carrito" id="btn-carrito" onclick="abrirCarrito()">
+      <button class="btn-carrito" id="btn-carrito">
         🛒 <span class="badge" id="contador-carrito">0</span>
       </button>
     </nav>
