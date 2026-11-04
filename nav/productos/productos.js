@@ -71,42 +71,6 @@ function crearImagen(producto) {
   return img;
 }
 
-function renderizarProductos() {
-  const contenedor = document.getElementById("contenedor-productos");
-  if (!contenedor) return;
-  contenedor.textContent = "";
-
-  const inicio = (paginaActual - 1) * POR_PAGINA;
-  const productosPagina = visibles.slice(inicio, inicio + POR_PAGINA);
-
-  productosPagina.forEach((producto) => {
-    const tarjeta = document.createElement("div");
-    tarjeta.className = "tarjeta-producto";
-
-    const imagenProd = crearImagen(producto);
-    const infoProd = document.createElement("div");
-    infoProd.className = "producto-info";
-
-    const tituloProd = document.createElement("h3");
-    tituloProd.textContent = producto.nombre;
-
-    const precioProd = document.createElement("div");
-    precioProd.className = "producto-precio";
-    precioProd.textContent = `$${producto.precio} / ${producto.unidad}`;
-
-    const botonAgregar = document.createElement("button");
-    botonAgregar.className = "btn";
-    botonAgregar.textContent = "Agregar al Carrito";
-    // IMPORTANTE: Se pasa el producto entero, el carrito se encarga del resto
-    botonAgregar.addEventListener("click", () => agregarAlCarrito(producto));
-
-    infoProd.append(tituloProd, precioProd, botonAgregar);
-    tarjeta.append(imagenProd, infoProd);
-    contenedor.appendChild(tarjeta);
-  });
-  renderizarPaginacion();
-}
-
 // ========== FILTROS, BÚSQUEDA Y ORDEN ==========
 
 const normalizar = (t) =>
@@ -141,14 +105,17 @@ function pasaFiltros(p) {
 // FIN-NUCLEO
 
 function aplicarFiltros() {
-  visibles = productos.filter(pasaFiltros);
+  let filtrados = productos.filter(pasaFiltros);
 
   if (filtros.orden === "precio-asc")
-    visibles.sort((a, b) => a.precio - b.precio);
+    filtrados.sort((a, b) => a.precio - b.precio);
   else if (filtros.orden === "precio-desc")
-    visibles.sort((a, b) => b.precio - a.precio);
+    filtrados.sort((a, b) => b.precio - a.precio);
   else if (filtros.orden === "nombre")
-    visibles.sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+    filtrados.sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+
+  // Une en una sola tarjeta las variantes de un mismo "grupo" (distintos kg/packs)
+  visibles = agruparVariantes(filtrados);
 
   paginaActual = 1;
   renderizarProductos();
@@ -406,6 +373,50 @@ function renderizarDestacados() {
   });
 }
 
+// ========== AGRUPAR VARIANTES (mismo producto, distinto peso) ==========
+
+// Devuelve [{ grupo, variantes: [...] }] respetando el orden de aparición.
+// Dentro de cada grupo las variantes quedan en el orden original del JSON
+// (la primera, normalmente la de "kg", es la que se muestra por defecto).
+function agruparVariantes(lista) {
+  const mapa = new Map();
+  lista.forEach((p) => {
+    const clave = p.grupo || p.nombre;
+    if (!mapa.has(clave)) mapa.set(clave, { grupo: clave, variantes: [] });
+    mapa.get(clave).variantes.push(p);
+  });
+  const grupos = [...mapa.values()];
+  grupos.forEach((g) => g.variantes.sort((a, b) => a.id - b.id));
+  return grupos;
+}
+
+// "Pata muslo x 2 kg" (grupo "Pata muslo") -> "x 2 kg"; la base -> "Por kilo"
+function etiquetaVariante(p, grupo) {
+  let t = p.nombre.startsWith(grupo) ? p.nombre.slice(grupo.length).trim() : "";
+  if (!t) t = p.unidad === "kg" ? "Por kilo" : p.unidad;
+  return t;
+}
+
+function textoPrecio(p, grupo) {
+  return p.unidad === "kg"
+    ? `$${p.precio} / kg`
+    : `$${p.precio} · ${etiquetaVariante(p, grupo)}`;
+}
+
+function cerrarListasPesos() {
+  document.querySelectorAll(".tarjeta-producto.abierta").forEach((t) => {
+    t.classList.remove("abierta");
+    const btn = t.querySelector(".selector-peso");
+    if (btn) btn.setAttribute("aria-expanded", "false");
+  });
+}
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".selector-wrap")) cerrarListasPesos();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") cerrarListasPesos();
+});
+
 function renderizarProductos() {
   const contenedor = document.getElementById("contenedor-productos");
   if (!contenedor) return;
@@ -428,36 +439,91 @@ function renderizarProductos() {
   const inicio = (paginaActual - 1) * POR_PAGINA;
   const productosPagina = visibles.slice(inicio, inicio + POR_PAGINA);
 
-  productosPagina.forEach((producto) => {
+  productosPagina.forEach((grupo) => {
+    const variantes = grupo.variantes;
+    let actual = variantes[0];
+    const tieneVarias = variantes.length > 1;
+
     const tarjeta = document.createElement("div");
     tarjeta.className = "tarjeta-producto";
 
-    const imagenProd = crearImagen(producto);
+    const imagenProd = crearImagen(actual);
 
     const infoProd = document.createElement("div");
     infoProd.className = "producto-info";
 
     const tituloProd = document.createElement("h3");
-    tituloProd.textContent = producto.nombre;
+    tituloProd.textContent = tieneVarias ? grupo.grupo : actual.nombre;
 
     const precioProd = document.createElement("div");
     precioProd.className = "producto-precio";
-    precioProd.textContent = `$${producto.precio} / ${producto.unidad}`;
 
     const botonAgregar = document.createElement("button");
     botonAgregar.className = "btn-agregar";
     botonAgregar.textContent = "Agregar al Carrito";
-    botonAgregar.addEventListener("click", () => {
-      agregarAlCarrito(producto.id);
-    });
+    botonAgregar.addEventListener("click", () => agregarAlCarrito(actual.id));
 
-    infoProd.appendChild(tituloProd);
-    infoProd.appendChild(precioProd);
-    infoProd.appendChild(botonAgregar);
+    if (!tieneVarias) {
+      // Un solo precio / peso: queda como antes
+      precioProd.textContent = `$${actual.precio} / ${actual.unidad}`;
+    } else {
+      precioProd.classList.add("selector-wrap");
 
-    tarjeta.appendChild(imagenProd);
-    tarjeta.appendChild(infoProd);
+      const toggle = document.createElement("button");
+      toggle.type = "button";
+      toggle.className = "selector-peso";
+      toggle.setAttribute("aria-haspopup", "listbox");
+      toggle.setAttribute("aria-expanded", "false");
+      const textoToggle = document.createElement("span");
+      textoToggle.textContent = textoPrecio(actual, grupo.grupo);
+      const flecha = document.createElement("span");
+      flecha.className = "flecha";
+      flecha.setAttribute("aria-hidden", "true");
+      toggle.append(textoToggle, flecha);
 
+      const lista = document.createElement("ul");
+      lista.className = "lista-pesos";
+      lista.setAttribute("role", "listbox");
+
+      const opciones = variantes.map((v) => {
+        const li = document.createElement("li");
+        const op = document.createElement("button");
+        op.type = "button";
+        op.className = "opcion-peso";
+        op.setAttribute("role", "option");
+        const et = document.createElement("span");
+        et.textContent = etiquetaVariante(v, grupo.grupo);
+        const pr = document.createElement("strong");
+        pr.textContent = `$${v.precio}`;
+        op.append(et, pr);
+        op.addEventListener("click", () => {
+          actual = v;
+          textoToggle.textContent = textoPrecio(v, grupo.grupo);
+          opciones.forEach((o) =>
+            o.btn.classList.toggle("activa", o.variante === v),
+          );
+          cerrarListasPesos();
+        });
+        li.appendChild(op);
+        lista.appendChild(li);
+        return { btn: op, variante: v };
+      });
+      opciones[0].btn.classList.add("activa");
+
+      toggle.addEventListener("click", () => {
+        const abrir = !tarjeta.classList.contains("abierta");
+        cerrarListasPesos();
+        if (abrir) {
+          tarjeta.classList.add("abierta");
+          toggle.setAttribute("aria-expanded", "true");
+        }
+      });
+
+      precioProd.append(toggle, lista);
+    }
+
+    infoProd.append(tituloProd, precioProd, botonAgregar);
+    tarjeta.append(imagenProd, infoProd);
     contenedor.appendChild(tarjeta);
   });
 
