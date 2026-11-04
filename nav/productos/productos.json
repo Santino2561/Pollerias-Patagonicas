@@ -6,7 +6,7 @@
     "categoria": "Pollo fresco",
     "precio": 4900,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/pata-muslo.png"
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "categoria": "Pollo fresco",
     "precio": 12500,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/pata-muslo.png"
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@
     "categoria": "Pollo fresco",
     "precio": 20000,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/pata-muslo.png"
   },
   {
     "id": 4,
@@ -33,7 +33,7 @@
     "categoria": "Pollo fresco",
     "precio": 6300,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/presitas.png"
   },
   {
     "id": 5,
@@ -42,7 +42,7 @@
     "categoria": "Pollo fresco",
     "precio": 10600,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/presitas.png"
   },
   {
     "id": 6,
@@ -51,7 +51,7 @@
     "categoria": "Pollo fresco",
     "precio": 10900,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/filet-pechuga.png"
   },
   {
     "id": 7,
@@ -60,7 +60,7 @@
     "categoria": "Pollo fresco",
     "precio": 29700,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/filet-pechuga.png"
   },
   {
     "id": 8,
@@ -69,7 +69,7 @@
     "categoria": "Pollo fresco",
     "precio": 46000,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/filet-pechuga.png"
   },
   {
     "id": 9,
@@ -78,7 +78,7 @@
     "categoria": "Pollo fresco",
     "precio": 4900,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/alitas.png"
   },
   {
     "id": 10,
@@ -87,7 +87,7 @@
     "categoria": "Pollo fresco",
     "precio": 12900,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/alitas.png"
   },
   {
     "id": 11,
@@ -96,7 +96,7 @@
     "categoria": "Pollo fresco",
     "precio": 21000,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/alitas.png"
   },
   {
     "id": 12,
@@ -105,7 +105,7 @@
     "categoria": "Pollo fresco",
     "precio": 7200,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/pata-y-muslo-deshuesado.jpg"
   },
   {
     "id": 13,
@@ -114,7 +114,7 @@
     "categoria": "Pollo fresco",
     "precio": 20900,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/pata-y-muslo-deshuesado.jpg"
   },
   {
     "id": 14,
@@ -141,7 +141,7 @@
     "categoria": "Pollo fresco",
     "precio": 5200,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/pollo-entero.jpg"
   },
   {
     "id": 17,
@@ -150,7 +150,7 @@
     "categoria": "Pollo fresco",
     "precio": 8500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/pechuga c hueso.jpg"
   },
   {
     "id": 18,
@@ -159,7 +159,7 @@
     "categoria": "Pollo fresco",
     "precio": 15500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Chorizo-De-Pollo.jpg"
   },
   {
     "id": 19,
@@ -168,7 +168,7 @@
     "categoria": "Pollo fresco",
     "precio": 6500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/pata-muslo.png"
   },
   {
     "id": 20,
@@ -177,7 +177,7 @@
     "categoria": "Milanesas",
     "precio": 9990,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Mila de pechuga.jpg"
   },
   {
     "id": 21,
@@ -186,7 +186,7 @@
     "categoria": "Milanesas",
     "precio": 18900,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/Mila de pechuga.jpg"
   },
   {
     "id": 22,
@@ -195,7 +195,7 @@
     "categoria": "Milanesas",
     "precio": 24950,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/Mila de pechuga.jpg"
   },
   {
     "id": 23,
@@ -204,7 +204,7 @@
     "categoria": "Milanesas",
     "precio": 10700,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Mila pata muslo.jpg"
   },
   {
     "id": 24,
@@ -213,7 +213,7 @@
     "categoria": "Milanesas",
     "precio": 12800,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Mila de pechuga rellena c j y q.png"
   },
   {
     "id": 25,
@@ -222,7 +222,7 @@
     "categoria": "Milanesas",
     "precio": 18500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Mila Cuadrada.jpg"
   },
   {
     "id": 26,
@@ -231,7 +231,7 @@
     "categoria": "Milanesas",
     "precio": 19500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Mila peceto.jpg"
   },
   {
     "id": 27,
@@ -240,7 +240,7 @@
     "categoria": "Especialidades",
     "precio": 9000,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/ALBONDIGAS-DE-POLLO.png"
   },
   {
     "id": 28,
@@ -249,7 +249,7 @@
     "categoria": "Especialidades",
     "precio": 9300,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/albóndigas de pollo c j y q.jpg"
   },
   {
     "id": 29,
@@ -258,7 +258,7 @@
     "categoria": "Especialidades",
     "precio": 10000,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/hamburguesa de pollo clásica.jpg"
   },
   {
     "id": 30,
@@ -267,7 +267,7 @@
     "categoria": "Especialidades",
     "precio": 18800,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/hamburguesa de pollo clásica.jpg"
   },
   {
     "id": 31,
@@ -276,7 +276,7 @@
     "categoria": "Especialidades",
     "precio": 11000,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/hamburguesa rellena c j y q.jpg"
   },
   {
     "id": 32,
@@ -285,7 +285,7 @@
     "categoria": "Especialidades",
     "precio": 16900,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/arrollados de pollo.png"
   },
   {
     "id": 33,
@@ -293,6 +293,7 @@
     "grupo": "Medallones de pollo mix primavera",
     "categoria": "Rebozados",
     "subcategoria": "Pollo rebozado",
+    "marca": "Grupolar",
     "precio": 13500,
     "unidad": "kg",
     "img": ""
@@ -302,6 +303,7 @@
     "nombre": "Medallones de pollo clásicos",
     "grupo": "Medallones de pollo clásicos",
     "categoria": "Rebozados",
+    "marca": "Grupolar",
     "subcategoria": "Pollo rebozado",
     "precio": 13500,
     "unidad": "kg",
@@ -477,7 +479,7 @@
     "marca": "McCain",
     "precio": 14000,
     "unidad": "kg",
-    "img": "../../img/productos/smiles.png"
+    "img": "../../img/productos/papas-smiles.png"
   },
   {
     "id": 52,
@@ -488,7 +490,7 @@
     "marca": "McCain",
     "precio": 14000,
     "unidad": "kg",
-    "img": "../../img/productos/noisette.png"
+    "img": "../../img/productos/papas-noisette.png"
   },
   {
     "id": 53,
@@ -499,7 +501,7 @@
     "marca": "Swift",
     "precio": 12300,
     "unidad": "unidad",
-    "img": ""
+    "img": "../../img/productos/Picada de carne SWIFT.webp"
   },
   {
     "id": 54,
@@ -510,7 +512,7 @@
     "marca": "Swift",
     "precio": 23300,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/Picada de carne SWIFT.webp"
   },
   {
     "id": 55,
@@ -521,7 +523,7 @@
     "marca": "Swift",
     "precio": 4950,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/Hamburguesas Swift cl\u00e1sicas.jpg"
   },
   {
     "id": 56,
@@ -532,7 +534,7 @@
     "marca": "Cagnoli",
     "precio": 6700,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/Bondiolita de cerdo Cagnoli.jfif"
   },
   {
     "id": 57,
@@ -543,7 +545,7 @@
     "marca": "Cagnoli",
     "precio": 6700,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/Lomitos de cerdo Cagnoli.jfif"
   },
   {
     "id": 58,
@@ -596,7 +598,7 @@
     "categoria": "Cajas por mayor",
     "precio": 52000,
     "unidad": "caja",
-    "img": ""
+    "img": "../../img/productos/pata-muslo.png"
   },
   {
     "id": 63,
@@ -605,7 +607,7 @@
     "categoria": "Cajas por mayor",
     "precio": 50000,
     "unidad": "caja",
-    "img": ""
+    "img": "../../img/productos/alitas.png"
   },
   {
     "id": 64,
@@ -614,7 +616,7 @@
     "categoria": "Cajas por mayor",
     "precio": 78000,
     "unidad": "caja",
-    "img": ""
+    "img": "../../img/productos/pollo-entero.jpg"
   },
   {
     "id": 65,
@@ -623,7 +625,7 @@
     "categoria": "Cajas por mayor",
     "precio": 110000,
     "unidad": "caja",
-    "img": ""
+    "img": "../../img/productos/filet-pechuga.png"
   },
   {
     "id": 66,
@@ -632,7 +634,7 @@
     "categoria": "Cajas por mayor",
     "precio": 115000,
     "unidad": "caja",
-    "img": ""
+    "img": "../../img/productos/pechuga c hueso.jpg"
   },
   {
     "id": 67,
@@ -641,7 +643,7 @@
     "categoria": "Cajas por mayor",
     "precio": 76000,
     "unidad": "caja",
-    "img": ""
+    "img": "../../img/productos/pata-y-muslo-deshuesado.jpg"
   },
   {
     "id": 68,
@@ -650,69 +652,69 @@
     "categoria": "Vegetales",
     "precio": 7600,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Espinaca 800g.png"
   },
-    {
+  {
     "id": 69,
     "nombre": "Brocoli Congelada x 800grs",
     "grupo": "Brocoli",
     "categoria": "Vegetales",
     "precio": 8400,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Brocoli 800g.png"
   },
-    {
+  {
     "id": 70,
     "nombre": "Arveja Congelada x 500grs",
     "grupo": "Arveja",
     "categoria": "Vegetales",
     "precio": 5500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Arvejas 500g.png"
   },
-      {
+  {
     "id": 71,
     "nombre": "Choclo Congelado x 500grs",
     "grupo": "Choclo",
     "categoria": "Vegetales",
     "precio": 5600,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Choclo 500g.webp"
   },
-        {
+  {
     "id": 72,
     "nombre": "Mix tacos Congelado x 500grs",
     "grupo": "Tacos",
     "categoria": "Vegetales",
     "precio": 4800,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/mix tacos 500g.jfif"
   },
-          {
+  {
     "id": 73,
     "nombre": "Cebolla Congelado x 500grs",
     "grupo": "Cebolla",
     "categoria": "Vegetales",
     "precio": 4900,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Cebolla 500g.png"
   },
-            {
+  {
     "id": 74,
     "nombre": "Frutillas Congeladas x 500grs",
     "grupo": "Frutillas",
     "categoria": "Frutas",
     "precio": 5500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Frutillas 500g.webp"
   },
-            {
+  {
     "id": 75,
     "nombre": "Frutos rojos Congeladas x 500grs",
     "grupo": "Frutos rojos",
     "categoria": "Frutas",
     "precio": 9900,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Frutos-Rojos 500g.webp"
   }
 ]
