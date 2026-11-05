@@ -21,8 +21,8 @@ h2 {
   inset: 0;
   z-index: -2;
   background:
-    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-    url("./img/pollo_flyer.png") center top / cover no-repeat;
+    linear-gradient(rgba(51, 51, 51, 0.65), rgba(0, 0, 0, 0.65)),
+    url("./img/fondo_pollo.png") left center / cover no-repeat;
 }
 .portada::after {
   content: "";
@@ -236,14 +236,12 @@ h2 {
 }
 .ubicacion::before {
   left: 0;
-  background-image: url("./img/local-i.png");
   background-position: 50% 0;
   -webkit-mask-image: linear-gradient(to right, #000, transparent 50%);
   mask-image: linear-gradient(to right, #000, transparent 50%);
 }
 .ubicacion::after {
   right: 0;
-  background-image: url("./img/local-d.png");
   background-position: -550% 110%;
   -webkit-mask-image: linear-gradient(to left, #000, transparent 50%);
   mask-image: linear-gradient(to left, #000, transparent 50%);
