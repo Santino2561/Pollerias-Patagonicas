@@ -7,6 +7,7 @@
   <title>Pollerias Patagónicas</title>
   <link rel="stylesheet" href="./estilo.css">
   <link rel="stylesheet" href="./inicio.css">
+  <link rel="stylesheet" href="./nav/carrito/carrito.css">
   <link rel="icon" href="./img/logo.png" type="image/png">
 </head>
 
@@ -22,8 +23,8 @@
     </a>
 
     <nav class="menu">
-      <a href="./index.html">Inicio</a>
-      
+      <a href="./index.html" class="menu-activo">Inicio</a>
+
       <!-- Contenedor desplegable -->
       <div class="menu-desplegable">
         <a href="./nav/productos/productos.html">Productos</a>
@@ -144,50 +145,69 @@
       <p>© 2026 Pollerías Patagónicas. Todos los derechos reservados.</p>
     </div>
   </footer>
-
-  <!-- Overlay oscuro para el carrito -->
+  <!-- ========== MÓDULO DEL CARRITO ========== -->
   <div class="overlay" id="overlay"></div>
-
-  <!-- Sidebar Carrito -->
   <div class="sidebar-carrito" id="sidebar-carrito">
     <div class="carrito-header">
       <h2>Mi Pedido</h2>
       <button class="btn-cerrar" id="btn-cerrar-carrito">&times;</button>
     </div>
-
-    <div class="carrito-body" id="carrito-body">
-      <div class="carrito-vacio">El carrito está vacío</div>
+    <!-- PASO 1: LISTA DE PRODUCTOS -->
+    <div id="paso-productos" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
+      <div class="carrito-body" id="carrito-body">
+        <div class="carrito-vacio">El carrito está vacío</div>
+      </div>
+      <div class="carrito-footer">
+        <div id="mensaje-error"
+          style="color: red; font-size: 0.9rem; text-align: center; display: none; margin-bottom: 0.5rem;">
+          El carrito está vacío. Agregá productos primero.
+        </div>
+        <div class="total-carrito">
+          <span>Subtotal:</span>
+          <span id="precio-subtotal">$0</span>
+        </div>
+        <button class="btn btn-comprar" id="btn-continuar-compra">Siguiente: Datos de envío</button>
+      </div>
     </div>
-
-    <div class="carrito-footer">
-      <div id="mensaje-error"
-        style="color: red; font-size: 0.9rem; margin-bottom: 0.5rem; text-align: center; display: none;">
-        El carrito está vacío. Agregá productos antes de comprar.
+    <!-- PASO 2: FORMULARIO DE ENVÍO -->
+    <div id="paso-checkout" style="display: none; flex-direction: column; flex: 1; overflow: hidden;">
+      <div class="carrito-body" style="display: flex; flex-direction: column; gap: 1rem;">
+        <h3 style="color: var(--marron); margin: 0;">Completá tus datos</h3>
+        <div class="form-grupo">
+          <label>Nombre y Apellido</label>
+          <input type="text" id="form-nombre" placeholder="Ej: Juan Pérez" required>
+        </div>
+        <div class="form-grupo">
+          <label>Dirección de Envío o "Retiro por local"</label>
+          <input type="text" id="form-direccion" placeholder="Ej: San Martín 123" required>
+        </div>
+        <div class="form-grupo">
+          <label>Aclaraciones (Opcional)</label>
+          <input type="text" id="form-notas" placeholder="Ej: Timbre 2, sin sal...">
+        </div>
+        <div class="form-grupo" style="margin-top: 0.5rem;">
+          <label for="selector-pago">Medio de pago:</label>
+          <select id="selector-pago">
+            <option value="efectivo">Efectivo (5% OFF)</option>
+            <option value="transferencia">Transferencia / Tarjeta</option>
+          </select>
+        </div>
       </div>
-
-      <!-- Métodos de Pago -->
-      <div class="metodo-pago">
-        <label for="selector-pago">Medio de pago:</label>
-        <select id="selector-pago">
-          <option value="efectivo">Efectivo (5% OFF)</option>
-          <option value="transferencia">Transferencia / Tarjeta</option>
-        </select>
+      <div class="carrito-footer">
+        <div class="descuento-carrito" id="fila-descuento" style="display: none;">
+          <span>Descuento (5%)</span>
+          <span id="precio-descuento">$0</span>
+        </div>
+        <div class="total-carrito">
+          <span>Total Final:</span>
+          <span id="precio-total">$0</span>
+        </div>
+        <button class="btn btn-comprar" id="btn-finalizar-compra" style="margin-bottom: 0.5rem;">Enviar pedido por
+          WhatsApp</button>
+        <button class="btn-secundario" id="btn-volver-carrito">Volver a los productos</button>
       </div>
-      <!-- Descuentos en Efectivo -->
-      <div class="descuento-carrito" id="fila-descuento" style="display: none;">
-        <span>Descuento (5%)</span>
-        <span id="precio-descuento">$0</span>
-      </div>
-
-      <div class="total-carrito">
-        <span>Total:</span>
-        <span id="precio-total">$0</span>
-      </div>
-
-      <button class="btn btn-comprar" id="btn-finalizar-compra">Finalizar Compra por WhatsApp</button>
     </div>
   </div>
-
   <script src="./inicio.js"></script>
   <script src="./nav/carrito/carrito.js"></script>
 </body>
