@@ -55,161 +55,139 @@
 
     <div class="contenedor-productos">
 
-  <h2 id="titulo-seccion">Ofertas</h2>
+      <h2 id="titulo-seccion">Combos</h2>
 
-  <!-- SECCIÓN OFERTAS -->
-  <section class="ofertas seccion-carrusel activa" id="seccion-ofertas">
+      <!-- SECCIÓN COMBOS LIMPIA -->
+      <section class="ofertas seccion-carrusel activa" id="seccion-combos">
 
-    <article class="oferta">
-      <img src="./img/oferta.png" alt="Pollito">
-      <button class="btn-agregar" data-id="1" data-nombre="Pollo fresco"
-        data-precio="5500" data-img="./img/oferta.png">COMPRAR</button>
-    </article>
+        <article class="oferta">
+          <img src="./img/Combo mila express.jpeg" alt="Combo Mila Express">
+          <button class="btn-agregar" onclick="window.agregarAlCarrito({id: 'combo-1', nombre: 'Combo Mila Express', precio: 14500, img: './img/Combo mila express.jpeg'})">COMPRAR</button>
+        </article>
 
-    <article class="oferta">
-      <img src="./img/oferta2.png" alt="Milanesas">
-      <button class="btn-agregar" data-id="3" data-nombre="Milanesas"
-        data-precio="8000" data-img="./img/oferta2.png">COMPRAR</button>
-    </article>
+        <article class="oferta">
+          <img src="./img/Combo Freezer_ Pollo y Milanesa.png" alt="Combo Freezer">
+          <button class="btn-agregar" onclick="window.agregarAlCarrito({id: 'combo-2', nombre: 'Combo Freezer', precio: 28900, img: './img/Combo Freezer_ Pollo y Milanesa.png'})">COMPRAR</button>
+        </article>
 
-    <article class="oferta">
-      <img src="./img/oferta3.png" alt="Chorizos">
-      <button class="btn-agregar" data-id="9" data-nombre="Chorizos"
-        data-precio="7200" data-img="./img/oferta3.png">COMPRAR</button>
-    </article>
+        <article class="oferta">
+          <img src="./img/Combo marino de medallones crujientes.png" alt="Combo Marino">
+          <button class="btn-agregar" onclick="window.agregarAlCarrito({id: 'combo-3', nombre: 'Combo Marino', precio: 16900, img: './img/Combo marino de medallones crujientes.png'})">COMPRAR</button>
+        </article>
 
-  </section>
+      </section>
 
-
-  <!-- SECCIÓN COMBOS -->
-  <section class="ofertas seccion-carrusel" id="seccion-combos">
-
-    <article class="oferta">
-      <img src="./img/Combo mila express.jpeg" alt="Combo 1">
-      <button class="btn-agregar">COMPRAR</button>
-    </article>
-
-    <article class="oferta">
-      <img src="./img/Combo Freezer_ Pollo y Milanesa.png" alt="Combo 2">
-      <button class="btn-agregar">COMPRAR</button>
-    </article>
-
-    <article class="oferta">
-      <img src="./img/Combo marino de medallones crujientes.png" alt="Combo 3">
-      <button class="btn-agregar">COMPRAR</button>
-    </article>
-
-  </section>
-
-</div>
-
-
-  <!-- BANNER DE PEDIDOS / CARRUSEL -->
-  <section class="banner-pedidos banner-tienda" id="pedido">
-    <h2>Destacados</h2>
-    <div class="carrusel-tienda">
-      <div class="grilla-tienda" id="contenedor-destacados"></div>
     </div>
-  </section>
 
-  <section class="ubicacion" id="contacto">
-    <h2>Encontranos</h2>
-    <p>Villegas 2671, Local 3, General Roca</p>
-    <div class="mapa-recorte">
-      <iframe src="https://www.google.com/maps/d/embed?mid=1s2DN_2YRrDKorl7WHrtTw4out-qkY5c&ehbc=2E312F" loading="lazy"
-        allowfullscreen></iframe>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <section class="info">
-      <div>
-        <h2>Horarios</h2>
-        <p>Lunes a sábados</p>
-        <p>9:00 a 13:00 y 17:30 a 21:30 h</p>
-        <p>Domingos</p>
-        <p>9:00 a 13:00 h</p>
-      </div>
-      <div>
-        <h2>Dirección</h2>
-        <p>Villegas 2671, Local 3</p>
-        <p>General Roca, Río Negro</p>
-      </div>
-      <div>
-        <h2>Pedidos</h2>
-        <p>Teléfono: 2984 479-6020</p>
-        <p>Retiro en el local o envío</p>
+    <!-- BANNER DE PEDIDOS / CARRUSEL -->
+    <section class="banner-pedidos banner-tienda" id="pedido">
+      <h2>Destacados</h2>
+      <div class="carrusel-tienda">
+        <div class="grilla-tienda" id="contenedor-destacados"></div>
       </div>
     </section>
-    <div class="footer-final">
-      <p>© 2026 Pollerías Patagónicas. Todos los derechos reservados.</p>
-    </div>
-  </footer>
-  <!-- ========== MÓDULO DEL CARRITO ========== -->
-  <div class="overlay" id="overlay"></div>
-  <div class="sidebar-carrito" id="sidebar-carrito">
-    <div class="carrito-header">
-      <h2>Mi Pedido</h2>
-      <button class="btn-cerrar" id="btn-cerrar-carrito">&times;</button>
-    </div>
-    <!-- PASO 1: LISTA DE PRODUCTOS -->
-    <div id="paso-productos" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
-      <div class="carrito-body" id="carrito-body">
-        <div class="carrito-vacio">El carrito está vacío</div>
+
+    <section class="ubicacion" id="contacto">
+      <h2>Encontranos</h2>
+      <p>Villegas 2671, Local 3, General Roca</p>
+      <div class="mapa-recorte">
+        <iframe src="https://www.google.com/maps/d/embed?mid=1s2DN_2YRrDKorl7WHrtTw4out-qkY5c&ehbc=2E312F" loading="lazy"
+          allowfullscreen></iframe>
       </div>
-      <div class="carrito-footer">
-        <div id="mensaje-error"
-          style="color: red; font-size: 0.9rem; text-align: center; display: none; margin-bottom: 0.5rem;">
-          El carrito está vacío. Agregá productos primero.
+    </section>
+
+    <footer class="footer">
+      <section class="info">
+        <div>
+          <h2>Horarios</h2>
+          <p>Lunes a sábados</p>
+          <p>9:00 a 13:00 y 17:30 a 21:30 h</p>
+          <p>Domingos</p>
+          <p>9:00 a 13:00 h</p>
         </div>
-        <div class="total-carrito">
-          <span>Subtotal:</span>
-          <span id="precio-subtotal">$0</span>
+        <div>
+          <h2>Dirección</h2>
+          <p>Villegas 2671, Local 3</p>
+          <p>General Roca, Río Negro</p>
         </div>
-        <button class="btn btn-comprar" id="btn-continuar-compra">Siguiente: Datos de envío</button>
+        <div>
+          <h2>Pedidos</h2>
+          <p>Teléfono: 2984 479-6020</p>
+          <p>Retiro en el local o envío</p>
+        </div>
+      </section>
+      <div class="footer-final">
+        <p>© 2026 Pollerías Patagónicas. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+    
+    <!-- ========== MÓDULO DEL CARRITO ========== -->
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar-carrito" id="sidebar-carrito">
+      <div class="carrito-header">
+        <h2>Mi Pedido</h2>
+        <button class="btn-cerrar" id="btn-cerrar-carrito">&times;</button>
+      </div>
+      <!-- PASO 1: LISTA DE PRODUCTOS -->
+      <div id="paso-productos" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
+        <div class="carrito-body" id="carrito-body">
+          <div class="carrito-vacio">El carrito está vacío</div>
+        </div>
+        <div class="carrito-footer">
+          <div id="mensaje-error"
+            style="color: red; font-size: 0.9rem; text-align: center; display: none; margin-bottom: 0.5rem;">
+            El carrito está vacío. Agregá productos primero.
+          </div>
+          <div class="total-carrito">
+            <span>Subtotal:</span>
+            <span id="precio-subtotal">$0</span>
+          </div>
+          <button class="btn btn-comprar" id="btn-continuar-compra">Siguiente: Datos de envío</button>
+        </div>
+      </div>
+      <!-- PASO 2: FORMULARIO DE ENVÍO -->
+      <div id="paso-checkout" style="display: none; flex-direction: column; flex: 1; overflow: hidden;">
+        <div class="carrito-body" style="display: flex; flex-direction: column; gap: 1rem;">
+          <h3 style="color: var(--marron); margin: 0;">Completá tus datos</h3>
+          <div class="form-grupo">
+            <label>Nombre y Apellido</label>
+            <input type="text" id="form-nombre" placeholder="Ej: Juan Pérez" required>
+          </div>
+          <div class="form-grupo">
+            <label>Dirección de Envío o "Retiro por local"</label>
+            <input type="text" id="form-direccion" placeholder="Ej: San Martín 123" required>
+          </div>
+          <div class="form-grupo">
+            <label>Aclaraciones (Opcional)</label>
+            <input type="text" id="form-notas" placeholder="Ej: Timbre 2, sin sal...">
+          </div>
+          <div class="form-grupo" style="margin-top: 0.5rem;">
+            <label for="selector-pago">Medio de pago:</label>
+            <select id="selector-pago">
+              <option value="efectivo">Efectivo (5% OFF)</option>
+              <option value="transferencia">Transferencia / Tarjeta</option>
+            </select>
+          </div>
+        </div>
+        <div class="carrito-footer">
+          <div class="descuento-carrito" id="fila-descuento" style="display: none;">
+            <span>Descuento (5%)</span>
+            <span id="precio-descuento">$0</span>
+          </div>
+          <div class="total-carrito">
+            <span>Total Final:</span>
+            <span id="precio-total">$0</span>
+          </div>
+          <button class="btn btn-comprar" id="btn-finalizar-compra" style="margin-bottom: 0.5rem;">Enviar pedido por
+            WhatsApp</button>
+          <button class="btn-secundario" id="btn-volver-carrito">Volver a los productos</button>
+        </div>
       </div>
     </div>
-    <!-- PASO 2: FORMULARIO DE ENVÍO -->
-    <div id="paso-checkout" style="display: none; flex-direction: column; flex: 1; overflow: hidden;">
-      <div class="carrito-body" style="display: flex; flex-direction: column; gap: 1rem;">
-        <h3 style="color: var(--marron); margin: 0;">Completá tus datos</h3>
-        <div class="form-grupo">
-          <label>Nombre y Apellido</label>
-          <input type="text" id="form-nombre" placeholder="Ej: Juan Pérez" required>
-        </div>
-        <div class="form-grupo">
-          <label>Dirección de Envío o "Retiro por local"</label>
-          <input type="text" id="form-direccion" placeholder="Ej: San Martín 123" required>
-        </div>
-        <div class="form-grupo">
-          <label>Aclaraciones (Opcional)</label>
-          <input type="text" id="form-notas" placeholder="Ej: Timbre 2, sin sal...">
-        </div>
-        <div class="form-grupo" style="margin-top: 0.5rem;">
-          <label for="selector-pago">Medio de pago:</label>
-          <select id="selector-pago">
-            <option value="efectivo">Efectivo (5% OFF)</option>
-            <option value="transferencia">Transferencia / Tarjeta</option>
-          </select>
-        </div>
-      </div>
-      <div class="carrito-footer">
-        <div class="descuento-carrito" id="fila-descuento" style="display: none;">
-          <span>Descuento (5%)</span>
-          <span id="precio-descuento">$0</span>
-        </div>
-        <div class="total-carrito">
-          <span>Total Final:</span>
-          <span id="precio-total">$0</span>
-        </div>
-        <button class="btn btn-comprar" id="btn-finalizar-compra" style="margin-bottom: 0.5rem;">Enviar pedido por
-          WhatsApp</button>
-        <button class="btn-secundario" id="btn-volver-carrito">Volver a los productos</button>
-      </div>
-    </div>
-  </div>
-  <script src="./inicio.js"></script>
-  <script src="./nav/carrito/carrito.js"></script>
+    
+    <!-- SCRIPT ORDENADO: Primero el carrito, después el inicio -->
+    <script src="./nav/carrito/carrito.js"></script>
+    <script src="./inicio.js"></script>
 </body>
 
 </html>
