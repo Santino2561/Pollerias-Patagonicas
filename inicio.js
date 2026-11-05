@@ -44,6 +44,35 @@ function iniciarCarrusel() {
   reiniciarTemporizador();
 }
 
+// Seleccionamos las secciones
+const ofertas = document.getElementById("seccion-ofertas");
+const combos = document.getElementById("seccion-combos");
+
+// Seleccionamos el título
+const titulo = document.getElementById("titulo-seccion");
+
+// Función para cambiar de sección
+function cambiarSeccion() {
+
+    if (ofertas.classList.contains("activa")) {
+
+        ofertas.classList.remove("activa");
+        combos.classList.add("activa");
+
+        titulo.textContent = "Combos";
+
+    } else {
+
+        combos.classList.remove("activa");
+        ofertas.classList.add("activa");
+
+        titulo.textContent = "Ofertas";
+    }
+
+}
+
+// Cambiar cada 5 segundos
+setInterval(cambiarSeccion, 5000);
 // 2. Cargar y dibujar productos destacados
 async function cargarDestacados() {
   try {
