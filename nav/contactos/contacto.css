@@ -1,4 +1,4 @@
-/* ========== PÁGINA DE CONTACTO ========== */
+/* PÁGINA DE CONTACTO */
 .wrap {
   max-width: 60rem;
   margin: 0 auto;
@@ -18,7 +18,7 @@
 .contacto-hero .tag {
   font-size: 1.3rem;
   max-width: 40rem;
-  margin: 1.5rem 15% 0;
+  margin: 2.2rem 1rem -1rem 0;
 }
 
 .contacto-info {
@@ -48,7 +48,7 @@
   background: var(--marron);
   color: var(--amarillo);
   max-width: 44rem;
-  margin: 0.1rem auto;
+  margin: 0.1rem auto 4rem auto;
 }
 .wrap-formulario {
   max-width: 100%;
