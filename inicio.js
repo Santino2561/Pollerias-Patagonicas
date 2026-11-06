@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   cargarDestacados();
 });
 
-// Lógica del Carrusel
+// Carrusel
 function iniciarCarrusel() {
   let imagenes = document.querySelectorAll(".carrusel-imagenes img");
   let puntos = document.querySelectorAll(".punto");
@@ -44,14 +44,44 @@ function iniciarCarrusel() {
   reiniciarTemporizador();
 }
 
+// Seleccionamos las secciones
+const ofertas = document.getElementById("seccion-ofertas");
+const combos = document.getElementById("seccion-combos");
+
+// Seleccionamos el título
+const titulo = document.getElementById("titulo-seccion");
+
+// Función para cambiar de sección
+function cambiarSeccion() {
+
+    if (ofertas.classList.contains("activa")) {
+
+        ofertas.classList.remove("activa");
+        combos.classList.add("activa");
+
+        titulo.textContent = "Combos";
+
+    } else {
+
+        combos.classList.remove("activa");
+        ofertas.classList.add("activa");
+
+        titulo.textContent = "Ofertas";
+    }
+
+}
+
+// Cambiar cada 5 segundos
+setInterval(cambiarSeccion, 5000);
+
 // 2. Cargar y dibujar productos destacados
 async function cargarDestacados() {
   try {
     const respuesta = await fetch("/nav/productos/productos.json");
     const productosTotales = await respuesta.json();
-    const prodDestacados = [16, 25, 9, 32];
+    const prodDestacados = [16, 25, 9, 32]; 
     const destacados = productosTotales.filter((producto) =>
-      prodDestacados.includes(producto.id),
+      prodDestacados.includes(producto.id)
     );
 
     dibujarDestacados(destacados);
@@ -87,13 +117,13 @@ function dibujarDestacados(destacados) {
     const btn = document.createElement("button");
     btn.className = "btn-agregar";
     btn.textContent = "Agregar al carrito";
-    btn.addEventListener("click", () => agregarAlCarrito(producto));
+    
+    btn.addEventListener("click", () => window.agregarAlCarrito(producto));
 
     tarjeta.append(img, titulo, precio, btn);
     contenedor.appendChild(tarjeta);
   });
 
-  // 3. Activar animación de cinta transportadora
   const originales = Array.from(contenedor.children);
   const anchoSet = contenedor.scrollWidth || 1000;
   const veces = Math.max(1, Math.ceil(window.innerWidth / anchoSet));
@@ -101,15 +131,12 @@ function dibujarDestacados(destacados) {
   for (let i = 1; i < veces; i++) {
     originales.forEach((t) => contenedor.appendChild(t.cloneNode(true)));
   }
-  Array.from(contenedor.children).forEach((t) =>
-    contenedor.appendChild(t.cloneNode(true)),
-  );
-
-  // Reconectar botones en los clones
+  
   contenedor.querySelectorAll(".btn-agregar").forEach((boton, index) => {
     const prodClonado = destacados[index % destacados.length];
     const btnLimpio = boton.cloneNode(true);
     boton.replaceWith(btnLimpio);
-    btnLimpio.addEventListener("click", () => agregarAlCarrito(prodClonado));
+    
+    btnLimpio.addEventListener("click", () => window.agregarAlCarrito(prodClonado));
   });
 }
