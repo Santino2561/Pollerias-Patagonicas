@@ -145,6 +145,18 @@ main.tienda {
   background: rgb(247, 245, 241);
   color: var(--marron);
 }
+
+.filtros::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;          /* arranca donde termina el panel por la izquierda */
+  width: 2rem;          /* ajusta a gusto: 1rem, 1.5rem, 3rem... */
+  background: inherit;  /* usa el mismo color del panel */
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
 .filtros-titulo {
   display: flex;
   justify-content: space-between;
@@ -265,6 +277,85 @@ main.tienda {
 .tarjeta-producto .btn {
   width: 100%;
 } /* Botón ocupa todo el ancho */
+
+/* ---------- Selector de peso (productos con varias presentaciones) ---------- */
+.selector-wrap {
+  position: relative;
+}
+.selector-peso {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.7rem;
+  border: 2px solid var(--borde);
+  border-radius: 0.5rem;
+  background: black;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s;
+    border-color: rgb(77, 52, 16);
+}
+.selector-peso:hover,
+.tarjeta-producto.abierta .selector-peso {
+  border-color: white;
+}
+.selector-peso .flecha {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s;
+}
+.tarjeta-producto.abierta .selector-peso .flecha {
+  transform: translateY(1px) rotate(-135deg);
+}
+.lista-pesos {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  left: 0;
+  z-index: 20;
+  min-width: 12rem;
+  margin: 0;
+  padding: 0.3rem;
+  list-style: none;
+  background: var(--fondo-panel);
+  border: 2px solid var(--marron);
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  text-align: left;
+}
+.tarjeta-producto.abierta {
+  position: relative;
+  z-index: 10;
+  overflow: visible;
+}
+.tarjeta-producto.abierta .lista-pesos {
+  display: block;
+}
+.opcion-peso {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border: none;
+  border-radius: 0.35rem;
+  background: none;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--marron);
+  cursor: pointer;
+}
+.opcion-peso:hover {
+  background: rgb(247, 245, 241);
+}
+.opcion-peso.activa {
+  background: var(--amarillo);
+  font-weight: 700;
+}
 
 /* ---------- Paginación ---------- */
 .paginacion {
