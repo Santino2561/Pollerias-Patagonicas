@@ -123,7 +123,7 @@
     "categoria": "Pollo fresco",
     "precio": 11500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/picada-pollo.jpg"
   },
   {
     "id": 15,
@@ -337,7 +337,7 @@
     "subcategoria": "Pollo rebozado",
     "precio": 13500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/patitas-pollo.png"
   },
   {
     "id": 38,
