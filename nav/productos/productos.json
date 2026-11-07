@@ -296,7 +296,7 @@
     "marca": "Grupolar",
     "precio": 13500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Med. Pollo Primavera.png"
   },
   {
     "id": 34,
@@ -317,7 +317,7 @@
     "subcategoria": "Pollo rebozado",
     "precio": 13500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Med pollo JYQ.png"
   },
   {
     "id": 36,
@@ -327,7 +327,7 @@
     "subcategoria": "Pollo rebozado",
     "precio": 13500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Med Pollo Espinaca.png"
   },
   {
     "id": 37,
@@ -367,7 +367,7 @@
     "subcategoria": "Pollo rebozado",
     "precio": 13500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Rebosaurio de pollo.png"
   },
   {
     "id": 41,
@@ -377,7 +377,7 @@
     "subcategoria": "Pollo rebozado",
     "precio": 13500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Nuggests de Pollo Crocantes.png"
   },
   {
     "id": 42,
@@ -397,7 +397,7 @@
     "subcategoria": "Merluza rebozada",
     "precio": 10500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Med Merluza.png"
   },
   {
     "id": 44,
@@ -407,7 +407,7 @@
     "subcategoria": "Merluza rebozada",
     "precio": 10500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Formitas Marinas.png"
   },
   {
     "id": 45,
@@ -417,7 +417,7 @@
     "subcategoria": "Merluza rebozada",
     "precio": 10500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Bastones de Merluza Crocantes.png"
   },
   {
     "id": 46,
@@ -427,7 +427,7 @@
     "subcategoria": "Merluza rebozada",
     "precio": 10500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Med Merluza esp. y Queso.png"
   },
   {
     "id": 47,
@@ -437,7 +437,7 @@
     "subcategoria": "Merluza rebozada",
     "precio": 10500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Med Merluza Brocoli.png"
   },
   {
     "id": 48,
@@ -447,7 +447,7 @@
     "subcategoria": "Merluza rebozada",
     "precio": 10500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Med Merluza JyQ.png"
   },
   {
     "id": 49,
@@ -457,7 +457,7 @@
     "subcategoria": "Merluza rebozada",
     "precio": 10500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Med Merluza Roquefort.png"
   },
   {
     "id": 50,
