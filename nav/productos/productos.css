@@ -285,20 +285,25 @@ main.tienda {
 .selector-peso {
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
+  max-width: 100%;
   padding: 0.3rem 0.7rem;
-  border: 2px solid var(--borde);
+  border: 2px solid color-mix(in srgb, currentColor 35%, transparent);
   border-radius: 0.5rem;
-  background: black;
-  font: inherit;
-  color: inherit;
+  background: transparent;
+  /* mismos valores que .producto-precio */
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: white;
   cursor: pointer;
   transition: border-color 0.2s;
-    border-color: rgb(77, 52, 16);
 }
 .selector-peso:hover,
 .tarjeta-producto.abierta .selector-peso {
-  border-color: white;
+  border-color: currentColor;
 }
 .selector-peso .flecha {
   width: 0.45rem;
@@ -315,7 +320,8 @@ main.tienda {
   display: none;
   position: absolute;
   top: calc(100% + 0.3rem);
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 20;
   min-width: 12rem;
   margin: 0;
@@ -326,11 +332,16 @@ main.tienda {
   border-radius: 0.5rem;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
   text-align: left;
+  font-weight: 400;
 }
 .tarjeta-producto.abierta {
   position: relative;
   z-index: 10;
   overflow: visible;
+}
+.tarjeta-producto.abierta img,
+.tarjeta-producto.abierta .img-placeholder {
+  border-radius: 0.8rem 0.8rem 0 0;
 }
 .tarjeta-producto.abierta .lista-pesos {
   display: block;
