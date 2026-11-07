@@ -54,51 +54,53 @@
     </main>
 
     <div class="contenedor-productos">
+      <h2 id="titulo-seccion">Ofertas</h2>
 
-      <h2 id="titulo-seccion">Combos</h2>
-      
-      <!-- SECCIÓN OFERTAS -->
-<section class="ofertas seccion-carrusel" id="seccion-ofertas">
-
-  <article class="oferta">
-    <img src="./img/oferta.png" alt="Oferta 1">
-    <button class="btn-agregar" onclick="window.agregarAlCarrito({id: 'oferta-1', nombre: 'Nombre de la oferta', precio: 0, img: './img/oferta-1.jpg'})">COMPRAR</button>
-  </article>
-
-    <article class="oferta">
-    <img src="./img/oferta2.png" alt="Oferta 1">
-    <button class="btn-agregar" onclick="window.agregarAlCarrito({id: 'oferta-1', nombre: 'Nombre de la oferta', precio: 0, img: './img/oferta-1.jpg'})">COMPRAR</button>
-  </article>
-
-    <article class="oferta">
-    <img src="./img/oferta3.png" alt="Oferta 1">
-    <button class="btn-agregar" onclick="window.agregarAlCarrito({id: 'oferta-1', nombre: 'Nombre de la oferta', precio: 0, img: './img/oferta-1.jpg'})">COMPRAR</button>
-  </article>
-
-  <!-- más ofertas... -->
-
-</section>
-
-      <!-- SECCIÓN COMBOS LIMPIA -->
-      <section class="ofertas seccion-carrusel activa" id="seccion-combos">
+      <!-- SECCIÓN OFERTAS (Datos directos infalibles) -->
+      <section class="ofertas seccion-carrusel" id="seccion-ofertas">
 
         <article class="oferta">
-          <img src="./img/Combo Freezer_ Pollo y Milanesa2.png" alt="Combo Freezer">
-          <button class="btn-agregar" onclick="window.agregarAlCarrito({id: 'combo-2', nombre: 'Combo Freezer', precio: 28900, img: './img/Combo Freezer_ Pollo y Milanesa.png'})">COMPRAR</button>
-        </article>
-
-                <article class="oferta">
-          <img src="./img/Combo mila express2.jpg" alt="Combo Mila Express">
-          <button class="btn-agregar" onclick="window.agregarAlCarrito({id: 'combo-1', nombre: 'Combo Mila Express', precio: 14500, img: './img/Combo mila express.jpeg'})">COMPRAR</button>
+          <img src="./img/oferta.png" alt="Caja Pata Muslo 15 kg">
+          <button class="btn-agregar"
+            onclick="window.agregarAlCarrito({id: 79, nombre: 'Caja Pata Muslo 15 KG (Efectivo)', precio: 41000, unidad: 'caja', img: './img/oferta.png'})">COMPRAR</button>
         </article>
 
         <article class="oferta">
-          <img src="./img/Combo marino de medallones crujientes2.png" alt="Combo Marino">
-          <button class="btn-agregar" onclick="window.agregarAlCarrito({id: 'combo-3', nombre: 'Combo Marino', precio: 16900, img: './img/Combo marino de medallones crujientes.png'})">COMPRAR</button>
+          <img src="./img/oferta2.png" alt="Plancha de Asado">
+          <button class="btn-agregar"
+            onclick="window.agregarAlCarrito({id: 80, nombre: 'Plancha de Asado Congelado (Efectivo)', precio: 11900, unidad: 'kg', img: './img/oferta2.png'})">COMPRAR</button>
+        </article>
+
+        <article class="oferta">
+          <img src="./img/oferta3.png" alt="Pata Muslo 20 kg">
+          <button class="btn-agregar"
+            onclick="window.agregarAlCarrito({id: 81, nombre: 'Pata Muslo 20 KG (Efectivo)', precio: 43000, unidad: 'caja', img: './img/oferta3.png'})">COMPRAR</button>
         </article>
 
       </section>
 
+      <!-- SECCIÓN COMBOS -->
+      <section class="ofertas seccion-carrusel activa" id="seccion-combos">
+
+        <article class="oferta">
+          <img src="./img/Combo mila express2.jpg" alt="Combo Mila Express">
+          <button class="btn-agregar"
+            onclick="window.agregarAlCarrito({id: 76, nombre: 'Combo Mila Express', precio: 14500, unidad: 'combo', img: './img/Combo mila express2.jpg'})">COMPRAR</button>
+        </article>
+
+        <article class="oferta">
+          <img src="./img/Combo Freezer_ Pollo y Milanesa2.png" alt="Combo Freezer">
+          <button class="btn-agregar"
+            onclick="window.agregarAlCarrito({id: 77, nombre: 'Combo Freezer', precio: 28900, unidad: 'combo', img: './img/Combo Freezer_ Pollo y Milanesa2.png'})">COMPRAR</button>
+        </article>
+
+        <article class="oferta">
+          <img src="./img/Combo marino de medallones crujientes2.png" alt="Combo Marino">
+          <button class="btn-agregar"
+            onclick="window.agregarAlCarrito({id: 78, nombre: 'Combo Marino', precio: 16900, unidad: 'combo', img: './img/Combo marino de medallones crujientes2.png'})">COMPRAR</button>
+        </article>
+
+      </section>
     </div>
 
     <!-- BANNER DE PEDIDOS / CARRUSEL -->
@@ -113,8 +115,8 @@
       <h2>Encontranos</h2>
       <p>Villegas 2671, Local 3, General Roca</p>
       <div class="mapa-recorte">
-        <iframe src="https://www.google.com/maps/d/embed?mid=1s2DN_2YRrDKorl7WHrtTw4out-qkY5c&ehbc=2E312F" loading="lazy"
-          allowfullscreen></iframe>
+        <iframe src="https://www.google.com/maps/d/embed?mid=1s2DN_2YRrDKorl7WHrtTw4out-qkY5c&ehbc=2E312F"
+          loading="lazy" allowfullscreen></iframe>
       </div>
     </section>
 
@@ -142,7 +144,7 @@
         <p>© 2026 Pollerías Patagónicas. Todos los derechos reservados.</p>
       </div>
     </footer>
-    
+
     <!-- ========== MÓDULO DEL CARRITO ========== -->
     <div class="overlay" id="overlay"></div>
     <div class="sidebar-carrito" id="sidebar-carrito">
@@ -206,7 +208,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- SCRIPT ORDENADO: Primero el carrito, después el inicio -->
     <script src="./nav/carrito/carrito.js"></script>
     <script src="./inicio.js"></script>

@@ -112,7 +112,7 @@ main.tienda {
 }
 .chip {
   flex: none;
-  padding: 0.5rem 0.8rem;
+  padding: 0.5rem 0.65rem;
   border: 2px solid var(--borde);
   border-radius: 999px;
   background: var(--fondo-panel);
