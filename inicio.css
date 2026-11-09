@@ -12,7 +12,6 @@ h2 {
 
 .portada {
   position: relative;
-  padding-bottom: 6rem;
   isolation: isolate;
 }
 .portada::before {
@@ -21,7 +20,7 @@ h2 {
   inset: 0;
   z-index: -2;
   background:
-    linear-gradient(rgba(51, 51, 51, 0.65), rgba(0, 0, 0, 0.65)),
+    linear-gradient(rgba(51, 51, 51, 0.65), rgba(0, 0, 0, 1)),
     url("./img/fondo_pollo.png") left center / cover no-repeat;
 }
 .portada::after {
