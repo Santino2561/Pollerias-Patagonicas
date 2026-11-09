@@ -284,6 +284,7 @@ h2 {
 .tarjeta-producto h3 {
   font-size: 1.8rem !important;
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;

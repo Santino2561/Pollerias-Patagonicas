@@ -307,7 +307,7 @@
     "subcategoria": "Pollo rebozado",
     "precio": 13500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Med. Pollo clasica.jpg"
   },
   {
     "id": 35,
@@ -347,7 +347,7 @@
     "subcategoria": "Pollo rebozado",
     "precio": 13500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/patitas de pollo JYQ.png"
   },
   {
     "id": 39,
@@ -357,7 +357,7 @@
     "subcategoria": "Pollo rebozado",
     "precio": 21500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Pechuga Rebosada Sadia.jpg"
   },
   {
     "id": 40,
@@ -387,7 +387,7 @@
     "subcategoria": "Merluza rebozada",
     "precio": 16500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Filet de merluza sin rebosar ni espinas.jpg"
   },
   {
     "id": 43,
@@ -556,7 +556,7 @@
     "marca": "Grupolar",
     "precio": 1400,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/Hamburguesas Grupolar x 69.png"
   },
   {
     "id": 59,
@@ -578,7 +578,7 @@
     "marca": "Grupolar",
     "precio": 2200,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/Hamburguesas Grupolar x 69.png"
   },
   {
     "id": 61,
@@ -716,5 +716,98 @@
     "precio": 9900,
     "unidad": "kg",
     "img": "../../img/productos/Frutos-Rojos 500g.webp"
+  },
+  {
+    "id": 76,
+    "nombre": "Combo Mila Express",
+    "categoria": "Combos",
+    "subcategoria": "Promociones",
+    "marca": "Elaboración Propia",
+    "precio": 14500,
+    "unidad": "combo",
+    "img": "../../img/Combo mila express2.jpg",
+    "variantes": [
+      {
+        "peso": "1 combo",
+        "precio": 14500
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "nombre": "Combo Freezer",
+    "categoria": "Combos",
+    "subcategoria": "Promociones",
+    "marca": "Elaboración Propia",
+    "precio": 28900,
+    "unidad": "combo",
+    "img": "../../img/Combo Freezer_ Pollo y Milanesa2.png",
+    "variantes": [
+      {
+        "peso": "1 combo",
+        "precio": 28900
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "nombre": "Combo Marino",
+    "categoria": "Combos",
+    "subcategoria": "Promociones",
+    "marca": "Elaboración Propia",
+    "precio": 16900,
+    "unidad": "combo",
+    "img": "../../img/Combo marino de medallones crujientes2.png",
+    "variantes": [
+      {
+        "peso": "1 combo",
+        "precio": 16900
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "nombre": "Caja Pata Muslo 15 KG (Oferta Efectivo)",
+    "categoria": "Combos",
+    "grupo": "Caja de pata muslo 15 KG",
+    "precio": 41000,
+    "unidad": "caja",
+    "img": "../../img/oferta.png",
+    "variantes": [
+      {
+        "peso": "1 caja",
+        "precio": 41000
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "nombre": "Plancha de Asado Congelado (Oferta Efectivo)",
+    "categoria": "Combos",
+    "grupo": "Asado",
+    "precio": 11900,
+    "unidad": "kg",
+    "img": "../../img/oferta2.png",
+    "variantes": [
+      {
+        "peso": "1 kg",
+        "precio": 11900
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "nombre": "Pata Muslo 20 KG (Oferta Efectivo)",
+    "categoria": "Combos",
+    "grupo": "Caja de pata muslo 20 KG",
+    "precio": 43000,
+    "unidad": "caja",
+    "img": "../../img/oferta3.png",
+    "variantes": [
+      {
+        "peso": "1 caja",
+        "precio": 43000
+      }
+    ]
   }
 ]
