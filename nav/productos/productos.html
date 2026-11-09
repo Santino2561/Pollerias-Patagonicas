@@ -53,9 +53,11 @@
 
     <!-- Main -->
     <main class="tienda">
+        <!-- Fondo oscuro detrás del panel de filtros (solo celular) -->
+        <div class="filtros-overlay" id="filtros-overlay"></div>
         <div class="tienda-layout">
             <!-- Filtros laterales -->
-            <aside class="filtros" aria-label="Filtros de productos">
+            <aside class="filtros" id="panel-filtros" aria-label="Filtros de productos">
                 <div class="filtros-titulo">
                     <h2>Filtros</h2>
                     <button type="button" class="btn-limpiar" id="btn-limpiar-filtros">Limpiar todo</button>
@@ -96,10 +98,13 @@
                     </div>
                     <button type="button" class="btn-aplicar" id="btn-aplicar-precio">Aplicar</button>
                 </details>
+
+                <!-- Solo se ve en celular: cierra el panel -->
+                <button type="button" class="btn-aplicar btn-ver-productos" id="btn-cerrar-filtros">Ver productos</button>
             </aside>
 
             <div class="tienda-contenido">
-                <div style="text-align: center;">
+                <div class="tienda-titulo" style="text-align: center;">
                     <h1 class="titulo-seccion">Nuestros Productos</h1>
                 </div>
                 <br>
@@ -117,6 +122,17 @@
                             </svg>
                         </button>
                     </div>
+
+                    <button type="button" class="btn-filtros" id="btn-abrir-filtros"
+                        aria-controls="panel-filtros" aria-expanded="false">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                            <path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path>
+                            <circle cx="16" cy="7" r="2"></circle>
+                            <circle cx="8" cy="17" r="2"></circle>
+                        </svg>
+                        Filtros
+                    </button>
 
                     <label class="orden">
                         Ordenar por
@@ -240,6 +256,34 @@
     <script src="../carrito/carrito.js"></script>
     <script src="/nav/productos/productos.js"></script>
     <script src="../menu.js"></script>
+    <script>
+        // Panel de filtros desplegable (celular)
+        (function () {
+            const panel = document.getElementById("panel-filtros");
+            const overlay = document.getElementById("filtros-overlay");
+            const abrir = document.getElementById("btn-abrir-filtros");
+            const cerrar = document.getElementById("btn-cerrar-filtros");
+            if (!panel || !overlay || !abrir || !cerrar) return;
+
+            function setAbierto(valor) {
+                panel.classList.toggle("abierto", valor);
+                overlay.classList.toggle("visible", valor);
+                abrir.setAttribute("aria-expanded", String(valor));
+                document.body.style.overflow = valor ? "hidden" : "";
+            }
+
+            abrir.addEventListener("click", () => setAbierto(true));
+            cerrar.addEventListener("click", () => setAbierto(false));
+            overlay.addEventListener("click", () => setAbierto(false));
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") setAbierto(false);
+            });
+            // Si se agranda la pantalla, el panel vuelve a ser fijo a la izquierda
+            window.matchMedia("(min-width: 56.01rem)").addEventListener("change", (e) => {
+                if (e.matches) setAbierto(false);
+            });
+        })();
+    </script>
 </body>
 
 </html>
