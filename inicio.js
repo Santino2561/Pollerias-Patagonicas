@@ -111,11 +111,14 @@ function dibujarDestacados(destacados) {
     contenedor.appendChild(tarjeta);
   });
 
+  // La animación mueve -50%: para que el bucle no "salte" tiene que haber un
+  // número par de copias del set, y cada mitad debe cubrir el ancho de la pantalla.
   const originales = Array.from(contenedor.children);
   const anchoSet = contenedor.scrollWidth || 1000;
-  const veces = Math.max(1, Math.ceil(window.innerWidth / anchoSet));
+  const copiasPorMitad = Math.max(1, Math.ceil(window.innerWidth / anchoSet));
+  const totalCopias = copiasPorMitad * 2;
 
-  for (let i = 1; i < veces; i++) {
+  for (let i = 1; i < totalCopias; i++) {
     originales.forEach((t) => contenedor.appendChild(t.cloneNode(true)));
   }
   
@@ -132,7 +135,8 @@ function dibujarDestacados(destacados) {
 let intervaloCarruselMovil;
 
 function iniciarCarruselIndividual() {
-  const todasLasOfertas = document.querySelectorAll(".oferta");
+  // Solo las ofertas de secciones visibles (.activa); las otras están con display:none
+  const todasLasOfertas = document.querySelectorAll(".seccion-carrusel.activa .oferta");
   const tituloSeccion = document.getElementById("titulo-seccion");
   let indiceActual = 0;
 
