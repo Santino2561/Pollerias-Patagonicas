@@ -121,7 +121,7 @@ h2 {
 }
 .menu a:hover {
   color: var(--naranja);
-  border-bottom: var(--amarillo) 0.15rem solid;
+  border-bottom: var(--naranja) 0.15rem solid;
 }
 
 /* MENÚ DESPLEGABLE */

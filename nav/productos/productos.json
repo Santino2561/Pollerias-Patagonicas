@@ -307,7 +307,7 @@
     "subcategoria": "Pollo rebozado",
     "precio": 13500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Med. Pollo clasica.jpg"
   },
   {
     "id": 35,
@@ -347,7 +347,7 @@
     "subcategoria": "Pollo rebozado",
     "precio": 13500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/patitas de pollo JYQ.png"
   },
   {
     "id": 39,
@@ -556,7 +556,7 @@
     "marca": "Grupolar",
     "precio": 1400,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/Hamburguesas Grupolar x 69.png"
   },
   {
     "id": 59,
@@ -578,7 +578,7 @@
     "marca": "Grupolar",
     "precio": 2200,
     "unidad": "pack",
-    "img": ""
+    "img": "../../img/productos/Hamburguesas Grupolar x 69.png"
   },
   {
     "id": 61,
