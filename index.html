@@ -21,14 +21,15 @@
       <img src="./img/logo.png" alt="Logo de Pollerías Patagónicas">
       <span>Pollerías Patagónicas</span>
     </a>
-
-    <nav class="menu">
+    <!-- Enlaces -->
+    <nav class="menu" id="menu-principal">
       <a href="./index.html" class="menu-activo">Inicio</a>
 
-      <!-- Contenedor desplegable -->
       <div class="menu-desplegable">
-        <a href="./nav/productos/productos.html">Productos</a>
-        <div class="submenu">
+        <a href="./nav/productos/productos.html" id="link-productos">Productos <span class="flecha-mobile">▼</span></a>
+        
+        <div class="submenu" id="submenu-productos">
+          <a href="./nav/productos/productos.html" class="destacado-todos">Todos los productos</a>
           <a href="./nav/productos/productos.html?categoria=Pollo fresco">Pollo fresco</a>
           <a href="./nav/productos/productos.html?categoria=Milanesas">Milanesas</a>
           <a href="./nav/productos/productos.html?categoria=Especialidades">Especialidades</a>
@@ -41,10 +42,14 @@
       </div>
 
       <a href="./nav/contactos/contacto.html">Contacto</a>
+    </nav>
+    <!-- Controles -->
+    <div class="controles">
       <button class="btn-carrito" id="btn-carrito">
         🛒 <span class="badge" id="contador-carrito">0</span>
       </button>
-    </nav>
+      <button class="btn-menu" id="btn-menu">☰</button>
+    </div>
   </header>
 
   <div class="portada">
@@ -56,7 +61,7 @@
     <div class="contenedor-productos">
       <h2 id="titulo-seccion">Ofertas</h2>
 
-      <!-- SECCIÓN OFERTAS (Datos directos infalibles) -->
+      <!-- SECCIÓN OFERTAS -->
       <section class="ofertas seccion-carrusel" id="seccion-ofertas">
 
         <article class="oferta">
@@ -213,6 +218,7 @@
   <!-- SCRIPT ORDENADO: Primero el carrito, después el inicio -->
   <script src="./nav/carrito/carrito.js"></script>
   <script src="./inicio.js"></script>
+  <script src="./nav/menu.js"></script>
 </body>
 
 </html>

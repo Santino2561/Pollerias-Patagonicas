@@ -14,38 +14,42 @@
 
 <body>
     <header class="header">
-        <a href="../../index.html" class="marca">
-            <img src="../../img/logo.png" alt="Logo de Pollerías Patagónicas">
-            <span>Pollerías Patagónicas</span>
-        </a>
+    <a href="../../index.html" class="marca">
+      <img src="../../img/logo.png" alt="Logo">
+      <span>Pollerías Patagónicas</span>
+    </a>
 
-        <nav class="menu">
-            <a href="../../index.html">Inicio</a>
+    <!-- Enlaces -->
+    <nav class="menu" id="menu-principal">
+      <a href="../../index.html">Inicio</a>
 
-            <!-- Contenedor del desplegable -->
-            <div class="menu-desplegable">
-                <a href="./nav/productos/productos.html" class="menu-activo">Productos</a>
-                <div class="submenu">
-                    <!-- Pasamos la categoría por la URL con "?categoria=..." -->
-                    <a href="./productos.html?categoria=Combos">Combos</a>
-                    <a href="./productos.html?categoria=Pollo fresco">Pollo fresco</a>
-                    <a href="./productos.html?categoria=Milanesas">Milanesas</a>
-                    <a href="./productos.html?categoria=Especialidades">Especialidades</a>
-                    <a href="./productos.html?categoria=Rebozados">Rebozados</a>
-                    <a href="./productos.html?categoria=Congelados">Congelados</a>
-                    <a href="./productos.html?categoria=Cajas por mayor">Cajas por mayor</a>
-                    <a href="./productos.html?categoria=Vegetales">Vegetales</a>
-                    <a href="./productos.html?categoria=Frutas">Frutas</a>
-                    <a href="./productos.html?categoria=Combos">Combos</a>
-                </div>
-            </div>
+      <div class="menu-desplegable">
+        <a href="./productos.html" id="link-productos" class="menu-activo">Productos <span class="flecha-mobile">▼</span></a>
+        
+        <div class="submenu" id="submenu-productos">
+          <a href="./productos.html" class="destacado-todos">Todos los productos</a>
+          <a href="./productos.html?categoria=Pollo fresco">Pollo fresco</a>
+          <a href="./productos.html?categoria=Milanesas">Milanesas</a>
+          <a href="./productos.html?categoria=Especialidades">Especialidades</a>
+          <a href="./productos.html?categoria=Rebozados">Rebozados</a>
+          <a href="./productos.html?categoria=Congelados">Congelados</a>
+          <a href="./productos.html?categoria=Cajas por mayor">Cajas por mayor</a>
+          <a href="./productos.html?categoria=Vegetales">Vegetales</a>
+          <a href="./productos.html?categoria=Frutas">Frutas</a>
+        </div>
+      </div>
 
-            <a href="../contactos/contacto.html">Contacto</a>
-            <button class="btn-carrito" id="btn-carrito">
-                🛒 <span class="badge" id="contador-carrito">0</span>
-            </button>
-        </nav>
-    </header>
+      <a href="../../nav/contactos/contacto.html">Contacto</a>
+    </nav>
+
+    <!-- Controles -->
+    <div class="controles">
+      <button class="btn-carrito" id="btn-carrito">
+        🛒 <span class="badge" id="contador-carrito">0</span>
+      </button>
+      <button class="btn-menu" id="btn-menu">☰</button>
+    </div>
+  </header>
 
     <!-- Main -->
     <main class="tienda">
@@ -170,14 +174,14 @@
     <a class="wsp-flotante" href="https://wa.me/5492984796020" target="_blank" rel="noopener"
         aria-label="Escribinos por WhatsApp"><img src="../../img/whatsapp.svg" alt="WhatsApp" width="40"></a>
 
-    <!-- ========== MÓDULO DEL CARRITO ========== -->
+    <!-- MÓDULO DEL CARRITO -->
     <div class="overlay" id="overlay"></div>
     <div class="sidebar-carrito" id="sidebar-carrito">
         <div class="carrito-header">
             <h2>Mi Pedido</h2>
             <button class="btn-cerrar" id="btn-cerrar-carrito">&times;</button>
         </div>
-        <!-- PASO 1: LISTA DE PRODUCTOS -->
+        <!-- LISTA DE PRODUCTOS -->
         <div id="paso-productos" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
             <div class="carrito-body" id="carrito-body">
                 <div class="carrito-vacio">El carrito está vacío</div>
@@ -194,7 +198,7 @@
                 <button class="btn btn-comprar" id="btn-continuar-compra">Siguiente: Datos de envío</button>
             </div>
         </div>
-        <!-- PASO 2: FORMULARIO DE ENVÍO -->
+        <!-- FORMULARIO DE ENVÍO -->
         <div id="paso-checkout" style="display: none; flex-direction: column; flex: 1; overflow: hidden;">
             <div class="carrito-body" style="display: flex; flex-direction: column; gap: 1rem;">
                 <h3 style="color: var(--marron); margin: 0;">Completá tus datos</h3>
@@ -235,6 +239,7 @@
     </div>
     <script src="../carrito/carrito.js"></script>
     <script src="/nav/productos/productos.js"></script>
+    <script src="../menu.js"></script>
 </body>
 
 </html>

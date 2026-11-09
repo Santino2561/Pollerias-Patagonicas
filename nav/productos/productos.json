@@ -357,7 +357,7 @@
     "subcategoria": "Pollo rebozado",
     "precio": 21500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Pechuga Rebosada Sadia.jpg"
   },
   {
     "id": 40,
@@ -387,7 +387,7 @@
     "subcategoria": "Merluza rebozada",
     "precio": 16500,
     "unidad": "kg",
-    "img": ""
+    "img": "../../img/productos/Filet de merluza sin rebosar ni espinas.jpg"
   },
   {
     "id": 43,

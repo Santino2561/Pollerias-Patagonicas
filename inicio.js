@@ -1,14 +1,17 @@
+// Init
 document.addEventListener("DOMContentLoaded", () => {
   iniciarCarrusel();
   cargarDestacados();
+  iniciarCarruselIndividual();
 });
 
-// Carrusel
+// Banner
 function iniciarCarrusel() {
   let imagenes = document.querySelectorAll(".carrusel-imagenes img");
   let puntos = document.querySelectorAll(".punto");
   let anterior = document.querySelector(".anterior");
   let siguiente = document.querySelector(".siguiente");
+  
   if (imagenes.length === 0) return;
 
   let indice = 0;
@@ -31,50 +34,23 @@ function iniciarCarrusel() {
     mostrarImagen(indice - 1);
     reiniciarTemporizador();
   });
+  
   siguiente.addEventListener("click", () => {
     mostrarImagen(indice + 1);
     reiniciarTemporizador();
   });
+  
   puntos.forEach((punto, i) => {
     punto.addEventListener("click", () => {
       mostrarImagen(i);
       reiniciarTemporizador();
     });
   });
+  
   reiniciarTemporizador();
 }
 
-// Seleccionamos las secciones
-const ofertas = document.getElementById("seccion-ofertas");
-const combos = document.getElementById("seccion-combos");
-
-// Seleccionamos el título
-const titulo = document.getElementById("titulo-seccion");
-
-// Función para cambiar de sección
-function cambiarSeccion() {
-
-    if (ofertas.classList.contains("activa")) {
-
-        ofertas.classList.remove("activa");
-        combos.classList.add("activa");
-
-        titulo.textContent = "Combos";
-
-    } else {
-
-        combos.classList.remove("activa");
-        ofertas.classList.add("activa");
-
-        titulo.textContent = "Ofertas";
-    }
-
-}
-
-// Cambiar cada 5 segundos
-setInterval(cambiarSeccion, 5000);
-
-// 2. Cargar y dibujar productos destacados
+// Destacados
 async function cargarDestacados() {
   try {
     const respuesta = await fetch("/nav/productos/productos.json");
@@ -138,5 +114,51 @@ function dibujarDestacados(destacados) {
     boton.replaceWith(btnLimpio);
     
     btnLimpio.addEventListener("click", () => window.agregarAlCarrito(prodClonado));
+  });
+}
+
+// Ofertas
+let intervaloCarruselMovil;
+
+function iniciarCarruselIndividual() {
+  const todasLasOfertas = document.querySelectorAll(".oferta");
+  const tituloSeccion = document.getElementById("titulo-seccion");
+  let indiceActual = 0;
+
+  if (todasLasOfertas.length === 0) return;
+
+  function rotarMovil() {
+    if (window.innerWidth <= 768) {
+      todasLasOfertas.forEach((oferta, i) => {
+        if (i === indiceActual) {
+          oferta.classList.add("visible");
+          if (tituloSeccion) {
+            tituloSeccion.textContent = oferta.closest("#seccion-ofertas") ? "Ofertas" : "Combos";
+          }
+        } else {
+          oferta.classList.remove("visible");
+        }
+      });
+
+      indiceActual++;
+      if (indiceActual >= todasLasOfertas.length) {
+        indiceActual = 0; 
+      }
+      
+    } else {
+      if (tituloSeccion) {
+        tituloSeccion.textContent = "Ofertas y Combos";
+      }
+    }
+  }
+  
+  rotarMovil();
+
+  if (intervaloCarruselMovil) clearInterval(intervaloCarruselMovil);
+  intervaloCarruselMovil = setInterval(rotarMovil, 4000);
+
+  window.addEventListener("resize", () => {
+    indiceActual = 0; 
+    rotarMovil();
   });
 }

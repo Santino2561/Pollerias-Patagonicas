@@ -1,4 +1,4 @@
-/* ========== PORTADA PRINCIPAL ========== */
+/* Portada */
 h2 {
   font-size: clamp(1.6rem, 4vw, 2.2rem);
   letter-spacing: -0.02em;
@@ -20,8 +20,7 @@ h2 {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background:
-    linear-gradient(rgba(51, 51, 51, 0.65), rgba(0, 0, 0, 0.65)),
+  background: linear-gradient(rgba(51, 51, 51, 0.65), rgba(0, 0, 0, 0.65)),
     url("./img/fondo_pollo.png") left center / cover no-repeat;
 }
 .portada::after {
@@ -31,12 +30,7 @@ h2 {
   height: 10rem;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 210, 63, 0) 0%,
-    rgba(20, 19, 14, 0.6) 65%,
-    rgb(0, 0, 0) 100%
-  );
+  background: linear-gradient(to bottom, rgba(255, 210, 63, 0) 0%, rgba(20, 19, 14, 0.6) 65%, rgb(0, 0, 0) 100%);
 }
 .portada main,
 .portada .ofertas {
@@ -66,7 +60,7 @@ h2 {
   background: #fff;
 }
 
-/* ========== SECCIÓN OFERTAS ========== */
+/* Ofertas */
 #titulo-seccion {
   text-align: center;
   font-size: 5rem;
@@ -90,7 +84,6 @@ h2 {
   min-width: 0;
   gap: 1rem;
 }
-
 .oferta img {
   display: block;
   width: 100%;
@@ -112,24 +105,28 @@ h2 {
   font-size: 1.5rem;
   font-weight: 700;
   cursor: pointer;
-  transition:
-    background 0.2s,
-    transform 0.15s;
+  transition: background 0.2s, transform 0.15s;
 }
 .oferta .btn-agregar:hover {
   background: #f5ecec;
   transform: scale(1.04);
 }
-/* Ocultar las secciones */
+
+/* Secciones */
 .seccion-carrusel {
-    display: none;
+  display: none;
+}
+.seccion-carrusel.activa {
+  display: flex;
 }
 
-/* Mostrar la sección activa */
-.seccion-carrusel.activa {
-    display: flex;
+/* Animacion */
+@keyframes aparecerOferta {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
 }
-/* ========== ANIMACIÓN PRODUCTOS DESTACADOS ========== */
+
+/* Destacados */
 .banner-pedidos {
   border-bottom: 2px solid rgb(94, 5, 5);
   border-top: 2px solid rgb(94, 5, 5);
@@ -143,11 +140,6 @@ h2 {
   padding-left: 0;
   padding-right: 0;
   overflow: hidden;
-}
-#pedido h2 {
-  margin: 0 0 1.2rem 0;
-  text-align: center;
-  align-items: center;
 }
 .carrusel-tienda {
   overflow: hidden;
@@ -163,9 +155,7 @@ h2 {
   animation-play-state: paused;
 }
 @keyframes deslizar {
-  to {
-    transform: translateX(-50%);
-  }
+  to { transform: translateX(-50%); }
 }
 @media (prefers-reduced-motion: reduce) {
   .grilla-tienda {
@@ -173,7 +163,7 @@ h2 {
   }
 }
 
-/* ========== NOSOTROS Y MAPA ========== */
+/* Nosotros */
 .seccion {
   max-width: 60rem;
   margin: 0 auto;
@@ -206,6 +196,7 @@ h2 {
   margin: 0;
 }
 
+/* Ubicacion */
 .ubicacion {
   position: relative;
   overflow: hidden;
@@ -264,6 +255,7 @@ h2 {
   mask-image: linear-gradient(to left, #000, transparent 50%);
 }
 
+/* Tarjetas */
 .tarjeta-producto {
   flex: 0 0 22rem !important;
   scroll-snap-align: start;
@@ -310,16 +302,14 @@ h2 {
   font-size: 1.1rem !important;
   font-weight: 700;
   cursor: pointer;
-  transition:
-    background 0.2s,
-    transform 0.15s;
+  transition: background 0.2s, transform 0.15s;
 }
 .tarjeta-producto .btn-agregar:hover {
   background: #fff;
   transform: scale(1.04);
 }
 
-/* Placeholder si falta la foto (Sirve para todo) */
+/* Placeholder */
 .img-placeholder {
   display: flex;
   align-items: center;
@@ -339,35 +329,73 @@ h2 {
   font-size: 2rem;
 }
 
-/* ========== RESPONSIVE========== */
-@media (min-width: 900px) {
-  #nosotros {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 3rem;
-    align-items: start;
-  }
-  #nosotros .bajada {
-    margin: 0;
-  }
-  #nosotros h2 {
-    grid-column: 1;
-  }
-  #nosotros .ventajas {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+/* Mobile */
 @media (max-width: 768px) {
-  .ubicacion::before,
-  .ubicacion::after {
-    opacity: 0.35;
-  }
+  #titulo-seccion {
+  text-align: center;
+  font-size: clamp(3rem, 8vw, 3.5rem);
+  color: var(--amarillo);
 }
-@media (max-width: 600px) {
+  .banner-pedidos h2 {
+    text-align: center;
+  }
+  /* Ofertas */
   .ofertas {
+    display: grid;
     grid-template-columns: 1fr;
-    max-width: 22rem;
+  }
+  
+  .oferta {
+    display: none !important; 
+    animation: aparecerOferta 0.8s ease-in-out;
+  }
+
+  .oferta.visible {
+    display: flex !important;
+  }
+
+  .oferta .btn-agregar {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+
+  /* Carrusel */
+  .banner-pedidos {
+    padding: 1rem 0; 
+  }
+
+  .carrusel-tienda {
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    scrollbar-width: none; 
+    -webkit-overflow-scrolling: touch; 
+  }
+
+  .carrusel-tienda::-webkit-scrollbar {
+    display: none; 
+  }
+
+  .grilla-tienda {
+    animation: none !important; 
+    gap: 1rem;
+    padding: 1rem;
+    width: max-content;
+  }
+
+  /* Tarjetas Destacados Mobile */
+  .tarjeta-producto {
+    scroll-snap-align: center; 
+    flex: 0 0 80vw !important;
+    margin-right: 0;
+  }
+
+  .tarjeta-producto img {
+    height: 220px !important;
+  }
+
+  .tarjeta-producto .btn-agregar {
+    padding: 0.8rem 1rem !important;
+    width: 90%;
   }
 }

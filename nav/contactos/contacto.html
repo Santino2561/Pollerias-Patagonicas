@@ -20,35 +20,43 @@
         aria-label="Escribinos por WhatsApp"><img src="../../img/whatsapp.svg" alt="WhatsApp" width="40"></a>
 
     <header class="header">
-        <a href="../../index.html" class="marca">
-            <img src="../../img/logo.png" alt="Logo de Pollerías Patagónicas">
-            <span>Pollerías Patagónicas</span>
-        </a>
+    <a href="../../index.html" class="marca">
+      <img src="../../img/logo.png" alt="Logo">
+      <span>Pollerías Patagónicas</span>
+    </a>
 
-        <nav class="menu">
-            <a href="../../index.html">Inicio</a>
+    <!-- Enlaces -->
+    <nav class="menu" id="menu-principal">
+      <a href="../../index.html">Inicio</a>
 
-            <div class="menu-desplegable">
-                <a href="../productos/productos.html">Productos</a>
-                <div class="submenu">
-                    <a href="../productos/productos.html?categoria=Pollo fresco">Pollo fresco</a>
-                    <a href="../productos/productos.html?categoria=Milanesas">Milanesas</a>
-                    <a href="../productos/productos.html?categoria=Especialidades">Especialidades</a>
-                    <a href="../productos/productos.html?categoria=Rebozados">Rebozados</a>
-                    <a href="../productos/productos.html?categoria=Congelados">Congelados</a>
-                    <a href="../productos/productos.html?categoria=Cajas por mayor">Cajas por mayor</a>
-                    <a href="../productos/productos.html?categoria=Vegetales">Vegetales</a>
-                    <a href="../productos/productos.html?categoria=Frutas">Frutas</a>
-                </div>
-            </div>
+      <div class="menu-desplegable">
+        <a href="../../nav/productos/productos.html" id="link-productos" class="menu-activo">Productos <span class="flecha-mobile">▼</span></a>
+        
+        <div class="submenu" id="submenu-productos">
+          <a href="../../nav/productos/productos.html" class="destacado-todos">Todos los productos</a>
+          <a href="../../nav/productos/productos.html?categoria=Pollo fresco">Pollo fresco</a>
+          <a href="../../nav/productos/productos.html?categoria=Milanesas">Milanesas</a>
+          <a href="../../nav/productos/productos.html?categoria=Especialidades">Especialidades</a>
+          <a href="../../nav/productos/productos.html?categoria=Rebozados">Rebozados</a>
+          <a href="../../nav/productos/productos.html?categoria=Congelados">Congelados</a>
+          <a href="../../nav/productos/productos.html?categoria=Cajas por mayor">Cajas por mayor</a>
+          <a href="../../nav/productos/productos.html?categoria=Vegetales">Vegetales</a>
+          <a href="../../nav/productos/productos.html?categoria=Frutas">Frutas</a>
+        </div>
+      </div>
 
-            <a href="./contacto.html" class="menu-activo">Contacto</a>
-            <button class="btn-carrito" id="btn-carrito">
-                🛒 <span class="badge" id="contador-carrito">0</span>
-            </button>
-        </nav>
-    </header>
+      <a href="../../nav/contactos/contacto.html">Contacto</a>
+    </nav>
 
+    <!-- Controles -->
+    <div class="controles">
+      <button class="btn-carrito" id="btn-carrito">
+        🛒 <span class="badge" id="contador-carrito">0</span>
+      </button>
+      <button class="btn-menu" id="btn-menu">☰</button>
+    </div>
+  </header>
+  
     <main>
 
         <section class="contacto-hero wrap">
@@ -174,6 +182,7 @@
     </div>
     <script src="../carrito/carrito.js"></script>
     <script src="./contacto.js"></script>
+    <script src="../menu.js"></script>
 </body>
 
 </html>
