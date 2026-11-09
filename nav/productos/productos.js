@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function cargarCatalogoCompleto() {
   try {
-    const respuesta = await fetch("/nav/productos/productos.json");
+const respuesta = await fetch("./productos.json");
     productos = await respuesta.json();
 
     if (document.getElementById("filtro-categorias")) {

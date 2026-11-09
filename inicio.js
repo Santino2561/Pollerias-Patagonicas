@@ -53,7 +53,7 @@ function iniciarCarrusel() {
 // Destacados
 async function cargarDestacados() {
   try {
-    const respuesta = await fetch("/nav/productos/productos.json");
+    const respuesta = await fetch("./nav/productos/productos.json")
     const productosTotales = await respuesta.json();
     const prodDestacados = [16, 25, 9, 32]; 
     const destacados = productosTotales.filter((producto) =>
