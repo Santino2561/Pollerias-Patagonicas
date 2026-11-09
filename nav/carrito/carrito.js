@@ -1,5 +1,17 @@
 // ===== carrito.js =====
 
+// Raíz del sitio, calculada desde donde está este archivo (nav/carrito/carrito.js).
+// Sirve igual en local, en Pages (/Pollerias-Patagonicas/) o en un dominio propio.
+const RAIZ_SITIO = new URL("../../", document.currentScript.src);
+
+function rutaImagen(ruta) {
+    if (!ruta) return new URL("img/logo.png", RAIZ_SITIO).href;
+    if (/^(https?:|data:)/.test(ruta)) return ruta;
+    // Saca "../../", "./" o "/" del principio: queda la ruta desde la raíz
+    const limpia = ruta.replace(/^(\.\.\/)+/, "").replace(/^\.?\//, "");
+    return new URL(limpia, RAIZ_SITIO).href;
+}
+
 // 1. Inicializamos el carrito leyendo el LocalStorage
 let carrito = JSON.parse(localStorage.getItem('carritoPolleria')) || [];
 
@@ -41,10 +53,11 @@ window.actualizarCarrito = function() {
             const div = document.createElement("div");
             div.className = "item-carrito";
             
-            const imgSrc = producto.img || "/img/logo.png";
-            
-            div.innerHTML = `
-                <img src="${imgSrc}" alt="${producto.nombre}" onerror="this.src='/img/logo.png'">
+const imgSrc = rutaImagen(producto.img);
+const logo = rutaImagen("");
+
+div.innerHTML = `
+    <img src="${imgSrc}" alt="${producto.nombre}" onerror="this.onerror=null; this.src='${logo}'">
                 <div class="item-info">
                     <h4>${producto.nombre}</h4>
                     <p>$${producto.precio}</p>
