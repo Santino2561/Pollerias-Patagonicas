@@ -364,6 +364,9 @@ h2 {
   .ubicacion::after {
     opacity: 0.35;
   }
+    .ofertas:not(:has(.oferta.visible)) {
+    display: none;
+  }
 }
 @media (max-width: 600px) {
   .ofertas {

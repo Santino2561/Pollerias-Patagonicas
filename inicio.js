@@ -131,49 +131,58 @@ function dibujarDestacados(destacados) {
   });
 }
 
-// Ofertas
-let intervaloCarruselMovil;
+// Ofertas y combos
+let temporizadorOfertas;
 
 function iniciarCarruselIndividual() {
-  // Solo las ofertas de secciones visibles (.activa); las otras están con display:none
-  const todasLasOfertas = document.querySelectorAll(".seccion-carrusel.activa .oferta");
+  const secciones = Array.from(document.querySelectorAll(".seccion-carrusel"));
+  const todasLasOfertas = document.querySelectorAll(".seccion-carrusel .oferta");
   const tituloSeccion = document.getElementById("titulo-seccion");
-  let indiceActual = 0;
+  if (secciones.length === 0 || todasLasOfertas.length === 0) return;
 
-  if (todasLasOfertas.length === 0) return;
+  const nombreSeccion = (seccion) =>
+    seccion.id === "seccion-ofertas" ? "Ofertas" : "Combos";
 
-  function rotarMovil() {
+  let indiceTarjeta = 0; // celular: qué tarjeta se muestra
+  let indiceSeccion = 0; // PC: qué sección se muestra
+  let anchoPrevio = window.innerWidth;
+
+  function rotar() {
     if (window.innerWidth <= 768) {
-      todasLasOfertas.forEach((oferta, i) => {
-        if (i === indiceActual) {
-          oferta.classList.add("visible");
-          if (tituloSeccion) {
-            tituloSeccion.textContent = oferta.closest("#seccion-ofertas") ? "Ofertas" : "Combos";
-          }
-        } else {
-          oferta.classList.remove("visible");
-        }
-      });
-
-      indiceActual++;
-      if (indiceActual >= todasLasOfertas.length) {
-        indiceActual = 0; 
-      }
-      
-    } else {
+      // Celular: las dos secciones quedan "encendidas" y se muestra una tarjeta por vez
+      secciones.forEach((s) => s.classList.add("activa"));
+      todasLasOfertas.forEach((oferta, i) =>
+        oferta.classList.toggle("visible", i === indiceTarjeta)
+      );
       if (tituloSeccion) {
-        tituloSeccion.textContent = "Ofertas y Combos";
+        const seccionActual = todasLasOfertas[indiceTarjeta].closest(".seccion-carrusel");
+        tituloSeccion.textContent = nombreSeccion(seccionActual);
       }
+      indiceTarjeta = (indiceTarjeta + 1) % todasLasOfertas.length;
+    } else {
+      // PC: una sección por vez, alternando
+      todasLasOfertas.forEach((oferta) => oferta.classList.remove("visible"));
+      secciones.forEach((s, i) => s.classList.toggle("activa", i === indiceSeccion));
+      if (tituloSeccion) tituloSeccion.textContent = nombreSeccion(secciones[indiceSeccion]);
+      indiceSeccion = (indiceSeccion + 1) % secciones.length;
     }
   }
-  
-  rotarMovil();
 
-  if (intervaloCarruselMovil) clearInterval(intervaloCarruselMovil);
-  intervaloCarruselMovil = setInterval(rotarMovil, 4000);
+  function ciclo() {
+    rotar();
+    clearTimeout(temporizadorOfertas);
+    const espera = window.innerWidth <= 768 ? 4000 : 6000; // milisegundos
+    temporizadorOfertas = setTimeout(ciclo, espera);
+  }
 
+  ciclo();
+
+  // Solo reinicia si cambió el ancho (en celular, el scroll dispara "resize" por la barra del navegador)
   window.addEventListener("resize", () => {
-    indiceActual = 0; 
-    rotarMovil();
+    if (window.innerWidth === anchoPrevio) return;
+    anchoPrevio = window.innerWidth;
+    indiceTarjeta = 0;
+    indiceSeccion = 0;
+    ciclo();
   });
 }
