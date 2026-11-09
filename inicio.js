@@ -56,9 +56,13 @@ async function cargarDestacados() {
     const respuesta = await fetch("./nav/productos/productos.json")
     const productosTotales = await respuesta.json();
     const prodDestacados = [16, 25, 9, 32]; 
-    const destacados = productosTotales.filter((producto) =>
-      prodDestacados.includes(producto.id)
-    );
+ const destacados = productosTotales
+      .filter((producto) => prodDestacados.includes(producto.id))
+      .map((producto) => ({
+        ...producto,
+        // el json usa rutas pensadas para nav/productos/; desde el index (raíz) hay que ajustarlas
+        img: producto.img ? producto.img.replace("../../", "./") : "",
+      }));
 
     dibujarDestacados(destacados);
   } catch (error) {
@@ -75,9 +79,16 @@ function dibujarDestacados(destacados) {
     const tarjeta = document.createElement("article");
     tarjeta.className = "tarjeta-producto";
 
-    const img = document.createElement("img");
-    img.src = producto.img;
-    img.alt = producto.nombre;
+ let img;
+    if (producto.img) {
+      img = document.createElement("img");
+      img.src = producto.img;
+      img.alt = producto.nombre;
+    } else {
+      img = document.createElement("div");
+      img.className = "img-placeholder";
+      img.textContent = "🍗";
+    }
 
     const titulo = document.createElement("h3");
     titulo.textContent = producto.nombre;
