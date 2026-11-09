@@ -651,16 +651,16 @@
     "grupo": "Espinaca",
     "categoria": "Vegetales",
     "precio": 7600,
-    "unidad": "kg",
+    "unidad": "paquete",
     "img": "../../img/productos/Espinaca 800g.png"
   },
   {
     "id": 69,
-    "nombre": "Brocoli Congelada x 800grs",
+    "nombre": "Brocoli Congelado x 800grs",
     "grupo": "Brocoli",
     "categoria": "Vegetales",
     "precio": 8400,
-    "unidad": "kg",
+    "unidad": "paquete",
     "img": "../../img/productos/Brocoli 800g.png"
   },
   {
@@ -669,7 +669,7 @@
     "grupo": "Arveja",
     "categoria": "Vegetales",
     "precio": 5500,
-    "unidad": "kg",
+    "unidad": "paquete",
     "img": "../../img/productos/Arvejas 500g.png"
   },
   {
@@ -678,7 +678,7 @@
     "grupo": "Choclo",
     "categoria": "Vegetales",
     "precio": 5600,
-    "unidad": "kg",
+    "unidad": "paquete",
     "img": "../../img/productos/Choclo 500g.webp"
   },
   {
@@ -687,7 +687,7 @@
     "grupo": "Tacos",
     "categoria": "Vegetales",
     "precio": 4800,
-    "unidad": "kg",
+    "unidad": "paquete",
     "img": "../../img/productos/mix tacos 500g.jfif"
   },
   {
@@ -696,7 +696,7 @@
     "grupo": "Cebolla",
     "categoria": "Vegetales",
     "precio": 4900,
-    "unidad": "kg",
+    "unidad": "paquete",
     "img": "../../img/productos/Cebolla 500g.png"
   },
   {
@@ -705,7 +705,7 @@
     "grupo": "Frutillas",
     "categoria": "Frutas",
     "precio": 5500,
-    "unidad": "kg",
+    "unidad": "paquete",
     "img": "../../img/productos/Frutillas 500g.webp"
   },
   {
@@ -714,7 +714,7 @@
     "grupo": "Frutos rojos",
     "categoria": "Frutas",
     "precio": 9900,
-    "unidad": "kg",
+    "unidad": "paquete",
     "img": "../../img/productos/Frutos-Rojos 500g.webp"
   },
   {
