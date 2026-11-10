@@ -1,4 +1,4 @@
-/* ========== PORTADA PRINCIPAL ========== */
+/* PORTADA PRINCIPAL */
 h2 {
   font-size: clamp(1.6rem, 4vw, 2.2rem);
   letter-spacing: -0.02em;
@@ -65,7 +65,7 @@ h2 {
   background: #fff;
 }
 
-/* ========== SECCIÓN OFERTAS ========== */
+/* SECCIÓN OFERTAS */
 #titulo-seccion {
   text-align: center;
   font-size: 5rem;
@@ -119,16 +119,14 @@ h2 {
   background: #f5ecec;
   transform: scale(1.04);
 }
-/* Ocultar las secciones */
 .seccion-carrusel {
     display: none;
 }
 
-/* Mostrar la sección activa */
 .seccion-carrusel.activa {
     display: flex;
 }
-/* ========== ANIMACIÓN PRODUCTOS DESTACADOS ========== */
+/*  ANIMACIÓN PRODUCTOS DESTACADOS */
 .banner-pedidos {
   border-bottom: 2px solid rgb(94, 5, 5);
   border-top: 2px solid rgb(94, 5, 5);
@@ -172,7 +170,29 @@ h2 {
   }
 }
 
-/* ========== NOSOTROS Y MAPA ========== */
+
+  #contenedor-destacados {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: hidden; 
+    width: max-content;
+    animation: desplazarCarrusel 25s linear infinite;
+  }
+
+  #contenedor-destacados:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes desplazarCarrusel {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); 
+    }
+  }
+
+/* NOSOTROS Y MAPA */
 .seccion {
   max-width: 60rem;
   margin: 0 auto;
@@ -319,7 +339,7 @@ h2 {
   transform: scale(1.04);
 }
 
-/* Placeholder si falta la foto (Sirve para todo) */
+/* Placeholder img*/
 .img-placeholder {
   display: flex;
   align-items: center;
@@ -339,7 +359,7 @@ h2 {
   font-size: 2rem;
 }
 
-/* ========== RESPONSIVE========== */
+/* RESPONSIVE */
 @media (min-width: 900px) {
   #nosotros {
     display: grid;
@@ -375,7 +395,6 @@ h2 {
   }
 }
 
-/* ========== CELULAR ========== */
 @media (max-width: 768px) {
   .hero {
     padding-top: 1rem;
@@ -384,7 +403,7 @@ h2 {
     font-size: 2.8rem;
   }
 
-  /* Ofertas/combos: de a una por vez (inicio.js agrega .visible) */
+  /* Ofertas/combos */
   .ofertas {
     max-width: 24rem;
     margin: 1rem auto 2rem;
@@ -401,7 +420,7 @@ h2 {
     font-size: 1.25rem;
   }
 
-  /* Destacados: tarjetas más chicas */
+  /* Destacados */
   .tarjeta-producto {
     flex: 0 0 15rem !important;
     margin-right: 1.25rem;
